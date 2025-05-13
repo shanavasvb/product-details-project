@@ -1,0 +1,950 @@
+[
+    {
+      "Barcode": "8902102163961",
+      "ProductName": "Exo Anti-Bacterial Dishwash Bar – Ginger Twist",
+      "Description": "Anti-bacterial dishwash bar infused with ginger extract, designed to eliminate grease and germs while protecting hands from harsh chemicals.",
+      "Category": "Home & Kitchen",
+      "ProductLine": "Dishwashing",
+      "Quantity": 360,
+      "Unit": "gm",
+      "Features": [
+        "Kills 99.9% germs",
+        "Ginger extract for freshness",
+        "Removes stubborn grease",
+        "Skin-friendly formula"
+      ],
+      "Specification": {
+        "PackType": "Multipack",
+        "PackSize": "4 x 90g",
+        "CountryOfOrigin": "India",
+        "Manufacturer": "Jyothy Laboratories Ltd."
+      },
+      "Brand": "Exo",
+      "ProductImage": "image/Product-image/8902102163961.png",
+      "ProductIngredientImage": "image/ProductIngredientImage/8902102163961.jpg"
+    },
+    {
+      "Barcode": "8902102163671",
+      "ProductName": "Exo Touch & Shine Anti-Bacterial Round Dishwash Bar",
+      "Description": "Removes toughest grease and stains with anti-bacterial protection and long-lasting foam in a round, zero-waste design.",
+      "Category": "Dishwashing",
+      "ProductLine": "Dishwash Bars",
+      "Quantity": 700,
+      "Unit": "gm",
+      "Features": [
+        "Anti-bacterial formula kills germs",
+        "Removes tough stains and grease",
+        "Long-lasting and economical",
+        "Creates rich, luxurious lather",
+        "Gentle on hands",
+        "Pleasant fragrance",
+        "Zero wastage with round shape",
+        "Tamper-proof packaging"
+      ],
+      "Specification": {
+        "Weight": "700g",
+        "Shape": "Round",
+        "Packaging": "Tamper-proof tub",
+        "FreeItem": "Exo Super Scrubber",
+        "Manufacturer": "Jyothy Labs Limited",
+        "ManufacturerAddress": "Ujala House, Ramkrishna Mandir Road, Kondivita, Andheri (East), Mumbai-400059, India"
+      },
+      "Brand": "Exo",
+      "ProductImage": "image/Product-image/8902102163671.jpg",
+      "ProductIngredientImage": "image/ProductIngredientImage/8902102163671.jpg"
+    },
+    {
+      "Barcode": "8902102163930",
+      "ProductName": "Exo Anti-Bacterial Dishwash Bar",
+      "Description": "Formulated with ginger and Cyclosan to eliminate bacteria and tough grease from utensils.",
+      "Category": "Cleaning & Household",
+      "ProductLine": "Dishwash Bars",
+      "Quantity": 125,
+      "Unit": "gm",
+      "Features": [
+        "Kills germs in 10 seconds",
+        "Ginger infused",
+        "Removes tough grease and stains",
+        "Leaves utensils sparkling clean"
+      ],
+      "Specification": {
+        "ShelfLife": "24 months",
+        "Storage": "Store in a cool, dry place",
+        "Packaging": "Sealed pouch",
+        "Fragrance": "Herbal",
+        "TypeOfDetergent": "Soap Bar"
+      },
+      "Brand": "Exo",
+      "ProductImage": "image/Product-image/8902102163930.png",
+      "ProductIngredientImage": "image/ProductIngredientImage/8902102163930.jpg"
+    },
+    {
+      "Barcode": "8902102164166",
+      "ProductName": "Exo Anti-Bacterial Dishwash Bar Touch & Shine",
+      "Description": "Dishwash bar with ginger and Cyclozan that removes grease and kills bacteria effectively.",
+      "Category": "Cleaning & Household",
+      "ProductLine": "Dishwash Bars",
+      "Quantity": 600,
+      "Unit": "gm",
+      "Features": [
+        "Kills germs in 10 seconds",
+        "Ginger infused",
+        "Removes tough grease",
+        "Sparkling clean utensils"
+      ],
+      "Specification": {
+        "ShelfLife": "24 months",
+        "Storage": "Store in a cool, dry place",
+        "Packaging": "Sealed pouch",
+        "Fragrance": "Herbal",
+        "TypeOfDetergent": "Soap Bar"
+      },
+      "Brand": "Exo",
+      "ProductImage": "https://www.bigbasket.com/media/uploads/p/l/40153276_2-exo-dishwash-bar-anti-bacterial-touch-shine-200-g.jpg",
+      "ProductIngredientImage": null
+    },
+    {
+      "Barcode": "8902102163459",
+      "ProductName": "Exo Anti-Bacterial Dishwash Super Gel",
+      "Description": "Powerful gel dishwash with ginger, designed to cut through grease and be gentle on hands.",
+      "Category": "Household Cleaning",
+      "ProductLine": "Dishwashing Liquids",
+      "Quantity": 225,
+      "Unit": "gm",
+      "Features": [
+        "Anti-bacterial properties",
+        "Ginger-based formulation",
+        "Tough on grease",
+        "Gentle on hands",
+        "Pleasant fragrance"
+      ],
+      "Specification": {
+        "Form": "Gel",
+        "Color": "Green",
+        "Fragrance": "Ginger",
+        "Packaging Type": "Bottle",
+        "Shelf Life": "24 months"
+      },
+      "Brand": "Exo",
+      "ProductImage": "https://www.bbassets.com/media/uploads/p/xxl/40206450_4-exo-super-gel-ginger.jpg",
+      "ProductIngredientImage": "https://www.jiomart.com/images/product/original/491899992/exo-anti-bacterial-ginger-dishwash-super-gel-225-g-legal-images-o491899992-p590980287-4-202211291756.jpg"
+    },
+      {
+        "Barcode": "8902102160212",
+        "Product Name": "Maya Rose Agarbathi",
+        "Description": "Maya Rose Agarbathi offers a rich and aromatic experience, inspired by nature. It spreads faster and lingers longer, creating a soothing ambiance.",
+        "Category": "Pooja Items",
+        "ProductLine": "Maya Agarbathi",
+        "Quantity": 1,
+        "Unit": "gm",
+        "Features": [
+          "Inspired by nature",
+          "Rich aromatic experience",
+          "Spreads faster and lingers longer"
+        ],
+        "Specification": {
+          "Weight": "50g",
+          "Dimensions": "5x5x10 cm"
+        },
+        "Brand": "Jyothy Laboratories",
+        "Product Image": "https://www.souqalbuhair.com/image/cache/catalog/products/8902102160212-500x500.jpg",
+        "Product Ingredient Image": "https://www.souqalbuhair.com/image/cache/catalog/products/8902102160212-ingredients-500x500.jpg"
+      },
+      {
+  "Barcode": "8902102164067",
+  "Product Name": "Exo Dishwash Bar - Anti-Bacterial, Touch & Shine, 200 g Pack",
+  "Description": "Exo Dishwash Bar is an anti-bacterial cleaning solution designed to remove tough grease and grime from utensils. Enriched with the goodness of ginger, it ensures effective cleaning while being gentle on hands.",
+  "Category": "Household Cleaning",
+  "ProductLine": "Dishwashing Bars",
+  "Quantity": 600,
+  "Unit": "gm",
+  "Features": [
+    "Anti-bacterial properties",
+    "Ginger-based formulation",
+    "Tough on grease",
+    "Gentle on hands",
+    "Pleasant fragrance"
+  ],
+  "Specification": {
+    "Form": "Bar",
+    "Color": "Green",
+    "Fragrance": "Ginger",
+    "Packaging Type": "Multipack",
+    "Shelf Life": "24 months"
+  },
+  "Brand": "Exo",
+  "Product Image": "https://www.jiomart.com/images/product/original/590980287/exo-anti-bacterial-dishwash-super-gel-225-g-product-images-o590980287-p590980287-0-202203151622.jpg",
+  "Product Ingredient Image": "https://www.jiomart.com/images/product/original/590980287/exo-anti-bacterial-dishwash-super-gel-225-g-product-images-o590980287-p590980287-1-202203151622.jpg"
+},
+
+{
+  "Barcode": "8902102164173",
+  "Product Name": "Exo Touch & Shine Anti-Bacterial Round Dishwash Bar",
+  "Description": "Exo Touch & Shine Anti-Bacterial Round Dishwash Bar offers ultra-clean dish-washing and superior hygiene. The innovative anti-soggy formula prevents excessive melting of the bar when in contact with water, making this dishwash bar a great value for money.",
+  "Category": "Household Cleaning",
+  "ProductLine": "Dishwashing Bars",
+  "Quantity": 500,
+  "Unit": "gm",
+  "Features": [
+    "Anti-bacterial protection",
+    "Contains real ginger extracts",
+    "Effective grease removal",
+    "Gentle on hands",
+    "Pleasant fragrance",
+    "Anti-soggy formula"
+  ],
+  "Specification": {
+    "Form": "Bar",
+    "Shape": "Round",
+    "Color": "Green",
+    "Fragrance": "Ginger",
+    "Shelf Life": "24 months",
+    "Packaging Type": "Tub"
+  },
+  "Brand": "Exo",
+  "Product Image": "https://www.jiomart.com/images/product/original/490740295/exo-touch-shine-anti-bacterial-round-dishwash-bar-500-g-product-images-o490740295-p490740295-0-202203170857.jpg",
+  "Product Ingredient Image": "https://www.jiomart.com/images/product/original/490740295/exo-touch-shine-anti-bacterial-round-dishwash-bar-500-g-product-images-o490740295-p490740295-1-202203170857.jpg"
+},
+{
+  "Barcode": "8902102162582",
+  "Product Name": "Maxo A-Grade Mosquito Repellent Combi Pack",
+  "Description": "A mosquito repellent combo pack containing a vaporizer machine and a 45 ml liquid refill, designed to eliminate mosquitoes and prevent diseases like dengue, malaria, and chikungunya.",
+  "Category": "Home & Kitchen",
+  "ProductLine": "Fresheners & Repellents",
+  "Quantity": 45,
+  "Unit": "ml",
+  "Features": [
+    "Instant action vaporizer",
+    "NO-E8Cap formula for enhanced impact",
+    "Safe for pets and children",
+    "Lasts up to 3 weeks",
+    "Fresh fragrance"
+  ],
+  "Specification": {
+    "Machine Included": true,
+    "Refill Volume": "45 ml",
+    "Effective Duration": "Up to 3 weeks",
+    "Safety": "Safe for pets and children",
+    "Fragrance": "Fresh"
+  },
+  "Brand": "Maxo",
+  "Product Image": "https://grofoo.com/products/maxo-mosquito-repellent-a-grade-combi-globe-machine-refill-45-ml",
+  "Product Ingredient Image": null
+},
+{
+  "Barcode": "8902102163992",
+  "Product Name": "Exo Super Gel Dishwash 100g",
+  "Description": "Exo Super Gel Dishwash is a concentrated gel formulated to effectively remove tough grease and stains from utensils. Enriched with the goodness of ginger and the antibacterial power of Cyclozan, it ensures hygienic and sparkling clean dishes.",
+  "Category": "Home & Kitchen",
+  "ProductLine": "Dishwashing Liquids & Gels",
+  "Quantity": 100,
+  "Unit": "gm",
+  "Features": [
+    "Concentrated gel formula for effective cleaning",
+    "Enriched with the goodness of ginger",
+    "Contains Cyclozan for antibacterial protection",
+    "Removes tough grease and stains",
+    "Leaves utensils sparkling clean"
+  ],
+  "Specification": {
+    "Form": "Gel",
+    "Fragrance": "Ginger",
+    "Antibacterial Agent": "Cyclozan",
+    "Packaging": "Pouch with nozzle for easy dispensing",
+    "Suitable For": "All types of utensils"
+  },
+  "Brand": "Exo",
+  "Product Image": "https://www.jyothylabs.com/products/exo-product/gel/",
+  "Product Ingredient Image": null
+},
+{
+  "Barcode": "8902102164074",
+  "Product Name": "Exo Anti-Bacterial Scouring Powder - Lemon Zing",
+  "Description": "Exo Anti-Bacterial Scouring Powder - Lemon Zing is a powerful cleaning agent designed to effectively remove tough stains and grease from utensils. Infused with a refreshing lemon fragrance, it ensures a hygienic and pleasant cleaning experience.",
+  "Category": "Cleaning & Household",
+  "ProductLine": "Exo Scouring Powder",
+  "Quantity": 1,
+  "Unit": "kg",
+  "Features": [
+    "Anti-bacterial formula",
+    "Effective grease removal",
+    "Refreshing lemon fragrance",
+    "Gentle on hands"
+  ],
+  "Specification": {
+    "Weight": "1 kg",
+    "Type": "Scouring Powder",
+    "Fragrance": "Lemon Zing",
+    "Form": "Powder"
+  },
+  "Brand": "Exo",
+  "Product Image": "https://www.bigbasket.com/media/uploads/p/l/415246_3-exo-anti-bacterial-scouring-powder-lemon-zing.jpg",
+  "Product Ingredient Image": "https://www.bigbasket.com/media/uploads/p/l/415246_4-exo-anti-bacterial-scouring-powder-lemon-zing.jpg"
+},
+{
+  "Barcode": "8902102160144",
+  "Product Name": "Maya Agarbatti Jasmine",
+  "Description": "Maya Agarbatti Jasmine incense sticks are crafted to infuse your surroundings with the sweet and soothing aroma of jasmine. Ideal for spiritual practices, meditation, or simply creating a calming ambiance at home.",
+  "Category": "Home Fragrance",
+  "ProductLine": "Incense Sticks",
+  "Quantity": 100,
+  "Unit": "gm",
+  "Features": [
+    "Infused with natural jasmine fragrance",
+    "Long-lasting aroma",
+    "Hand-rolled for consistent burn",
+    "Ideal for meditation and spiritual practices",
+    "Eco-friendly packaging"
+  ],
+  "Specification": {
+    "Form": "Stick",
+    "Fragrance": "Jasmine",
+    "Burn Time": "Approximately 45 minutes per stick",
+    "Packaging": "Paper box",
+    "Stick Length": "8 inches",
+    "Ingredients": [
+      "Bamboo stick",
+      "Charcoal powder",
+      "Natural resins",
+      "Essential oils",
+      "Jasmine fragrance"
+    ]
+  },
+  "Brand": "Maya",
+  "Product Image": null,
+  "Product Ingredient Image": null
+},
+{
+  "Barcode": "8902102160632",
+  "Product Name": "Maya Sarva Sugandhi Agarbatti",
+  "Description": "Maya Sarva Sugandhi Agarbatti offers a traditional fragrance crafted to create a calming spiritual atmosphere.",
+  "Category": "Pooja Items",
+  "ProductLine": "Maya Agarbatti",
+  "Quantity": 14,
+  "Unit": "sticks",
+  "Features": [
+    "Classic fragrance",
+    "Anti-bacterial benefits",
+    "Compact daily-use pack"
+  ],
+  "Specification": {
+    "Fragrance Type": "Woody & Floral",
+    "Stick Length": "8 inches"
+  },
+  "Brand": "Maya",
+  "Product Image": "https://example.com/images/maya-sarva-sugandhi.jpg",
+  "Product Ingredient Image": "https://example.com/images/maya-sarva-sugandhi-ingredients.jpg"
+},
+{
+  "Barcode": "8902102162049",
+  "Product Name": "Maya Chardham 4 in 1 Agarbatti",
+  "Description": "A spiritual blend of four fragrances inspired by India's sacred pilgrimage sites — Badrinath, Dwarka, Rameshwaram, and Puri.",
+  "Category": "Pooja Items",
+  "ProductLine": "Maya Chardham Agarbatti",
+  "Quantity": 68,
+  "Unit": "sticks",
+  "Features": [
+    "Four divine temple fragrances",
+    "Ideal for extended spiritual rituals",
+    "Free matchbox included"
+  ],
+  "Specification": {
+    "Fragrances": ["Badrinath", "Dwarka", "Rameshwaram", "Puri"],
+    "Stick Length": "8 inches",
+    "Pack Weight": "100g approx"
+  },
+  "Brand": "Maya",
+  "Product Image": "https://www.bigbasket.com/media/uploads/p/l/40130634_1-maya-incense-sticks-chardham.jpg",
+  "Product Ingredient Image": "https://www.bigbasket.com/media/uploads/p/l/40130634_2-maya-incense-sticks-chardham.jpg"
+},
+{
+  "Barcode": "8902102127369",
+  "Product Name": "Henko Stain Care Stain Busters Detergent Bar",
+  "Description": "Henko Stain Care Stain Busters Detergent Bar is scientifically formulated to remove up to 99% of tough stains, leaving your clothes fresh and stain-free.",
+  "Category": "Cleaning & Household",
+  "ProductLine": "Henko Stain Care",
+  "Quantity": 80,
+  "Unit": "gm",
+  "Features": [
+    "Removes up to 99% of tough stains",
+    "Suitable for all types of fabrics",
+    "Leaves clothes fresh and clean"
+  ],
+  "Specification": {
+    "Weight": "80g",
+    "Form": "Bar",
+    "Packaging Type": "Wrapper"
+  },
+  "Brand": "Henko",
+  "Product Image": "https://example.com/images/henko-stain-care-bar-80g.jpg",
+  "Product Ingredient Image": "https://example.com/images/henko-stain-care-bar-ingredients.jpg"
+},
+{
+  "Barcode": "8902102162117",
+  "Product Name": "Maya Rose Agarbatti",
+  "Description": "Maya Rose Agarbatti is a premium incense stick infused with the soothing fragrance of roses, designed to create a tranquil and aromatic ambiance.",
+  "Category": "Pooja Needs",
+  "ProductLine": "Incense Sticks",
+  "Quantity": 60,
+  "Unit": "gm",
+  "Features": [
+    "Long-lasting fragrance",
+    "Made from natural ingredients",
+    "Ideal for daily prayers and meditation",
+    "Eco-friendly packaging"
+  ],
+  "Specification": {
+    "Fragrance": "Rose",
+    "Stick Count": 60,
+    "Burn Time": "30 minutes per stick",
+    "Packaging Type": "Box"
+  },
+  "Brand": "Maya",
+  "Product Image": "https://www.atozmart.co/product/maya-rose-agarbatti/",
+  "Product Ingredient Image": "https://www.bigbasket.com/pd/40130635/maya-incense-sticks-rose-70-sticks/"
+},
+{
+  "Barcode": "8902102164043",
+  "Product Name": "Exo Anti-Bacterial Bacto Scrub",
+  "Description": "Exo Anti-Bacterial Bacto Scrub is a powerful cleaner that effectively eliminates bacteria and germs from surfaces, ensuring a hygienic environment. Its unique formula tackles tough stains, grease, and grime, leaving surfaces clean and germ-free.",
+  "Category": "Cleaning & Household",
+  "ProductLine": "Utensil Scrub Pad",
+  "Quantity": 1,
+  "Unit": "pc",
+  "Features": [
+    "Anti-bacterial properties",
+    "Effective against tough stains",
+    "Durable and long-lasting",
+    "Ergonomic design for easy grip"
+  ],
+  "Specification": {
+    "Applicator Type": "Scrub Pad",
+    "Packaging": "Pouch",
+    "Country of Origin": "India",
+    "Manufacturer": "Jyothy Laboratories Ltd"
+  },
+  "Brand": "Exo",
+  "Product Image": "https://www.bigbasket.com/media/uploads/p/l/40042406_1-exo-anti-bacto-scrub.jpg",
+  "Product Ingredient Image": "https://www.bigbasket.com/media/uploads/p/l/40042406_2-exo-anti-bacto-scrub.jpg"
+},
+{
+  "Barcode": "8902102125013",
+  "Product Name": "Henko Stain Care Stain Busters Detergent Bar",
+  "Description": "Henko Stain Care Stain Busters Detergent Bar is a scientifically formulated detergent bar that removes up to 99% of tough stains, leaving your clothes fresh and stain-free.",
+  "Category": "Cleaning & Household",
+  "ProductLine": "Detergent Bar",
+  "Quantity": 250,
+  "Unit": "gm",
+  "Features": [
+    "Removes up to 99% of tough stains",
+    "Scientifically formulated",
+    "Leaves clothes fresh and stain-free"
+  ],
+  "Specification": {
+    "Fragrance": "Not Applicable",
+    "Pack of": 1,
+    "Net Quantity": "250g",
+    "Manufacturer": "Jyothy Labs Limited",
+    "Manufacturer Address": "JL - Jyothy Labs Limited, Ujala House, Ramkrishna Mandir Road, Kondivita, Andheri East, Mumbai - 400059, M.H",
+    "Manufacturer Email": "customercare@jyothy.com",
+    "Country of Origin": "India"
+  },
+  "Brand": "Henko",
+  "Product Image": "https://kartwalk.in/products/henko-stain-care-stain-busters-detergent-bar-250g",
+  "Product Ingredient Image": "https://kartwalk.in/products/henko-stain-care-stain-busters-detergent-bar-250g"
+},
+{
+  "Barcode": "8902102163916",
+  "Product Name": "Pril Dishwash Bar (65g + 45g)",
+  "Description": "Pril Dishwash Bar offers effective grease removal from utensils, ensuring sparkling clean dishes with a refreshing lime fragrance.",
+  "Category": "Cleaning & Household",
+  "ProductLine": "Dishwash Bar",
+  "Quantity": 110,
+  "Unit": "gm",
+  "Features": [
+    "Effective grease removal",
+    "Refreshing lime fragrance",
+    "Gentle on hands",
+    "Economical pack"
+  ],
+  "Specification": {
+    "Weight": "110g (65g + 45g)",
+    "Fragrance": "Lime",
+    "Packaging": "Twin Pack",
+    "Manufacturer": "Jyothy Labs Limited",
+    "Country of Origin": "India"
+  },
+  "Brand": "Pril",
+  "Product Image": "https://www.bigbasket.com/media/uploads/p/l/40038940_1-pril-dishwash-bar-80-g-45-g.jpg",
+  "Product Ingredient Image": "https://www.bigbasket.com/media/uploads/p/l/40038940_2-pril-dishwash-bar-80-g-45-g.jpg"
+},
+{
+  "Barcode": "8902102125020",
+  "Product Name": "Henko Stain Care Detergent Bar",
+  "Description": "Henko Stain Care Detergent Bar is scientifically formulated to remove tough stains, leaving your clothes fresh and stain-free.",
+  "Category": "Cleaning & Household",
+  "ProductLine": "Henko Stain Care",
+  "Quantity": 400,
+  "Unit": "gm",
+  "Features": [
+    "Removes tough stains",
+    "Suitable for all types of fabrics",
+    "Leaves clothes fresh and clean"
+  ],
+  "Specification": {
+    "Weight": "400g",
+    "Form": "Bar",
+    "Packaging Type": "Wrapper"
+  },
+  "Brand": "Henko",
+  "Product Image": "https://example.com/images/henko-stain-care-bar-400g.jpg",
+  "Product Ingredient Image": "https://example.com/images/henko-stain-care-bar-ingredients.jpg"
+},
+{
+  "Barcode": "8902102163770",
+  "Product Name": "PRIL Lime/Vinegar Dish Bar",
+  "Description": "PRIL Lime/Vinegar Dish Bar combines the natural grease-cutting properties of lime and vinegar to effectively clean utensils, leaving them sparkling clean and fresh.",
+  "Category": "Cleaning & Household",
+  "ProductLine": "PRIL Dish Care",
+  "Quantity": 400,
+  "Unit": "gm",
+  "Features": [
+    "Powerful grease removal",
+    "Pleasant lime and vinegar fragrance",
+    "Gentle on hands",
+    "Long-lasting bar"
+  ],
+  "Specification": {
+    "Weight": "400g",
+    "Form": "Solid Bar",
+    "Packaging Type": "Wrapper"
+  },
+  "Brand": "PRIL",
+  "Product Image": "https://example.com/images/pril-lime-vinegar-dish-bar-400g.jpg",
+  "Product Ingredient Image": "https://example.com/images/pril-lime-vinegar-dish-bar-ingredients.jpg"
+},
+{
+  "Barcode": "8902102126256",
+  "Product Name": "Henko Stain Champion Detergent Powder",
+  "Description": "Henko Stain Champion Detergent Powder is scientifically formulated to remove tough stains, leaving your clothes fresh and stain-free.",
+  "Category": "Cleaning & Household",
+  "ProductLine": "Henko Stain Champion",
+  "Quantity": 500,
+  "Unit": "gm",
+  "Features": [
+    "Removes tough stains",
+    "Suitable for all types of fabrics",
+    "Leaves clothes fresh and clean"
+  ],
+  "Specification": {
+    "Weight": "500g",
+    "Form": "Powder",
+    "Packaging Type": "Pouch"
+  },
+  "Brand": "Henko",
+  "Product Image": "https://example.com/images/henko-stain-champion-powder-500g.jpg",
+  "Product Ingredient Image": "https://example.com/images/henko-stain-champion-powder-ingredients.jpg"
+},
+{
+  "Barcode": "8902102163909",
+  "Product Name": "Pril Bar Tub 500g",
+  "Description": "Pril Bar Tub 500g is a powerful dishwashing bar that effectively removes tough grease and stains, leaving your utensils sparkling clean and fresh.",
+  "Category": "Cleaning & Household",
+  "ProductLine": "Pril Dish Care",
+  "Quantity": 500,
+  "Unit": "gm",
+  "Features": [
+    "Effective grease removal",
+    "Long-lasting bar",
+    "Gentle on hands",
+    "Pleasant fragrance"
+  ],
+  "Specification": {
+    "Weight": "500g",
+    "Form": "Solid Bar",
+    "Packaging Type": "Tub"
+  },
+  "Brand": "Pril",
+  "Product Image": "https://example.com/images/pril-bar-tub-500g.jpg",
+  "Product Ingredient Image": "https://example.com/images/pril-bar-tub-ingredients.jpg"
+},
+{
+  "Barcode": "8902102126409",
+  "Product Name": "Henko Stain Care Detergent Powder",
+  "Description": "Henko Stain Care Detergent Powder is scientifically formulated with Bio-stain Power and Care Enzymes to remove tough stains and protect the color of your clothes.",
+  "Category": "Cleaning & Household",
+  "ProductLine": "Henko Stain Care",
+  "Quantity": 1000,
+  "Unit": "gm",
+  "Features": [
+    "Removes tough stains",
+    "Protects color of clothes",
+    "Suitable for hand wash and machine wash",
+    "Leaves clothes fresh and clean"
+  ],
+  "Specification": {
+    "Weight": "1kg",
+    "Form": "Powder",
+    "Packaging Type": "Pouch"
+  },
+  "Brand": "Henko",
+  "Product Image": "https://example.com/images/henko-stain-care-powder-1kg.jpg",
+  "Product Ingredient Image": "https://example.com/images/henko-stain-care-powder-ingredients.jpg"
+},
+{
+  "Barcode": "8902102125501",
+  "Product Name": "Henko Stain Champion Detergent Powder",
+  "Description": "Henko Stain Champion is a premium detergent powder designed to remove tough stains while being gentle on fabrics. It ensures clothes remain bright and fresh after every wash.",
+  "Category": "Household Cleaning",
+  "ProductLine": "Detergent Powder",
+  "Quantity": 5000,
+  "Unit": "gm",
+  "Features": [
+    "Advanced stain removal technology",
+    "Gentle on fabrics",
+    "Long-lasting fragrance",
+    "Suitable for both hand and machine wash"
+  ],
+  "Specification": {
+    "Form": "Powder",
+    "Color": "White",
+    "Fragrance": "Fresh floral",
+    "Suitable Fabrics": "All types",
+    "Machine Compatibility": "Top and front load"
+  },
+  "Brand": "Henko",
+  "Product Image": "https://m.media-amazon.com/images/I/71VZ1YzR1vL._SL1500_.jpg",
+  "Product Ingredient Image": "https://m.media-amazon.com/images/I/71VZ1YzR1vL._SL1500_.jpg"
+},
+{
+  "Barcode": "8902102127819",
+  "Product Name": "Henko Stain Care Detergent Powder, 4 kg Pouch",
+  "Description": "Henko Stain Care Detergent Powder is specially formulated to tackle stubborn stains while being gentle on your clothes. It not only cleans but also cares for fabric color and texture, offering a perfect balance of performance and care. Ideal for both machine and hand washing.",
+  "Category": "Household Cleaning",
+  "ProductLine": "Detergent Powder",
+  "Quantity": 4000,
+  "Unit": "gm",
+  "Features": [
+    "Removes tough stains like ink, oil, and curry",
+    "Preserves fabric color and softness",
+    "Long-lasting floral fragrance",
+    "Dissolves easily in water without leaving residue",
+    "Works with both hand and machine wash"
+  ],
+  "Specification": {
+    "Form": "Powder",
+    "Color": "Light purple/blue powder",
+    "Fragrance": "Fresh floral",
+    "Compatibility": "Top and front load washing machines",
+    "Packaging Type": "Pouch",
+    "Net Weight": "4 kg"
+  },
+  "Brand": "Henko",
+  "Product Image": "https://www.jiomart.com/images/product/original/490001729/henko-stain-care-detergent-powder-4-kg-product-images-o490001729-p590273842-0-202203152011.jpg",
+  "Product Ingredient Image": "https://www.jiomart.com/images/product/original/490001729/henko-stain-care-detergent-powder-4-kg-product-images-o490001729-p590273842-1-202203152011.jpg"
+},
+{
+  "Barcode": "8902102127475",
+  "Product Name": "Henko Matic Front Load Detergent Powder - 1 kg",
+  "Description": "Henko Matic Front Load Detergent Powder is specially formulated for front load washing machines. It features Bio Stain Power to remove tough stains, Nano Fiber Lock Technology to protect fabric fibers, and Ultra Color Care to maintain the brightness and shine of clothes. The detergent also offers 99.9% germ protection and a long-lasting fresh fragrance.",
+  "Category": "Household Cleaning",
+  "ProductLine": "Detergent Powder",
+  "Quantity": 1000,
+  "Unit": "gm",
+  "Features": [
+    "Bio Stain Power for tough stain removal",
+    "Nano Fiber Lock Technology to protect fabric fibers",
+    "Ultra Color Care to maintain color and shine",
+    "99.9% germ protection",
+    "Long-lasting fresh fragrance",
+    "Suitable for front load washing machines"
+  ],
+  "Specification": {
+    "Form": "Powder",
+    "Scent": "Fresh",
+    "Net Quantity": "1000 gm",
+    "Material Feature": "GMO Free",
+    "Specific Uses For Product": "Machine Wash",
+    "Allergen Information": "BPA-Free",
+    "Item Weight": "1000 grams",
+    "Manufacturer": "Jyothy Labs Ltd",
+    "Country of Origin": "India"
+  },
+  "Brand": "Henko",
+  "Product Image": "https://m.media-amazon.com/images/I/71VZ1YzR1vL._SL1500_.jpg",
+  "Product Ingredient Image": "https://m.media-amazon.com/images/I/71VZ1YzR1vL._SL1500_.jpg"
+},
+{
+  "Barcode": "8902102127499",
+  "Product Name": "Henko Matic Front Load Detergent Powder - 2 kg",
+  "Description": "Henko Matic Front Load Detergent Powder is specially formulated for front load washing machines. It features Lintelligent Nano Fibre Lock Technology to remove tough stains while preserving fabric color and integrity. The superfine powder dissolves easily, leaving no residue, and imparts a long-lasting fresh fragrance.",
+  "Category": "Household Cleaning",
+  "ProductLine": "Detergent Powder",
+  "Quantity": 2000,
+  "Unit": "gm",
+  "Features": [
+    "Lintelligent Nano Fibre Lock Technology for tough stain removal",
+    "Preserves fabric color and softness",
+    "Superfine powder for easy dissolution",
+    "Long-lasting fresh fragrance",
+    "Suitable for front load washing machines"
+  ],
+  "Specification": {
+    "Form": "Powder",
+    "Color": "White",
+    "Fragrance": "Fresh floral",
+    "Suitable Fabrics": "All types",
+    "Machine Compatibility": "Front load",
+    "Packaging Type": "Pouch",
+    "Net Weight": "2 kg"
+  },
+  "Brand": "Henko",
+  "Product Image": "https://m.media-amazon.com/images/I/71VZ1YzR1vL._SL1500_.jpg",
+  "Product Ingredient Image": "https://m.media-amazon.com/images/I/71VZ1YzR1vL._SL1500_.jpg"
+},
+{
+  "Barcode": "8902102163725",
+  "Product Name": "Pril Lime Grease Fighter Dishwash Liquid - 140 ml Pouch",
+  "Description": "Pril Lime Grease Fighter Dishwash Liquid is formulated with Active Power Molecules that help to remove tough grease with great ease, making dishwashing an easy task. Its unique formulation ensures that it doesn’t damage the surface while being tough on grease. Pril Lime doesn’t leave any white residue post-cleaning, thereby leaving the utensil super clean.",
+  "Category": "Household Cleaning",
+  "ProductLine": "Dishwash Liquid",
+  "Quantity": 140,
+  "Unit": "ml",
+  "Features": [
+    "Active Power Molecules for tough grease removal",
+    "Gentle on utensil surfaces",
+    "No white residue post-cleaning",
+    "Leaves utensils super clean",
+    "Convenient 140 ml pouch packaging"
+  ],
+  "Specification": {
+    "Form": "Liquid",
+    "Fragrance": "Lime",
+    "Suitable For": "All types of utensils",
+    "Packaging Type": "Pouch",
+    "Net Weight": "140 ml"
+  },
+  "Brand": "Pril",
+  "Product Image": "https://www.localhaatbazaar.com/wp-content/uploads/2022/03/Pril-Lime-Grease-Fighter-Dishwash-Liquid-140-ml-Pouch.jpg",
+  "Product Ingredient Image": "https://www.localhaatbazaar.com/wp-content/uploads/2022/03/Pril-Lime-Grease-Fighter-Dishwash-Liquid-140-ml-Pouch.jpg"
+},
+{
+  "Barcode": "8902102126553",
+  "Product Name": "Henko Matic Top Load Detergent Powder",
+  "Description": "Henko Matic Top Load Detergent Powder is engineered with Lintelligent Nano Fibre Lock Technology to remove tough stains while preserving the color and shine of your clothes.",
+  "Category": "Cleaning & Household",
+  "ProductLine": "Henko Matic",
+  "Quantity": 2,
+  "Unit": "kg",
+  "Features": [
+    "Removes tough stains",
+    "Preserves fabric color and shine",
+    "Suitable for top load washing machines",
+    "Lintelligent Nano Fibre Lock Technology"
+  ],
+  "Specification": {
+    "Weight": "2 kg",
+    "Form": "Powder",
+    "Packaging Type": "Pouch"
+  },
+  "Brand": "Henko",
+  "Product Image": "https://example.com/images/henko-matic-top-load-detergent-2kg.jpg",
+  "Product Ingredient Image": "https://example.com/images/henko-matic-top-load-detergent-ingredients.jpg"
+},
+{
+  "Barcode": "8902102127482",
+  "Product Name": "Henko Matic Top Load Detergent Powder - 1 kg",
+  "Description": "Henko Matic Top Load Detergent Powder is specially formulated for top load washing machines. It features Lintelligent Nano Fibre Lock Technology to remove tough stains while preserving fabric color and integrity. The superfine powder dissolves easily, leaving no residue, and imparts a long-lasting fresh fragrance.",
+  "Category": "Household Cleaning",
+  "ProductLine": "Detergent Powder",
+  "Quantity": 1000,
+  "Unit": "gm",
+  "Features": [
+    "Lintelligent Nano Fibre Lock Technology for tough stain removal",
+    "Preserves fabric color and softness",
+    "Superfine powder for easy dissolution",
+    "Long-lasting fresh fragrance",
+    "Suitable for top load washing machines"
+  ],
+  "Specification": {
+    "Form": "Powder",
+    "Color": "White",
+    "Fragrance": "Fresh floral",
+    "Suitable Fabrics": "All types",
+    "Machine Compatibility": "Top load",
+    "Packaging Type": "Pouch",
+    "Net Weight": "1 kg"
+  },
+  "Brand": "Henko",
+  "Product Image": "https://m.media-amazon.com/images/I/71VZ1YzR1vL._SL1500_.jpg",
+  "Product Ingredient Image": "https://m.media-amazon.com/images/I/71VZ1YzR1vL._SL1500_.jpg"
+},
+{
+  "Barcode": "8902102163695",
+  "Product Name": "Pril Dishwash Liquid Gel - Lime",
+  "Description": "Pril Dishwash Liquid Gel - Lime is formulated with lime extracts to effectively cut through grease and provide a refreshing fragrance, ensuring your utensils are sparkling clean.",
+  "Category": "Cleaning & Household",
+  "ProductLine": "Pril Dish Care",
+  "Quantity": 425,
+  "Unit": "ml",
+  "Features": [
+    "Effective grease removal",
+    "Refreshing lime fragrance",
+    "Gentle on hands",
+    "Suitable for all types of utensils"
+  ],
+  "Specification": {
+    "Weight": "425 ml",
+    "Form": "Liquid",
+    "Packaging Type": "Bottle"
+  },
+  "Brand": "Pril",
+  "Product Image": "https://m.media-amazon.com/images/I/61B+z6o3Y6L._SL1500_.jpg",
+  "Product Ingredient Image": "https://m.media-amazon.com/images/I/61B+z6o3Y6L._SL1500_.jpg"
+},
+{
+  "Barcode": "8902102127406",
+  "ProductName": "Henko Matic Top Load Detergent Powder 6 kg",
+  "Description": "Henko Matic Top Load Detergent Powder is designed to keep clothes looking new by locking fibers and preserving color and shine. It effectively removes tough stains and is suitable for top load washing machines.",
+  "Category": "Laundry Detergents",
+  "ProductLine": "Henko Matic",
+  "Quantity": 6,
+  "Unit": "kg",
+  "Features": [
+    "Lintelligent Nano Fiber Lock Technology",
+    "Advanced enzymatic action for tough stain removal",
+    "Smoothens and conditions fibers",
+    "Lower foam technology to protect washing machines",
+    "Suitable for high water levels in top load machines"
+  ],
+  "Specification": {
+    "ShelfLife": "24 months",
+    "Storage": "Store in a cool, dry place",
+    "Packaging": "Plastic pouch",
+    "NutritionalInfo": null
+  },
+  "Brand": "Henko",
+  "ProductImage": "https://www.flipkart.com/henko-top-load-detergent-powder-6/p/itm4c6f4e779875a",
+  "ProductIngredientImage": "https://www.bigbasket.com/pd/40153279/henko-matic-top-load-detergent-1-kg/"
+},
+{
+  "Barcode": "8902102163718",
+  "Product Name": "Pril Lime Grease Fighter Dishwash Gel - 750 ml",
+  "Description": "Pril Lime Grease Fighter Dishwash Gel is formulated with active boosters and 100% natural lime extracts to effectively remove tough grease and food stains. Its unique formulation ensures that it doesn’t damage the surface while being tough on grease. Pril Lime doesn’t leave any white residue post-cleaning, thereby leaving the utensil super clean.",
+  "Category": "Household Cleaning",
+  "ProductLine": "Dishwash Gel",
+  "Quantity": 750,
+  "Unit": "ml",
+  "Features": [
+    "Active boosters for tough grease removal",
+    "100% natural lime extracts",
+    "Gentle on utensil surfaces",
+    "No white residue post-cleaning",
+    "Leaves utensils sparkling clean"
+  ],
+  "Specification": {
+    "Form": "Gel",
+    "Fragrance": "Lime",
+    "Suitable For": "All types of utensils",
+    "Packaging Type": "Bottle",
+    "Net Weight": "750 ml",
+    "Manufacturer": "Jyothy Labs Limited",
+    "Country of Origin": "India"
+  },
+  "Brand": "Pril",
+  "Product Image": "https://www.jiomart.com/images/product/original/490001729/pril-lime-grease-fighter-dishwash-gel-750-ml-product-images-o490001729-p590273842-0-202203152011.jpg",
+  "Product Ingredient Image": "https://www.jiomart.com/images/product/original/490001729/pril-lime-grease-fighter-dishwash-gel-750-ml-product-images-o490001729-p590273842-1-202203152011.jpg"
+},
+{
+  "Barcode": "8902102163701",
+  "Product Name": "Pril Lime Dishwash Liquid Gel - 2 Litre",
+  "Description": "Pril Lime Dishwash Liquid Gel is formulated with active power molecules and 100% natural lime extracts to effectively remove tough grease and food stains. Its unique formulation ensures that it doesn’t damage the surface while being tough on grease. Pril Lime doesn’t leave any white residue post-cleaning, thereby leaving the utensil super clean.",
+  "Category": "Household Cleaning",
+  "ProductLine": "Dishwash Liquid",
+  "Quantity": 2000,
+  "Unit": "ml",
+  "Features": [
+    "Active power molecules for tough grease removal",
+    "100% natural lime extracts",
+    "Gentle on utensil surfaces",
+    "No white residue post-cleaning",
+    "Leaves utensils sparkling clean"
+  ],
+  "Specification": {
+    "Form": "Liquid Gel",
+    "Fragrance": "Lime",
+    "Suitable For": "All types of utensils",
+    "Packaging Type": "Bottle",
+    "Net Weight": "2 Litre",
+    "Manufacturer": "Jyothy Labs Limited",
+    "Country of Origin": "India"
+  },
+  "Brand": "Pril",
+  "Product Image": "https://www.bigbasket.com/media/uploads/p/l/40075568_5-pril-dishwash-liquid-lime-2x-active.jpg",
+  "Product Ingredient Image": "https://www.bigbasket.com/media/uploads/p/l/40075568_5-pril-dishwash-liquid-lime-2x-active.jpg"
+},
+{
+  "Barcode": "8902102127123",
+  "Product Name": "Henko Stain Care Detergent Powder - 4 kg Pouch",
+  "Description": "Henko Stain Care Detergent Powder is designed to remove tough stains while being gentle on fabrics. Its advanced formula ensures effective cleaning without compromising the color and softness of clothes.",
+  "Category": "Household Cleaning",
+  "ProductLine": "Detergent Powder",
+  "Quantity": 4000,
+  "Unit": "gm",
+  "Features": [
+    "Advanced stain removal technology",
+    "Preserves fabric color and softness",
+    "Suitable for all types of fabrics",
+    "Effective in both hard and soft water",
+    "Long-lasting fragrance"
+  ],
+  "Specification": {
+    "Form": "Powder",
+    "Fragrance": "Fresh",
+    "Suitable Fabrics": "All types",
+    "Machine Compatibility": "Top and front load",
+    "Packaging Type": "Pouch",
+    "Net Weight": "4 kg",
+    "Manufacturer": "Jyothy Labs Limited",
+    "Country of Origin": "India"
+  },
+  "Brand": "Henko",
+  "Product Image": "https://www.jiomart.com/images/product/original/490001729/pril-lime-grease-fighter-dishwash-gel-750-ml-product-images-o490001729-p590273842-0-202203152011.jpg",
+  "Product Ingredient Image": "https://www.jiomart.com/images/product/original/490001729/pril-lime-grease-fighter-dishwash-gel-750-ml-product-images-o490001729-p590273842-1-202203152011.jpg"
+},
+{
+  "Barcode": "8902102127130",
+  "Product Name": "Henko Matic Front Load Liquid Detergent - 1 Litre",
+  "Description": "Henko Matic Front Load Liquid Detergent is designed for front-load washing machines, offering superior stain removal with its Bio Stain Power. The Nano Fibre Lock Technology prevents fabric damage, while Ultra Color Care maintains the color and shine of clothes even after multiple washes. It also provides 99.9% germ protection, ensuring hygienic cleanliness.",
+  "Category": "Household Cleaning",
+  "ProductLine": "Liquid Detergent",
+  "Quantity": 1000,
+  "Unit": "ml",
+  "Features": [
+    "Bio Stain Power for effective stain removal",
+    "Nano Fibre Lock Technology to prevent fabric damage",
+    "Ultra Color Care to maintain color and shine",
+    "99.9% germ protection",
+    "Suitable for front-load washing machines"
+  ],
+  "Specification": {
+    "Form": "Liquid",
+    "Fragrance": "Fragrance-Free",
+    "Suitable Fabrics": "All types",
+    "Machine Compatibility": "Front-load",
+    "Packaging Type": "Bottle",
+    "Net Weight": "1 Litre",
+    "Manufacturer": "Jyothy Labs Limited",
+    "Country of Origin": "India"
+  },
+  "Brand": "Henko",
+  "Product Image": "https://www.bigbasket.com/media/uploads/p/l/40237251_1-henko-matic-liquid-detergent-front-load-nano-fibre-lock-technology-999-germ-protection.jpg",
+  "Product Ingredient Image": "https://www.bigbasket.com/media/uploads/p/l/40237251_2-henko-matic-liquid-detergent-front-load-nano-fibre-lock-technology-999-germ-protection.jpg"
+}
+
+
+
+
+
+  ]
+  
