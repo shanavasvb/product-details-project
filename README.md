@@ -37,7 +37,6 @@ The system is designed to maximize the chances of finding accurate product infor
 1. Clone the repository:
    ```bash
    git clone https://github.com/yourusername/barcode-lookup-system.git
-   cd barcode-lookup-system
    ```
 
 2. Install dependencies:
@@ -59,13 +58,13 @@ The system is designed to maximize the chances of finding accurate product infor
 Process multiple barcodes from an input file:
 
 ```bash
-python script.py  # Will prompt for input file
+python barcodefetcher.py  # Will prompt for input file
 ```
 
 Or specify the input file directly:
 
 ```bash
-INPUT_FILE=barcodes.txt python script.py
+INPUT_FILE=barcodes.txt python barcodefetcher.py
 ```
 
 The input file should contain one barcode per line.
@@ -75,7 +74,7 @@ The input file should contain one barcode per line.
 To test a single barcode and see detailed output from each lookup method:
 
 ```bash
-TEST_MODE=true TEST_BARCODE=0123456789012 python script.py
+TEST_MODE=true TEST_BARCODE=0123456789012 python barcodefetcher.py
 ```
 
 This will show the results from each step of the lookup process for debugging purposes.
