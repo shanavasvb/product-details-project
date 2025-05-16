@@ -1,0 +1,30 @@
+# Core dependencies
+requests>=2.28.1
+python-dotenv>=0.21.0
+tqdm>=4.64.1
+
+# API integrations
+serpapi>=0.1.0  # For web searches
+openai>=1.0.0   # For OpenAI API integration
+
+# For DeepSeek API
+deepseek-python>=0.1.0  # If using official client, check actual package name
+# If no official client exists, requests is sufficient
+
+# Data processing
+pandas>=1.5.0
+numpy>=1.23.0
+python-dateutil>=2.8.2
+
+# JSON handling
+simplejson>=3.17.6
+
+# For local database (if applicable)
+sqlalchemy>=2.0.0  # For database ORM
+pymysql>=1.0.2     # For MySQL connections
+# or
+# psycopg2-binary>=2.9.3  # For PostgreSQL connections
+
+# Utilities
+retry>=0.9.2       # For handling retries
+ratelimit>=2.2.1   # For API rate limiting
