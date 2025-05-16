@@ -799,6 +799,108 @@
     "Packaging Type": "Bottle"
   },
   "Brand": "Pril",
+
+  
+  "Product Image": "https://www.jiomart.com/images/product/original/490001729/pril-lime-grease-fighter-dishwash-gel-750-ml-product-images-o490001729-p590273842-0-202203152011.jpg",
+  "Product Ingredient Image": "https://www.jiomart.com/images/product/original/490001729/pril-lime-grease-fighter-dishwash-gel-750-ml-product-images-o490001729-p590273842-1-202203152011.jpg"
+},
+{
+  "Barcode": "8902102127185",
+  "Product Name": "Henko Matic Front Load Liquid Detergent",
+  "Description": "Henko Matic Front Load Liquid Detergent is a premium laundry solution designed for front-load washing machines. It features Nano Fibre Lock Technology, offering 99.9% germ protection, bio stain power, and ultra color care to maintain the newness, color, and shine of clothes.",
+  "Category": "Cleaning & Household",
+  "ProductLine": "Liquid Detergent",
+  "Quantity": 2000,
+  "Unit": "ml",
+  "Features": [
+    "Nano Fibre Lock Technology",
+    "99.9% germ protection",
+    "Bio stain power",
+    "Ultra color care",
+    "Suitable for front-load washing machines"
+  ],
+  "Specification": {
+    "Type": "Liquid Detergent",
+    "Suitable For": "Front Load Washing Machines",
+    "Packaging": "2L Refill Pouch",
+    "Manufacturer": "Jyothy Labs Limited",
+    "Country of Origin": "India"
+  },
+  "Brand": "Henko",
+  "Product Image": "https://www.bigbasket.com/media/uploads/p/l/40262925_1-henko-matic-liquid-detergent-front-load-nano-fibre-lock-technology-999-germ-protection-super-saver-pack-2-l-refill-pouch.jpg",
+  "Product Ingredient Image": "https://www.bigbasket.com/media/uploads/p/l/40262925_2-henko-matic-liquid-detergent-front-load-nano-fibre-lock-technology-999-germ-protection-super-saver-pack-2-l-refill-pouch.jpg"
+},
+{
+  "Barcode": "8902102163817",
+  "Product Name": "Pril Tamarind Shine Specialist Dishwash Liquid Gel",
+  "Description": "Pril Tamarind Shine Specialist Dishwash Liquid Gel is a unique utensil cleaner that comes in a radiant gold color and is 10x concentrated. It provides excellent shine on all kinds of utensils like stainless steel utensils, crockery, etc.",
+  "Category": "Cleaning & Household",
+  "ProductLine": "Dishwash Liquids & Pastes",
+  "Quantity": 425,
+  "Unit": "ml",
+  "Features": [
+    "10x concentrated formula",
+    "Radiant gold color",
+    "Provides excellent shine",
+    "Effective on various types of utensils"
+  ],
+  "Specification": {
+    "Weight": "425 ml",
+    "Fragrance": "Tamarind",
+    "Packaging": "Bottle",
+    "Manufacturer": "Jyothy Labs Limited",
+    "Country of Origin": "India"
+  },
+  "Brand": "Pril",
+  "Product Image": "https://www.bigbasket.com/media/uploads/p/l/40173029_1-pril-liquid-dishwasher-tamarind.jpg",
+  "Product Ingredient Image": "https://www.bigbasket.com/media/uploads/p/l/40173029_2-pril-liquid-dishwasher-tamarind.jpg"
+},
+{
+  "Barcode": "8902102163831",
+  "Product Name": "Pril Tamarind Active Power Booster Dishwash Liquid",
+  "Description": "Pril Tamarind Active Power Booster Dishwash Liquid is a concentrated dishwashing gel infused with the goodness of tamarind. It features visible active power boosters that burst while cleaning, effectively cutting through tough grease and leaving utensils sparkling clean.",
+  "Category": "Cleaning & Household",
+  "ProductLine": "Dishwash Liquids & Pastes",
+  "Quantity": 750,
+  "Unit": "ml",
+  "Features": [
+    "Infused with tamarind for effective grease removal",
+    "Visible active power boosters for enhanced cleaning",
+    "Leaves utensils sparkling clean",
+    "Concentrated formula for economical use"
+  ],
+  "Specification": {
+    "Fragrance": "Tamarind",
+    "Packaging": "Bottle",
+    "Manufacturer": "Jyothy Laboratories Ltd.",
+    "Manufacturer Address": "Ujala House, Ramkrishna Mandir Road, Kondivita, Andheri (East), Mumbai - 400059",
+    "Country of Origin": "India"
+  },
+  "Brand": "Pril",
+  "Product Image": "https://www.jiomart.com/images/product/original/491582898/pril-perfect-tamarind-dishwash-liquid-750-ml-product-images-o491582898-p491582898-0-202203170617.jpg",
+  "Product Ingredient Image": "https://www.jiomart.com/images/product/original/491582898/pril-perfect-tamarind-dishwash-liquid-750-ml-product-images-o491582898-p491582898-1-202203170617.jpg"
+},
+{
+  "Barcode": "8902102127147",
+  "Product Name": "Henko Matic Top Load Liquid Detergent",
+  "Description": "Henko Matic Top Load Liquid Detergent is formulated with Bio Stain Power and Nano Fibre Lock Technology to remove tough stains while preserving the color and shine of your clothes.",
+  "Category": "Cleaning & Household",
+  "ProductLine": "Henko Matic",
+  "Quantity": 500,
+  "Unit": "ml",
+  "Features": [
+    "Bio Stain Power for tough stain removal",
+    "Nano Fibre Lock Technology to prevent fabric damage",
+    "Ultra Color Care to maintain color and shine",
+    "99.9% Germ Protection",
+    "Suitable for top load washing machines"
+  ],
+  "Specification": {
+    "Weight": "500 ml",
+    "Form": "Liquid",
+    "Packaging Type": "Bottle"
+  },
+  "Brand": "Henko",
   "Product Image": "https://m.media-amazon.com/images/I/61B+z6o3Y6L._SL1500_.jpg",
   "Product Ingredient Image": "https://m.media-amazon.com/images/I/61B+z6o3Y6L._SL1500_.jpg"
 },
@@ -827,34 +929,59 @@
   "ProductImage": "https://www.flipkart.com/henko-top-load-detergent-powder-6/p/itm4c6f4e779875a",
   "ProductIngredientImage": "https://www.bigbasket.com/pd/40153279/henko-matic-top-load-detergent-1-kg/"
 },
-{
-  "Barcode": "8902102163718",
-  "Product Name": "Pril Lime Grease Fighter Dishwash Gel - 750 ml",
-  "Description": "Pril Lime Grease Fighter Dishwash Gel is formulated with active boosters and 100% natural lime extracts to effectively remove tough grease and food stains. Its unique formulation ensures that it doesn’t damage the surface while being tough on grease. Pril Lime doesn’t leave any white residue post-cleaning, thereby leaving the utensil super clean.",
-  "Category": "Household Cleaning",
-  "ProductLine": "Dishwash Gel",
-  "Quantity": 750,
-  "Unit": "ml",
-  "Features": [
-    "Active boosters for tough grease removal",
-    "100% natural lime extracts",
-    "Gentle on utensil surfaces",
-    "No white residue post-cleaning",
-    "Leaves utensils sparkling clean"
-  ],
-  "Specification": {
-    "Form": "Gel",
-    "Fragrance": "Lime",
-    "Suitable For": "All types of utensils",
-    "Packaging Type": "Bottle",
-    "Net Weight": "750 ml",
-    "Manufacturer": "Jyothy Labs Limited",
-    "Country of Origin": "India"
+[
+  {
+    "Barcode": "8902102163718",
+    "Product Name": "Pril Lime Grease Fighter Dishwash Gel - 750 ml",
+    "Description": "Pril Lime Grease Fighter Dishwash Gel is formulated with active boosters and 100% natural lime extracts to effectively remove tough grease and food stains. Its unique formulation ensures that it doesn’t damage the surface while being tough on grease. Pril Lime doesn’t leave any white residue post-cleaning, thereby leaving the utensil super clean.",
+    "Category": "Household Cleaning",
+    "ProductLine": "Dishwash Gel",
+    "Quantity": 750,
+    "Unit": "ml",
+    "Features": [
+      "Active boosters for tough grease removal",
+      "100% natural lime extracts",
+      "Gentle on utensil surfaces",
+      "No white residue post-cleaning",
+      "Leaves utensils sparkling clean"
+    ],
+    "Specification": {
+      "Form": "Gel",
+      "Fragrance": "Lime",
+      "Suitable For": "All types of utensils",
+      "Packaging Type": "Bottle",
+      "Net Weight": "750 ml"
+    },
+    "Brand": "Pril",
+    "Product Image": "https://m.media-amazon.com/images/I/71k9Kzq7XUL._SL1500_.jpg",
+    "Product Ingredient Image": "https://m.media-amazon.com/images/I/71k9Kzq7XUL._SL1500_.jpg"
   },
-  "Brand": "Pril",
-  "Product Image": "https://www.jiomart.com/images/product/original/490001729/pril-lime-grease-fighter-dishwash-gel-750-ml-product-images-o490001729-p590273842-0-202203152011.jpg",
-  "Product Ingredient Image": "https://www.jiomart.com/images/product/original/490001729/pril-lime-grease-fighter-dishwash-gel-750-ml-product-images-o490001729-p590273842-1-202203152011.jpg"
-},
+  {
+    "Barcode": "8902102163862",
+    "Product Name": "Pril Dishwash Liquid Gel - Lime",
+    "Description": "Pril Dishwash Liquid Gel - Lime is a powerful dishwashing solution enriched with Active Power Molecules that effectively remove tough grease, ensuring sparkling clean utensils. Its unique formulation is tough on grease yet gentle on hands, making dishwashing an effortless task.",
+    "Category": "Cleaning & Household",
+    "ProductLine": "Dishwash Liquids & Pastes",
+    "Quantity": 3000,
+    "Unit": "ml",
+    "Features": [
+      "Contains Active Power Molecules for effective grease removal",
+      "Gentle on hands",
+      "Refreshing lime fragrance",
+      "Suitable for all types of utensils"
+    ],
+    "Specification": {
+      "Weight": "3 L",
+      "Fragrance": "Lime",
+      "Packaging": "Bottle",
+      "Manufacturer": "Jyothy Labs Limited",
+      "Country of Origin": "India"
+    },
+    "Brand": "Pril",
+    "Product Image": "https://www.jiomart.com/images/product/original/490001729/pril-lime-grease-fighter-dishwash-gel-750-ml-product-images-o490001729-p590273842-0-202203152011.jpg",
+    "Product Ingredient Image": "https://www.jiomart.com/images/product/original/490001729/pril-lime-grease-fighter-dishwash-gel-750-ml-product-images-o490001729-p590273842-1-202203152011.jpg"
+  },
+
 {
   "Barcode": "8902102163701",
   "Product Name": "Pril Lime Dishwash Liquid Gel - 2 Litre",
@@ -905,6 +1032,53 @@
     "Machine Compatibility": "Top and front load",
     "Packaging Type": "Pouch",
     "Net Weight": "4 kg",
+  "Product Image": "https://www.bigbasket.com/media/uploads/p/l/40224286_1-pril-dishwashing-liquid-lime.jpg",
+  "Product Ingredient Image": "https://www.bigbasket.com/media/uploads/p/l/40224286_2-pril-dishwashing-liquid-lime.jpg"
+},
+{
+  "Barcode": "8902102163855",
+  "Product Name": "Pril Dishwash Liquid Gel - Lime",
+  "Description": "Pril Dishwash Liquid Gel - Lime is a powerful dishwashing solution enriched with Active Power Molecules that effectively remove tough grease, ensuring sparkling clean utensils. Its unique formulation is tough on grease yet gentle on hands, making dishwashing an effortless task.",
+  "Category": "Cleaning & Household",
+  "ProductLine": "Dishwash Liquids & Pastes",
+  "Quantity": 1500,
+  "Unit": "ml",
+  "Features": [
+    "Contains Active Power Molecules for effective grease removal",
+    "Gentle on hands",
+    "Refreshing lime fragrance",
+    "Suitable for all types of utensils"
+  ],
+  "Specification": {
+    "Weight": "1.5 L",
+    "Fragrance": "Lime",
+    "Packaging": "Bottle",
+    "Manufacturer": "Jyothy Labs Limited",
+    "Country of Origin": "India"
+  },
+  "Brand": "Pril",
+  "Product Image": "https://www.bigbasket.com/media/uploads/p/l/40224285_1-pril-dishwashing-liquid-lime-15-l.jpg",
+  "Product Ingredient Image": "https://www.bigbasket.com/media/uploads/p/l/40224285_2-pril-dishwashing-liquid-lime-15-l.jpg"
+},
+{
+  "Barcode": "8902102127192",
+  "Product Name": "Henko Matic Top Load Liquid Detergent",
+  "Description": "Henko Matic Top Load Liquid Detergent is a premium laundry solution designed for top-load washing machines. It features Nano Fibre Lock Technology, offering 99.9% germ protection, bio stain power, and ultra color care to maintain the newness, color, and shine of clothes.",
+  "Category": "Cleaning & Household",
+  "ProductLine": "Liquid Detergent",
+  "Quantity": 2000,
+  "Unit": "ml",
+  "Features": [
+    "Nano Fibre Lock Technology",
+    "99.9% germ protection",
+    "Bio stain power",
+    "Ultra color care",
+    "Suitable for top-load washing machines"
+  ],
+  "Specification": {
+    "Type": "Liquid Detergent",
+    "Suitable For": "Top Load Washing Machines",
+    "Packaging": "2L Refill Pouch",
     "Manufacturer": "Jyothy Labs Limited",
     "Country of Origin": "India"
   },
@@ -917,6 +1091,15 @@
   "Product Name": "Henko Matic Front Load Liquid Detergent - 1 Litre",
   "Description": "Henko Matic Front Load Liquid Detergent is designed for front-load washing machines, offering superior stain removal with its Bio Stain Power. The Nano Fibre Lock Technology prevents fabric damage, while Ultra Color Care maintains the color and shine of clothes even after multiple washes. It also provides 99.9% germ protection, ensuring hygienic cleanliness.",
   "Category": "Household Cleaning",
+
+  "Product Image": "https://www.bigbasket.com/media/uploads/p/l/40262926_1-henko-matic-liquid-detergent-top-load-nano-fibre-lock-technology-999-germ-protection-super-saver-pack-2-l-refill-pouch.jpg",
+  "Product Ingredient Image": "https://www.bigbasket.com/media/uploads/p/l/40262926_2-henko-matic-liquid-detergent-top-load-nano-fibre-lock-technology-999-germ-protection-super-saver-pack-2-l-refill-pouch.jpg"
+},
+{
+  "Barcode": "8902102127574",
+  "Product Name": "Henko Matic Front Load Liquid Detergent",
+  "Description": "Henko Matic Front Load Liquid Detergent is a premium laundry solution designed for front-load washing machines. It features Nano Fibre Lock Technology, offering 99.9% germ protection, bio stain power, and ultra color care to maintain the newness, color, and shine of clothes.",
+  "Category": "Cleaning & Household",
   "ProductLine": "Liquid Detergent",
   "Quantity": 1000,
   "Unit": "ml",
@@ -934,6 +1117,17 @@
     "Machine Compatibility": "Front-load",
     "Packaging Type": "Bottle",
     "Net Weight": "1 Litre",
+    "Features":[
+    "Nano Fibre Lock Technology",
+    "99.9% germ protection",
+    "Bio stain power",
+    "Ultra color care",
+    "Suitable for front-load washing machines"
+  ],
+  "Specification": {
+    "Type": "Liquid Detergent",
+    "Suitable For": "Front Load Washing Machines",
+    "Packaging": "1L Pouch",
     "Manufacturer": "Jyothy Labs Limited",
     "Country of Origin": "India"
   },
@@ -941,10 +1135,521 @@
   "Product Image": "https://www.bigbasket.com/media/uploads/p/l/40237251_1-henko-matic-liquid-detergent-front-load-nano-fibre-lock-technology-999-germ-protection.jpg",
   "Product Ingredient Image": "https://www.bigbasket.com/media/uploads/p/l/40237251_2-henko-matic-liquid-detergent-front-load-nano-fibre-lock-technology-999-germ-protection.jpg"
 }
+,
 
 
 
 
 
-  ]
   
+
+{
+  "Barcode": "8902102127581",
+  "Product Name": "Henko Matic Top Load Ultra Colour Care Liquid Detergent",
+  "Description": "Henko Matic Top Load Ultra Colour Care Liquid Detergent is a scientifically formulated laundry detergent that provides superior cleaning results for your top load washing machine. With its advanced technology, it effectively removes tough stains while preserving the vibrancy of your colored clothes, giving you up to 99% stain removal and brighter colors.",
+  "Category": "Cleaning & Household",
+  "ProductLine": "Liquid Detergent",
+  "Quantity": 1000,
+  "Unit": "ml",
+  "Features": [
+    "Advanced stain removal technology",
+    "Preserves color vibrancy",
+    "Suitable for top load washing machines",
+    "Scientifically formulated for superior cleaning"
+  ],
+  "Specification": {
+    "Type": "Liquid Detergent",
+    "Suitable For": "Top Load Washing Machines",
+    "Packaging": "1L Bottle",
+    "Manufacturer": "Jyothy Labs Limited",
+    "Country of Origin": "India"
+  },
+  "Brand": "Henko",
+  "Product Image": "https://kartwalk.in/cdn/shop/products/henko-matic-top-load-ultra-colour-care-liquid-1l-1.jpg",
+  "Product Ingredient Image": "https://kartwalk.in/cdn/shop/products/henko-matic-top-load-ultra-colour-care-liquid-1l-2.jpg"
+},
+{
+  "Barcode": "8902102197461",
+  "Product Name": "Maxo Mosquito Repellent Coil 8 Hour Red Regular (10 Count)",
+  "Description": "Maxo Mosquito Repellent Coil 8 Hour Red Regular provides effective protection against mosquitoes for up to 8 hours. Designed to offer corner-to-corner protection, these coils are specially crafted to avoid breakage while separating and emit a pleasing fragrance.",
+  "Category": "Home & Garden",
+  "ProductLine": "Insect Control",
+  "Quantity": 10,
+  "Unit": "count",
+  "Features": [
+    "Provides 8 hours of protection",
+    "A Grade Coil offers corner-to-corner protection from mosquitoes",
+    "Specially designed to avoid breakage while separating",
+    "Emits a pleasing fragrance"
+  ],
+  "Specification": {
+    "Item Form": "Coil",
+    "Net Quantity": "10 count",
+    "Item Dimensions": "11.5 x 2.8 x 11.5 cm",
+    "Item Weight": "250 g",
+    "Manufacturer": "Jyothy Labs Ltd",
+    "Country of Origin": "India"
+  },
+  "Brand": "Maxo",
+  "Product Image": "https://m.media-amazon.com/images/I/71k9Kzq7XUL._SL1500_.jpg",
+  "Product Ingredient Image": "https://m.media-amazon.com/images/I/71k9Kzq7XUL._SL1500_.jpg"
+},
+{
+  "Barcode": "8902102163626",
+  "Product Name": "Maxo Genius Liquid Vaporizer Refill",
+  "Description": "Maxo Genius Liquid Vaporizer Refill provides effective protection against mosquitoes when used with Maxo Genius machines. Its advanced formula ensures a mosquito-free environment.",
+  "Category": "Home Insecticides",
+  "ProductLine": "Maxo Genius",
+  "Quantity": 45,
+  "Unit": "ml",
+  "Features": [
+    "Effective mosquito protection",
+    "Compatible with Maxo Genius machines",
+    "Long-lasting action",
+    "Pleasant fragrance"
+  ],
+  "Specification": {
+    "Weight": "45 ml",
+    "Form": "Liquid",
+    "Packaging Type": "Refill Bottle"
+  },
+  "Brand": "Maxo",
+  "Product Image": "https://www.jyothylabs.com/wp-content/uploads/2020/10/maxo-genius-liquid-vaporizer.jpg",
+  "Product Ingredient Image": "https://www.jyothylabs.com/wp-content/uploads/2020/10/maxo-genius-liquid-vaporizer.jpg"
+},
+{
+  "Barcode": "8902102162391",
+  "Product Name": "Maxo Genius Automatic Max Protection - 1 Machine + 1 Refill (45 ml)",
+  "Description": "The Maxo Genius Combo Pack provides automatic mosquito protection and includes 1 vaporizer machine and 1 liquid refill (45 ml). It ensures a mosquito-free environment with long-lasting action.",
+  "Category": "Home Insecticides",
+  "ProductLine": "Maxo Genius",
+  "Quantity": 1,
+  "Unit": "Set",
+  "Features": [
+    "Includes 1 vaporizer machine and 1 liquid refill (45 ml)",
+    "Automatic mosquito repellent delivery",
+    "Long-lasting mosquito protection",
+    "Pleasant and mild fragrance",
+    "Safe for indoor use"
+  ],
+  "Specification": {
+    "Contents": {
+      "Machine": 1,
+      "Refill": "45 ml"
+    },
+    "Form": "Liquid",
+    "Packaging Type": "Combo Pack"
+  },
+  "Brand": "Maxo",
+  "Product Image": "https://www.jyothylabs.com/wp-content/uploads/2020/10/maxo-genius-liquid-vaporizer.jpg",
+  "Product Ingredient Image": "https://www.jyothylabs.com/wp-content/uploads/2020/10/maxo-genius-liquid-vaporizer.jpg"
+},
+{
+  "Barcode": "8902102126232",
+  "Product Name": "Ujala IDD Detergent Powder – 5 kg",
+  "Description": "Ujala IDD Detergent Powder is formulated with Instant Dirt Dissolvers (IDD) technology, ensuring effective stain removal and a pleasant fragrance. Suitable for both hand and machine wash.",
+  "Category": "Cleaning & Household",
+  "ProductLine": "Ujala IDD",
+  "Quantity": 5,
+  "Unit": "kg",
+  "Features": [
+    "Instant Dirt Dissolvers (IDD) technology",
+    "Effective stain removal",
+    "Pleasant fragrance",
+    "Suitable for hand and machine wash"
+  ],
+  "Specification": {
+    "Weight": "5 kg",
+    "Form": "Powder",
+    "Packaging Type": "Pouch"
+  },
+  "Brand": "Ujala",
+  "Product Image": "https://www.jyothylabs.com/wp-content/uploads/2020/10/ujala-detergent-powder.jpg",
+  "Product Ingredient Image": "https://www.jyothylabs.com/wp-content/uploads/2020/10/ujala-detergent-powder.jpg"
+},
+{
+  "Barcode": "8902102126973",
+  "Product Name": "More Light Extra Power Detergent",
+  "Description": "More Light Extra Power Detergent is a budget-friendly detergent powder specially formulated to clean clothes effectively. It helps remove tough stains while being gentle on fabric, and provides a pleasant fragrance. Ideal for daily laundry needs in Indian households.",
+  "Category": "Cleaning & Household",
+  "ProductLine": "Detergent Powder",
+  "Quantity": 4000,
+  "Unit": "gm",
+  "Features": [
+    "Removes tough stains",
+    "Gentle on clothes",
+    "Provides long-lasting fragrance",
+    "Affordable and economical",
+    "Suitable for hand and machine wash"
+  ],
+  "Specification": {
+    "Weight": "4 kg",
+    "Type": "Washing Powder",
+    "Application": "Hand wash and semi-automatic washing machines",
+    "Fragrance": "Mild fresh scent",
+    "Packaging": "Plastic bag with handle",
+    "Shelf Life": "24 months",
+    "Country of Origin": "India"
+  },
+  "Brand": "More",
+  "Product Image": "https://cdn1.moreretail.in/products/1790760_2-202206081636.jpg",
+  "Product Ingredient Image": "https://cdn1.moreretail.in/products/1790760_1-202206081636.jpg"
+},
+{
+  "Barcode": "8902102127024",
+  "Product Name": "Ujala Liquid Detergent - Superior Clean & Freshness",
+  "Description": "Ujala Liquid Detergent is a superior cleaning formula designed for all types of fabrics. It not only removes tough stains effectively but also ensures fabric care with a long-lasting, pleasant fragrance. Ideal for both hand and machine washing.",
+  "Category": "Cleaning & Household",
+  "ProductLine": "Liquid Detergent",
+  "Quantity": 800,
+  "Unit": "gm",
+  "Features": [
+    "Superior cleaning performance",
+    "Long-lasting freshness",
+    "Safe on all types of fabrics",
+    "Ideal for hand and machine wash",
+    "Gentle on hands and clothes"
+  ],
+  "Specification": {
+    "Type": "Liquid Detergent",
+    "Volume": "800ml",
+    "Usage": "Hand wash and top/front load washing machines",
+    "Fragrance": "Fresh floral scent",
+    "Packaging Type": "Plastic refill pouch",
+    "Shelf Life": "24 months",
+    "Country of Origin": "India",
+    "Manufacturer": "Jyothy Labs Limited"
+  },
+  "Brand": "Ujala",
+  "Product Image": "https://m.media-amazon.com/images/I/61t9+AdpVwL._SL1000_.jpg",
+  "Product Ingredient Image": "https://m.media-amazon.com/images/I/61t9+AdpVwL._SL1000_.jpg"
+},
+{
+  "Barcode": "8902102126782",
+  "Product Name": "Mr. White Detergent Powder - 1 kg Pouch",
+  "Description": "Mr. White Detergent Powder is specially formulated with optical brighteners that help keep white clothes looking brighter and newer. The detergent offers excellent stain removal and a long-lasting fragrance while being gentle on fabrics.",
+  "Category": "Cleaning & Household",
+  "ProductLine": "Detergent Powder",
+  "Quantity": 1000,
+  "Unit": "gm",
+  "Features": [
+    "Enhanced with optical brighteners for extra whiteness",
+    "Removes tough stains effectively",
+    "Gentle on fabric and skin",
+    "Fresh long-lasting fragrance",
+    "Ideal for hand and machine wash"
+  ],
+  "Specification": {
+    "Type": "Washing Powder",
+    "Net Weight": "1 kg",
+    "Application": "Hand wash and semi/fully automatic washing machines",
+    "Fragrance": "Fresh clean scent",
+    "Packaging": "Sealed plastic pouch",
+    "Shelf Life": "24 months",
+    "Manufacturer": "Jyothy Labs Ltd",
+    "Country of Origin": "India"
+  },
+  "Brand": "Mr. White",
+  "Product Image": "https://m.media-amazon.com/images/I/71N8z4MVH3L._SL1500_.jpg",
+  "Product Ingredient Image": "https://m.media-amazon.com/images/I/71N8z4MVH3L._SL1500_.jpg"
+},
+{
+  "Barcode": "8902102127307",
+  "Product Name": "Ujala Liquid Detergent - Instant Dirt Dissolvers",
+  "Description": "Ujala Liquid Detergent is designed to dissolve dirt instantly, offering a refreshing fragrance and killing 99.9% of germs. It is gentle on clothes while being tough on stains, suitable for both hand and machine wash.",
+  "Category": "Cleaning & Household",
+  "ProductLine": "Ujala Detergent",
+  "Quantity": 2,
+  "Unit": "L",
+  "Features": [
+    "Instant dirt dissolving action",
+    "Kills 99.9% of germs",
+    "Refreshing fragrance",
+    "Gentle on fabric, tough on stains",
+    "Suitable for hand wash and machine wash"
+  ],
+  "Specification": {
+    "Weight": "2 L",
+    "Form": "Liquid",
+    "Packaging Type": "Bottle"
+  },
+  "Brand": "Ujala",
+  "Product Image": "https://www.bigbasket.com/media/uploads/p/l/40272836_1-ujala-liquid-detergent-instant-dirt-dissolvers-refreshing-fragrance-kills-999-germs.jpg",
+  "Product Ingredient Image": "https://www.bigbasket.com/media/uploads/p/l/40272836_1-ujala-liquid-detergent-instant-dirt-dissolvers-refreshing-fragrance-kills-999-germs.jpg"
+},
+{
+  "Barcode": "8902102127512",
+  "Product Name": "Ujala Liquid Detergent Front Load - Super Saver Pack",
+  "Description": "Ujala Liquid Detergent Front Load is specially made for front load washing machines, offering Instant Dirt Dissolver technology. It delivers deep cleaning, a refreshing fragrance, and 99.9% germ protection while being gentle on clothes.",
+  "Category": "Cleaning & Household",
+  "ProductLine": "Ujala Detergent",
+  "Quantity": 2,
+  "Unit": "L",
+  "Features": [
+    "Instant Dirt Dissolver technology for deep cleaning",
+    "Kills 99.9% of germs",
+    "Long-lasting refreshing fragrance",
+    "Designed specifically for front load washing machines",
+    "Gentle on fabric, tough on stains"
+  ],
+  "Specification": {
+    "Weight": "2 L",
+    "Form": "Liquid",
+    "Packaging Type": "Bottle"
+  },
+  "Brand": "Ujala",
+  "Product Image": "https://www.bigbasket.com/media/uploads/p/l/40312026_1-ujala-liquid-detergent-front-load-super-saver-pack.jpg",
+  "Product Ingredient Image": "https://www.bigbasket.com/media/uploads/p/l/40312026_1-ujala-liquid-detergent-front-load-super-saver-pack.jpg"
+},
+{
+  "Barcode": "8902102127505",
+  "Product Name": "Ujala Liquid Detergent Front Load",
+  "Description": "Ujala Liquid Detergent Front Load is crafted for front load washing machines, powered by Instant Dirt Dissolver technology. It provides deep cleaning, protects fabrics, and leaves clothes with a fresh, long-lasting fragrance.",
+  "Category": "Cleaning & Household",
+  "ProductLine": "Ujala Detergent",
+  "Quantity": 800,
+  "Unit": "ml",
+  "Features": [
+    "Instant Dirt Dissolver for effective stain removal",
+    "Designed for front load washing machines",
+    "Long-lasting refreshing fragrance",
+    "Gentle on fabrics, tough on stains",
+    "Suitable for daily laundry needs"
+  ],
+  "Specification": {
+    "Weight": "800 ml",
+    "Form": "Liquid",
+    "Packaging Type": "Bottle"
+  },
+  "Brand": "Ujala",
+  "Product Image": "https://www.bigbasket.com/media/uploads/p/l/40312025_1-ujala-liquid-detergent-front-load.jpg",
+  "Product Ingredient Image": "https://www.bigbasket.com/media/uploads/p/l/40312025_1-ujala-liquid-detergent-front-load.jpg"
+},
+{
+  "Barcode": "8902102125648",
+  "Product Name": "Ujala Crisp and Shine Fresh Blossom - 100 g",
+  "Description": "Ujala Crisp and Shine is a post-wash fabric enhancer that revitalizes clothes by giving them a crisp finish and long-lasting freshness. It improves the fabric texture, making clothes look newly ironed and smell pleasant.",
+  "Category": "Cleaning & Household",
+  "ProductLine": "Fabric Conditioner",
+  "Quantity": 100,
+  "Unit": "gm",
+  "Features": [
+    "Gives clothes a crisp, newly ironed look",
+    "Adds long-lasting floral fragrance",
+    "Improves fabric texture and feel",
+    "Prevents wrinkles and enhances shine",
+    "Suitable for cotton and blended fabrics"
+  ],
+  "Specification": {
+    "Type": "Fabric Enhancer",
+    "Variant": "Fresh Blossom",
+    "Net Weight": "100 g",
+    "Usage": "Mix in water and apply during final rinse",
+    "Fragrance": "Fresh floral scent",
+    "Packaging": "Sachet",
+    "Shelf Life": "24 months",
+    "Country of Origin": "India",
+    "Manufacturer": "Jyothy Labs Ltd"
+  },
+  "Brand": "Ujala",
+  "Product Image": "https://m.media-amazon.com/images/I/61Hv-YXpqsL._SL1000_.jpg",
+  "Product Ingredient Image": "https://m.media-amazon.com/images/I/61Hv-YXpqsL._SL1000_.jpg"
+},
+{
+  "Barcode": "8902102126836",
+  "Product Name": "Mr. White Detergent Powder",
+  "Description": "Mr. White Detergent Powder is a powerful detergent that effectively removes stains while being gentle on your clothes. Its advanced formula provides a deep clean, keeping fabrics bright and fresh with every wash.",
+  "Category": "Cleaning & Household",
+  "ProductLine": "Mr. White",
+  "Quantity": 5,
+  "Unit": "kg",
+  "Features": [
+    "Powerful stain removal",
+    "Gentle on fabrics",
+    "Keeps clothes bright and fresh",
+    "Suitable for all types of laundry",
+    "Effective in both cold and hot water"
+  ],
+  "Specification": {
+    "Weight": "5 kg",
+    "Form": "Powder",
+    "Packaging Type": "Pouch"
+  },
+  "Brand": "Mr. White",
+  "Product Image": "https://www.bigbasket.com/media/uploads/p/l/198934_1-mr-white-detergent-powder-5-kg-pouch.jpg",
+  "Product Ingredient Image": "https://www.bigbasket.com/media/uploads/p/l/198934_1-mr-white-detergent-powder-5-kg-pouch.jpg"
+},
+{
+  "Barcode": "8902102126270",
+  "Product Name": "Ujala Fast Wash Laundry Soap - 150 g",
+  "Description": "Ujala Fast Wash Laundry Soap is specially formulated to remove tough stains from clothes while being gentle on hands. Enriched with fabric-friendly ingredients, it ensures thorough cleaning and leaves clothes smelling fresh.",
+  "Category": "Cleaning & Household",
+  "ProductLine": "Laundry Soap",
+  "Quantity": 150,
+  "Unit": "gm",
+  "Features": [
+    "Removes tough stains effectively",
+    "Gentle on hands and fabric",
+    "Suitable for hand washing clothes",
+    "Leaves clothes with a pleasant fragrance",
+    "Long-lasting bar with minimal wastage"
+  ],
+  "Specification": {
+    "Type": "Laundry Bar Soap",
+    "Net Weight": "150 g",
+    "Application": "Hand wash",
+    "Fragrance": "Mild floral scent",
+    "Packaging": "Wrapped bar",
+    "Shelf Life": "24 months",
+    "Country of Origin": "India",
+    "Manufacturer": "Jyothy Labs Ltd"
+  },
+  "Brand": "Ujala",
+  "Product Image": "https://m.media-amazon.com/images/I/71+7Mfksl+L._SL1500_.jpg",
+  "Product Ingredient Image": "https://m.media-amazon.com/images/I/71+7Mfksl+L._SL1500_.jpg"
+},
+{
+  "Barcode": "8902102125631",
+  "Product Name": "Ujala Crisp Shine Floral Fusion Liquid Detergent",
+  "Description": "Ujala Crisp Shine Floral Fusion Liquid Detergent provides a refreshing floral fragrance while ensuring your clothes remain fresh, clean, and vibrant. Its formula protects colors, maintains fabric shine, and removes tough stains effectively.",
+  "Category": "Cleaning & Household",
+  "ProductLine": "Ujala Detergent",
+  "Quantity": 1,
+  "Unit": "L",
+  "Features": [
+    "Floral fragrance for a fresh and clean feel",
+    "Maintains color and fabric shine",
+    "Removes tough stains effectively",
+    "Suitable for hand wash and machine wash",
+    "Gentle on fabrics"
+  ],
+  "Specification": {
+    "Weight": "1 L",
+    "Form": "Liquid",
+    "Packaging Type": "Bottle"
+  },
+  "Brand": "Ujala",
+  "Product Image": "https://images-na.ssl-images-amazon.com/images/I/51vMOhmHbgL._SL1500_.jpg",
+  "Product Ingredient Image": "https://images-na.ssl-images-amazon.com/images/I/51vMOhmHbgL._SL1500_.jpg"
+},
+{
+  "Barcode": "8902102125709",
+  "Product Name": "Ujala Crisp and Shine Floral Fusion - 100 g",
+  "Description": "Ujala Crisp and Shine Floral Fusion is a post-wash fabric conditioner that revives old clothes and gives them a crisp finish along with a refreshing floral scent. Ideal for cottons and blended fabrics, it adds life and brightness to garments.",
+  "Category": "Cleaning & Household",
+  "ProductLine": "Fabric Enhancer",
+  "Quantity": 100,
+  "Unit": "gm",
+  "Features": [
+    "Provides crispness to clothes after wash",
+    "Imparts a refreshing floral fragrance",
+    "Revives old and faded clothes",
+    "Prevents wrinkles and enhances fabric shine",
+    "Easy to use during the last rinse"
+  ],
+  "Specification": {
+    "Type": "Post-wash fabric enhancer",
+    "Variant": "Floral Fusion",
+    "Net Weight": "100 g",
+    "Recommended Usage": "Add in final rinse water",
+    "Fragrance": "Floral scent",
+    "Packaging": "Plastic sachet",
+    "Shelf Life": "24 months",
+    "Manufacturer": "Jyothy Labs Ltd",
+    "Country of Origin": "India"
+  },
+  "Brand": "Ujala",
+  "Product Image": "https://m.media-amazon.com/images/I/61dc1AObJ8L._SL1500_.jpg",
+  "Product Ingredient Image": "https://m.media-amazon.com/images/I/61dc1AObJ8L._SL1500_.jpg"
+},
+{
+  "Barcode": "8902102125716",
+  "Product Name": "Ujala Crisp and Shine Floral Fusion - 500 g",
+  "Description": "Ujala Crisp and Shine Floral Fusion is a fabric enhancer used in the last rinse to give clothes a crisp finish and long-lasting floral fragrance. It revives old garments, giving them a new-like brightness and improved feel.",
+  "Category": "Cleaning & Household",
+  "ProductLine": "Fabric Enhancer",
+  "Quantity": 500,
+  "Unit": "gm",
+  "Features": [
+    "Gives clothes a crisp and fresh look",
+    "Infused with long-lasting floral fragrance",
+    "Ideal for cotton and blended fabrics",
+    "Restores brightness to faded clothes",
+    "Easy to use in final rinse after washing"
+  ],
+  "Specification": {
+    "Type": "Post-wash Fabric Conditioner",
+    "Variant": "Floral Fusion",
+    "Net Weight": "500 g",
+    "Usage": "Use in the last rinse",
+    "Fragrance": "Floral",
+    "Packaging": "Plastic pouch",
+    "Shelf Life": "24 months",
+    "Manufacturer": "Jyothy Labs Ltd",
+    "Country of Origin": "India"
+  },
+  "Brand": "Ujala",
+  "Product Image": "https://m.media-amazon.com/images/I/71ntLJlC5pL._SL1500_.jpg",
+  "Product Ingredient Image": "https://m.media-amazon.com/images/I/71ntLJlC5pL._SL1500_.jpg"
+},
+{
+  "Barcode": "8902102126485",
+  "Product Name": "Ujala Crisp and Shine Floral Fusion - 1 kg",
+  "Description": "Ujala Crisp and Shine Floral Fusion is a post-wash fabric enhancer that gives clothes a crisp and fresh look with a long-lasting floral fragrance. It revives faded clothes, enhancing their brightness and texture after every wash.",
+  "Category": "Cleaning & Household",
+  "ProductLine": "Fabric Enhancer",
+  "Quantity": 1000,
+  "Unit": "gm",
+  "Features": [
+    "Gives a crisp finish to clothes",
+    "Infused with pleasant floral fragrance",
+    "Restores brightness to old clothes",
+    "Ideal for cotton and blended fabrics",
+    "Easy to use in the final rinse"
+  ],
+  "Specification": {
+    "Type": "Post-wash fabric conditioner",
+    "Variant": "Floral Fusion",
+    "Net Weight": "1 kg",
+    "Usage Instructions": "Mix with water and use during final rinse cycle",
+    "Fragrance": "Floral",
+    "Packaging": "Plastic pouch",
+    "Shelf Life": "24 months",
+    "Manufacturer": "Jyothy Labs Ltd",
+    "Country of Origin": "India"
+  },
+  "Brand": "Ujala",
+  "Product Image": "https://m.media-amazon.com/images/I/71gh3WcM6VL._SL1500_.jpg",
+  "Product Ingredient Image": "https://m.media-amazon.com/images/I/71gh3WcM6VL._SL1500_.jpg"
+},
+{
+  "Barcode": "8902102194934",
+  "Product Name": "Ujala Supreme Fabric Whitener - 250 ml",
+  "Description": "Ujala Supreme Fabric Whitener is a post-wash solution used to brighten and whiten white clothes. Its ultra-radiance molecules make clothes look newer and shinier with every wash.",
+  "Category": "Cleaning & Household",
+  "ProductLine": "Fabric Whitener",
+  "Quantity": 250,
+  "Unit": "gm",
+  "Features": [
+    "Enhances whiteness of clothes",
+    "Contains ultra-radiance molecules",
+    "Safe on hands and fabrics",
+    "Quick and easy to use",
+    "Economical and effective"
+  ],
+  "Specification": {
+    "Type": "Liquid fabric whitener",
+    "Net Volume": "250 ml",
+    "Form": "Liquid",
+    "Usage Instructions": "Add 4 drops of Ujala Supreme per ltr water,dip washed clothes. Rinse and dry",
+    "Shelf Life": "24 months",
+    "Packaging": "Plastic bottle",
+    "Fragrance": "Mild",
+    "Manufacturer": "Jyothy Labs Ltd",
+    "Country of Origin": "India"
+  },
+  "Brand": "Ujala",
+  "Product Image": "https://m.media-amazon.com/images/I/71mY+Lw+yKL._SL1500_.jpg",
+  "Product Ingredient Image": "https://m.media-amazon.com/images/I/71mY+Lw+yKL._SL1500_.jpg"
+}]
+]
