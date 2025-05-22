@@ -235,22 +235,26 @@ class BarcodeFetcher:
         """Use direct Digit-Eyes API to retrieve product information."""
         try:
             # Digit-Eyes direct API endpoint
-            url = f"https://www.digit-eyes.com/gtin/v2_0/"
+            url = "https://www.digit-eyes.com/gtin/v2_0/"
             
             # Parameters for the API call
             params = {
                 'upcCode': barcode,
-                'field_names': 'all',
-                'language': 'en',
-                'app_key': os.getenv('DIGITEYES_APP_KEY', ''),  # Optional app key
-                'signature': os.getenv('DIGITEYES_SIGNATURE', '')  # Optional signature
+                'language': 'en'
             }
+            
+            # Add API credentials if available
+            app_key = os.getenv('DIGITEYES_APP_KEY')
+            signature = os.getenv('DIGITEYES_SIGNATURE')
+            
+            if app_key and signature:
+                params['app_key'] = app_key
+                params['signature'] = signature
             
             # Make the request
             response = requests.get(url, params=params, timeout=10)
             
             if response.status_code == 200:
-                # Try to parse as JSON first
                 try:
                     data = response.json()
                     
@@ -261,7 +265,7 @@ class BarcodeFetcher:
                             "source": "digiteyes_api"
                         }
                         
-                        # Extract available fields
+                        # Extract available fields from JSON response
                         if data.get('product_name'):
                             result["name"] = data.get('product_name')
                             
@@ -288,16 +292,8 @@ class BarcodeFetcher:
                             return result
                             
                 except json.JSONDecodeError:
-                    # If JSON parsing fails, try to parse as plain text response
-                    text_response = response.text.strip()
-                    if text_response and text_response != "0" and "not found" not in text_response.lower():
-                        # Sometimes Digit-Eyes returns plain text product name
-                        result = {
-                            "barcode": barcode,
-                            "name": text_response,
-                            "source": "digiteyes_api"
-                        }
-                        return result
+                    logger.error(f"Failed to parse JSON response from Digit-Eyes for barcode {barcode}")
+                    return None
                         
             return None
             
