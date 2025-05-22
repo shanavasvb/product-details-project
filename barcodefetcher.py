@@ -8,6 +8,9 @@ import time
 import logging
 import sys
 from tqdm import tqdm
+from bs4 import BeautifulSoup
+import re
+from urllib.parse import quote_plus
 
 # Setup logging
 logging.basicConfig(
@@ -30,6 +33,8 @@ class BarcodeFetcher:
         self.serpapi_key = os.getenv("SERPAPI_KEY")
         self.openai_api_key = os.getenv("OPENAI_API_KEY")
         self.deepseek_api_key = os.getenv("DEEPSEEK_API_KEY")
+        self.digiteyes_app_key = os.getenv("DIGITEYES_APP_KEY")  # Optional for Digit-Eyes
+        self.digiteyes_signature = os.getenv("DIGITEYES_SIGNATURE")  # Optional for Digit-Eyes
         
         # Input/output configuration
         self.input_file = os.getenv("INPUT_FILE")
@@ -40,6 +45,9 @@ class BarcodeFetcher:
         self.max_retries = int(os.getenv("MAX_RETRIES", "3"))  # Default: 3 retries
         self.max_daily_requests = int(os.getenv("MAX_DAILY_REQUESTS", "10000"))  # Default: 10,000 per day
         self.request_count = 0
+        
+        # User agent for web scraping
+        self.user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
         
         # Last successful entry
         self.last_successful_entry = None
@@ -112,9 +120,379 @@ class BarcodeFetcher:
         except Exception as e:
             logger.error(f"Error reading Excel file: {e}")
             return []
+            
+    def search_google_for_barcode(self, barcode):
+        """Search Google for barcode information using SerpAPI."""
+        if not self.serpapi_key:
+            logger.warning("SerpAPI key not provided, skipping Google search")
+            return None
+            
+        try:
+            # SerpAPI endpoint
+            url = "https://serpapi.com/search"
+            
+            # Query parameters
+            params = {
+                "api_key": self.serpapi_key,
+                "q": f"{barcode} product bigbasket", # Search for barcode + bigbasket
+                "google_domain": "google.co.in",  # Use Google India for BigBasket results
+                "gl": "in",  # Geographic location: India
+                "hl": "en",  # Language: English
+                "num": 10    # Number of results
+            }
+            
+            # Make the request
+            response = requests.get(url, params=params)
+            
+            if response.status_code == 200:
+                data = response.json()
+                
+                # Extract organic search results
+                results = data.get("organic_results", [])
+                
+                # Check for BigBasket links first
+                bigbasket_results = [r for r in results if "bigbasket" in r.get("link", "")]
+                
+                if bigbasket_results:
+                    return bigbasket_results[0].get("link")
+                
+                # If no BigBasket links, return first result
+                if results:
+                    return results[0].get("link")
+                    
+            return None
+            
+        except Exception as e:
+            logger.error(f"Error during Google search for barcode {barcode}: {e}")
+            return None
+            
+    def extract_bigbasket_info(self, url):
+        """Extract product information from BigBasket website."""
+        try:
+            headers = {
+                'User-Agent': self.user_agent
+            }
+            
+            response = requests.get(url, headers=headers, timeout=10)
+            
+            if response.status_code == 200:
+                soup = BeautifulSoup(response.text, 'html.parser')
+                
+                # Initialize product info
+                product_info = {}
+                
+                # Extract product name
+                product_name_elem = soup.select_one('h1.GrE04')
+                if product_name_elem:
+                    product_info['name'] = product_name_elem.text.strip()
+                
+                # Extract brand
+                brand_elem = soup.select_one('a.Tq74c')
+                if brand_elem:
+                    product_info['brand'] = brand_elem.text.strip()
+                
+                # Extract price
+                price_elem = soup.select_one('td.IyLvo')
+                if price_elem:
+                    product_info['price'] = price_elem.text.strip()
+                
+                # Extract description
+                desc_elem = soup.select_one('div[data-qa="product-about"]')
+                if desc_elem:
+                    product_info['description'] = desc_elem.text.strip()
+                
+                # Extract ingredients or specifications
+                specs_elems = soup.select('div.h9mIE')
+                if specs_elems:
+                    specs = {}
+                    for elem in specs_elems:
+                        key_elem = elem.select_one('div:nth-child(1)')
+                        val_elem = elem.select_one('div:nth-child(2)')
+                        if key_elem and val_elem:
+                            key = key_elem.text.strip()
+                            val = val_elem.text.strip()
+                            specs[key] = val
+                    
+                    if specs:
+                        product_info['specifications'] = specs
+                
+                # Extract categories
+                breadcrumb_elems = soup.select('a.FY3Oe')
+                if breadcrumb_elems:
+                    categories = [elem.text.strip() for elem in breadcrumb_elems]
+                    if categories:
+                        product_info['categories'] = categories
+                
+                return product_info if product_info else None
+                
+            return None
+            
+        except Exception as e:
+            logger.error(f"Error extracting info from BigBasket: {e}")
+            return None
+            
+    def get_product_from_digiteyes(self, barcode):
+        """Use direct Digit-Eyes API to retrieve product information."""
+        try:
+            # Digit-Eyes direct API endpoint
+            url = f"https://www.digit-eyes.com/gtin/v2_0/"
+            
+            # Parameters for the API call
+            params = {
+                'upcCode': barcode,
+                'field_names': 'all',
+                'language': 'en',
+                'app_key': os.getenv('DIGITEYES_APP_KEY', ''),  # Optional app key
+                'signature': os.getenv('DIGITEYES_SIGNATURE', '')  # Optional signature
+            }
+            
+            # Make the request
+            response = requests.get(url, params=params, timeout=10)
+            
+            if response.status_code == 200:
+                # Try to parse as JSON first
+                try:
+                    data = response.json()
+                    
+                    # Check if product was found
+                    if data and not data.get('error'):
+                        result = {
+                            "barcode": barcode,
+                            "source": "digiteyes_api"
+                        }
+                        
+                        # Extract available fields
+                        if data.get('product_name'):
+                            result["name"] = data.get('product_name')
+                            
+                        if data.get('brand_name'):
+                            result["brand"] = data.get('brand_name')
+                            
+                        if data.get('description'):
+                            result["description"] = data.get('description')
+                            
+                        if data.get('ingredients'):
+                            result["ingredients"] = data.get('ingredients')
+                            
+                        if data.get('nutrition_facts'):
+                            result["nutrition_facts"] = data.get('nutrition_facts')
+                            
+                        if data.get('manufacturer'):
+                            result["manufacturer"] = data.get('manufacturer')
+                            
+                        if data.get('category'):
+                            result["category"] = data.get('category')
+                            
+                        # Return result only if it has meaningful data
+                        if len(result) > 2:  # More than just barcode and source
+                            return result
+                            
+                except json.JSONDecodeError:
+                    # If JSON parsing fails, try to parse as plain text response
+                    text_response = response.text.strip()
+                    if text_response and text_response != "0" and "not found" not in text_response.lower():
+                        # Sometimes Digit-Eyes returns plain text product name
+                        result = {
+                            "barcode": barcode,
+                            "name": text_response,
+                            "source": "digiteyes_api"
+                        }
+                        return result
+                        
+            return None
+            
+        except Exception as e:
+            logger.error(f"Error retrieving product from Digit-Eyes API: {e}")
+            return None
+            
+    def get_product_from_openai(self, barcode):
+        """Use OpenAI to retrieve product information based on barcode."""
+        if not self.openai_api_key:
+            return None
+            
+        try:
+            import openai
+            openai.api_key = self.openai_api_key
+            
+            system_prompt = """You are a barcode lookup assistant. 
+            Given a barcode number, provide any product information you know about it in JSON format.
+            Include only fields you are certain about. If you don't know, return an empty JSON object."""
+            
+            response = openai.ChatCompletion.create(
+                model="gpt-3.5-turbo",
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": f"What product information do you have about barcode {barcode}?"}
+                ],
+                temperature=0.3
+            )
+            
+            # Extract the response
+            try:
+                content = response.choices[0].message.content
+                # Attempt to parse JSON from the response
+                import re
+                json_match = re.search(r'```json\n(.*?)\n```', content, re.DOTALL)
+                if json_match:
+                    json_str = json_match.group(1)
+                else:
+                    json_str = content
+                    
+                data = json.loads(json_str)
+                
+                # If we got meaningful data back
+                if data and any(key not in ["barcode", "source"] for key in data.keys()):
+                    data["barcode"] = barcode
+                    data["source"] = "openai"
+                    return data
+            except:
+                pass
+                
+            return None
+            
+        except Exception as e:
+            logger.error(f"Error retrieving product from OpenAI: {e}")
+            return None
+            
+    def get_product_from_deepseek(self, barcode):
+        """Use DeepSeek to retrieve product information based on barcode."""
+        if not self.deepseek_api_key:
+            return None
+            
+        try:
+            import requests
+            
+            url = "https://api.deepseek.com/v1/chat/completions"
+            
+            headers = {
+                "Authorization": f"Bearer {self.deepseek_api_key}",
+                "Content-Type": "application/json"
+            }
+            
+            system_prompt = """You are a barcode lookup assistant. 
+            Given a barcode number, provide any product information you know about it in JSON format.
+            Include only fields you are certain about. If you don't know, return an empty JSON object."""
+            
+            data = {
+                "model": "deepseek-chat",
+                "messages": [
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": f"What product information do you have about barcode {barcode}?"}
+                ],
+                "temperature": 0.3
+            }
+            
+            response = requests.post(url, headers=headers, json=data)
+            
+            if response.status_code == 200:
+                result = response.json()
+                content = result.get("choices", [{}])[0].get("message", {}).get("content", "{}")
+                
+                # Attempt to parse JSON from the response
+                try:
+                    import re
+                    json_match = re.search(r'```json\n(.*?)\n```', content, re.DOTALL)
+                    if json_match:
+                        json_str = json_match.group(1)
+                    else:
+                        json_str = content
+                        
+                    data = json.loads(json_str)
+                    
+                    # If we got meaningful data back
+                    if data and any(key not in ["barcode", "source"] for key in data.keys()):
+                        data["barcode"] = barcode
+                        data["source"] = "deepseek"
+                        return data
+                except:
+                    pass
+                    
+            return None
+            
+        except Exception as e:
+            logger.error(f"Error retrieving product from DeepSeek: {e}")
+            return None
+
+    def get_product_info_from_openfoodfacts(self, barcode):
+        """Query the Open Food Facts API for product information."""
+        try:
+            url = f"https://world.openfoodfacts.org/api/v0/product/{barcode}.json"
+            response = requests.get(url, timeout=5)
+            
+            if response.status_code == 200:
+                data = response.json()
+                
+                if data.get("status") == 1:
+                    product = data.get("product", {})
+                    
+                    # Only include non-null values in the result
+                    result = {"barcode": barcode}
+                    
+                    # Map fields from API response, only including non-empty values
+                    fields_mapping = {
+                        "name": ["product_name", "product_name_en"],
+                        "brand": ["brands"],
+                        "description": ["generic_name", "generic_name_en"],
+                        "ingredients": ["ingredients_text", "ingredients_text_en"]
+                    }
+                    
+                    # Add basic product info
+                    for field, api_fields in fields_mapping.items():
+                        for api_field in api_fields:
+                            value = product.get(api_field)
+                            if value and str(value).strip():
+                                result[field] = value
+                                break
+                    
+                    # Add nutrition facts if available
+                    nutrition = product.get("nutriments", {})
+                    if nutrition:
+                        nutrients = {}
+                        # Map nutrition data
+                        nutrient_mapping = {
+                            "serving_size": product.get("serving_size"),
+                            "calories": nutrition.get("energy-kcal_100g"),
+                            "protein": nutrition.get("proteins_100g"),
+                            "carbohydrates": nutrition.get("carbohydrates_100g"),
+                            "fat": nutrition.get("fat_100g"),
+                            "sugars": nutrition.get("sugars_100g"),
+                            "fiber": nutrition.get("fiber_100g"),
+                            "salt": nutrition.get("salt_100g")
+                        }
+                        
+                        # Only add non-null nutrition values
+                        for nutrient, value in nutrient_mapping.items():
+                            if value is not None:
+                                nutrients[nutrient] = value
+                        
+                        if nutrients:
+                            result["nutrition_facts"] = nutrients
+                    
+                    # Add allergens if available
+                    allergens = product.get("allergens_tags", [])
+                    if allergens:
+                        # Clean up allergen format (remove 'en:' prefix)
+                        clean_allergens = [a.replace('en:', '') for a in allergens]
+                        if clean_allergens:
+                            result["allergens"] = clean_allergens
+                    
+                    # Only return the result if it has data beyond just the barcode
+                    if len(result) > 1:  # More than just the barcode
+                        result["source"] = "openfoodfacts"
+                        return result
+                        
+            return None
+                
+        except requests.RequestException as e:
+            logger.error(f"Request error for barcode {barcode}: {e}")
+            return None
+            
+        except Exception as e:
+            logger.error(f"Unexpected error processing barcode {barcode}: {e}")
+            return None
 
     def get_product_info(self, barcode):
-        """Get product information from Open Food Facts API with proper error handling."""
+        """Get product information using multiple methods."""
         if self.request_count >= self.max_daily_requests:
             logger.error("Daily API request limit reached")
             return None
@@ -123,105 +501,74 @@ class BarcodeFetcher:
         if barcode in self.processed_barcodes:
             logger.info(f"Barcode {barcode} already processed, skipping")
             return None
+        
+        # Increment request counter
+        self.request_count += 1
+        
+        # Try multiple methods in sequence, from fastest/cheapest to most complex
+        
+        # 1. First try Open Food Facts (free, fast)
+        logger.info(f"Trying Open Food Facts for barcode {barcode}")
+        product_info = self.get_product_info_from_openfoodfacts(barcode)
+        if product_info:
+            logger.info(f"Found product info from Open Food Facts")
+            self.last_successful_entry = product_info
+            return product_info
             
-        for attempt in range(self.max_retries):
-            try:
-                # Increment request counter
-                self.request_count += 1
+        # Add delay between API calls
+        time.sleep(self.api_request_delay)
+        
+        # 2. Try DigitEyes API (free with RapidAPI)
+        logger.info(f"Trying DigitEyes API for barcode {barcode}")
+        product_info = self.get_product_from_digiteyes(barcode)
+        if product_info:
+            logger.info(f"Found product info from DigitEyes API")
+            self.last_successful_entry = product_info
+            return product_info
+            
+        # Add delay between API calls
+        time.sleep(self.api_request_delay)
+        
+        # 3. Try Google search + BigBasket scraping
+        logger.info(f"Searching Google for barcode {barcode}")
+        url = self.search_google_for_barcode(barcode)
+        
+        if url and "bigbasket" in url:
+            logger.info(f"Found BigBasket URL, extracting product info")
+            bigbasket_info = self.extract_bigbasket_info(url)
+            
+            if bigbasket_info:
+                bigbasket_info["barcode"] = barcode
+                bigbasket_info["source"] = "bigbasket"
+                logger.info(f"Successfully extracted product info from BigBasket")
+                self.last_successful_entry = bigbasket_info
+                return bigbasket_info
+        
+        # Add delay between API calls
+        time.sleep(self.api_request_delay)
+        
+        # 4. Try DeepSeek (if available)
+        if self.deepseek_api_key:
+            logger.info(f"Trying DeepSeek for barcode {barcode}")
+            product_info = self.get_product_from_deepseek(barcode)
+            if product_info:
+                logger.info(f"Found product info from DeepSeek")
+                self.last_successful_entry = product_info
+                return product_info
                 
-                # Make the API request
-                url = f"https://world.openfoodfacts.org/api/v0/product/{barcode}.json"
-                response = requests.get(url, timeout=10)
+        # Add delay between API calls
+        time.sleep(self.api_request_delay)
+        
+        # 5. Try OpenAI (if available)
+        if self.openai_api_key:
+            logger.info(f"Trying OpenAI for barcode {barcode}")
+            product_info = self.get_product_from_openai(barcode)
+            if product_info:
+                logger.info(f"Found product info from OpenAI")
+                self.last_successful_entry = product_info
+                return product_info
                 
-                # Respect API rate limits
-                time.sleep(self.api_request_delay)
-                
-                # Check if the request was successful
-                if response.status_code == 200:
-                    data = response.json()
-                    
-                    if data.get("status") == 1:
-                        product = data.get("product", {})
-                        
-                        # Only include non-null values in the result
-                        result = {"barcode": barcode}
-                        
-                        # Map fields from API response, only including non-empty values
-                        fields_mapping = {
-                            "name": ["product_name", "product_name_en"],
-                            "brand": ["brands"],
-                            "description": ["generic_name", "generic_name_en"],
-                            "ingredients": ["ingredients_text", "ingredients_text_en"]
-                        }
-                        
-                        # Add basic product info
-                        for field, api_fields in fields_mapping.items():
-                            for api_field in api_fields:
-                                value = product.get(api_field)
-                                if value and str(value).strip():
-                                    result[field] = value
-                                    break
-                        
-                        # Add nutrition facts if available
-                        nutrition = product.get("nutriments", {})
-                        if nutrition:
-                            nutrients = {}
-                            # Map nutrition data
-                            nutrient_mapping = {
-                                "serving_size": product.get("serving_size"),
-                                "calories": nutrition.get("energy-kcal_100g"),
-                                "protein": nutrition.get("proteins_100g"),
-                                "carbohydrates": nutrition.get("carbohydrates_100g"),
-                                "fat": nutrition.get("fat_100g"),
-                                "sugars": nutrition.get("sugars_100g"),
-                                "fiber": nutrition.get("fiber_100g"),
-                                "salt": nutrition.get("salt_100g")
-                            }
-                            
-                            # Only add non-null nutrition values
-                            for nutrient, value in nutrient_mapping.items():
-                                if value is not None:
-                                    nutrients[nutrient] = value
-                            
-                            if nutrients:
-                                result["nutrition_facts"] = nutrients
-                        
-                        # Add allergens if available
-                        allergens = product.get("allergens_tags", [])
-                        if allergens:
-                            # Clean up allergen format (remove 'en:' prefix)
-                            clean_allergens = [a.replace('en:', '') for a in allergens]
-                            if clean_allergens:
-                                result["allergens"] = clean_allergens
-                        
-                        # Only return the result if it has data beyond just the barcode
-                        if len(result) > 1:  # More than just the barcode
-                            result["source"] = "openfoodfacts"
-                            self.last_successful_entry = result
-                            return result
-                        else:
-                            logger.info(f"No meaningful data found for barcode {barcode}")
-                            return None
-                    else:
-                        logger.info(f"Product not found for barcode {barcode}")
-                        return None
-                        
-                elif response.status_code == 429:  # Too Many Requests
-                    retry_after = int(response.headers.get('Retry-After', self.api_request_delay * 5))
-                    logger.warning(f"Rate limit hit. Waiting {retry_after} seconds before retry.")
-                    time.sleep(retry_after)
-                else:
-                    logger.warning(f"API request failed with status code {response.status_code}")
-                    
-            except requests.RequestException as e:
-                logger.error(f"Request error for barcode {barcode}: {e}")
-                time.sleep(self.api_request_delay * (attempt + 1))  # Exponential backoff
-                
-            except Exception as e:
-                logger.error(f"Unexpected error processing barcode {barcode}: {e}")
-                return None
-                
-        logger.error(f"Failed to get product info for barcode {barcode} after {self.max_retries} retries")
+        logger.warning(f"Could not find product info for barcode {barcode} using any method")
         return None
 
     def save_results(self, results):
@@ -280,8 +627,8 @@ class BarcodeFetcher:
                     results.append(product_info)
                     processed_set.add(barcode)
                     
-                    # Save results periodically (every 100 barcodes)
-                    if len(results) % 100 == 0:
+                    # Save results periodically (every 50 barcodes)
+                    if len(results) % 50 == 0:
                         self.save_results(results)
                 
         except KeyboardInterrupt:
