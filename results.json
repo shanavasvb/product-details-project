@@ -1,0 +1,789 @@
+[
+  {
+    "Barcode": "8902102163633",
+    "Product Name": "Exo Round",
+    "Description": "Exo Round is a high-quality item that offers excellent value and performance.",
+    "Category": "General Merchandise",
+    "ProductLine": "Exo Product Line",
+    "Quantity": 1,
+    "Unit": "pc",
+    "Features": [
+      "High quality product",
+      "Excellent performance",
+      "Long lasting",
+      "Great value"
+    ],
+    "Specification": {
+      "Country of Origin": "India",
+      "Form": "Solid",
+      "Packaging Type": "Pack"
+    },
+    "Brand": "Exo",
+    "Product Image": "https://images.openfoodfacts.org/images/products/890/210/216/3633/front_en.3.400.jpg",
+    "Product Ingredient Image": "https://images.openfoodfacts.org/images/products/890/210/216/3633/front_en.3.400.jpg"
+  },
+  {
+    "Barcode": "8902102163732",
+    "Product Name": "Exo",
+    "Description": "Exo is a high-quality item that offers excellent value and performance.",
+    "Category": "General Merchandise",
+    "ProductLine": "Exo Product Line",
+    "Quantity": 1,
+    "Unit": "pc",
+    "Features": [
+      "High quality product",
+      "Excellent performance",
+      "Long lasting",
+      "Great value"
+    ],
+    "Specification": {
+      "Country of Origin": "India",
+      "Form": "Solid",
+      "Packaging Type": "Pack"
+    },
+    "Brand": "Exo",
+    "Product Image": "https://images.openfoodfacts.org/images/products/890/210/216/3732/front_en.3.400.jpg",
+    "Product Ingredient Image": "https://images.openfoodfacts.org/images/products/890/210/216/3732/front_en.3.400.jpg"
+  },
+  {
+    "Barcode": "8902102163923",
+    "Product Name": "Exo Anti-Bacterial Dishwash Bar, 60 g",
+    "Description": "Exo Anti-Bacterial Dishwash Bar, 60 g is a high-quality item that offers excellent value and performance.",
+    "Category": "Cleaning & Household",
+    "ProductLine": "Exo Product Line",
+    "Quantity": 60,
+    "Unit": "gm",
+    "Features": [
+      "Removes tough stains",
+      "Gentle on hands",
+      "Fresh fragrance",
+      "Antibacterial properties"
+    ],
+    "Specification": {
+      "Weight": "60 gm",
+      "Country of Origin": "India",
+      "Form": "Bar",
+      "Packaging Type": "Box"
+    },
+    "Brand": "Exo",
+    "Product Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images",
+    "Product Ingredient Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images"
+  },
+  {
+    "Barcode": "8902102163671",
+    "Product Name": "Exo Round Rs 86",
+    "Description": "Exo Round Rs 86 is a high-quality item that offers excellent value and performance.",
+    "Category": "General Merchandise",
+    "ProductLine": "Exo Product Line",
+    "Quantity": 1,
+    "Unit": "pc",
+    "Features": [
+      "High quality product",
+      "Excellent performance",
+      "Long lasting",
+      "Great value"
+    ],
+    "Specification": {
+      "Country of Origin": "India",
+      "Form": "Solid",
+      "Packaging Type": "Pack"
+    },
+    "Brand": "Exo",
+    "Product Image": "https://images.openfoodfacts.org/images/products/890/210/216/3671/front_en.3.400.jpg",
+    "Product Ingredient Image": "https://images.openfoodfacts.org/images/products/890/210/216/3671/front_en.3.400.jpg"
+  },
+  {
+    "Barcode": "8902102164166",
+    "Product Name": "Exo Dishwash Bar Anti-Bacterial Touch Shine, 600 g (3 N x 200 g)",
+    "Description": "Exo Dishwash Bar Anti-Bacterial Touch Shine, 600 g (3 N x 200 g) is a high-quality item that offers excellent value and performance.",
+    "Category": "Cleaning & Household",
+    "ProductLine": "Exo Product Line",
+    "Quantity": 600,
+    "Unit": "gm",
+    "Features": [
+      "Removes tough stains",
+      "Gentle on hands",
+      "Fresh fragrance",
+      "Antibacterial properties"
+    ],
+    "Specification": {
+      "Weight": "600 gm",
+      "Country of Origin": "India",
+      "Form": "Bar",
+      "Packaging Type": "Box"
+    },
+    "Brand": "Exo",
+    "Product Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images",
+    "Product Ingredient Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images"
+  },
+  {
+    "Barcode": "8902102164067",
+    "Product Name": "Exo Antibacterial 2-In-1 Scrubber, 25 g",
+    "Description": "Exo Antibacterial 2-In-1 Scrubber, 25 g is a high-quality item that offers excellent value and performance.",
+    "Category": "General Merchandise",
+    "ProductLine": "Exo Product Line",
+    "Quantity": 25,
+    "Unit": "gm",
+    "Features": [
+      "High quality product",
+      "Excellent performance",
+      "Long lasting",
+      "Great value"
+    ],
+    "Specification": {
+      "Weight": "25 gm",
+      "Country of Origin": "India",
+      "Form": "Solid",
+      "Packaging Type": "Pack"
+    },
+    "Brand": "Exo",
+    "Product Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images",
+    "Product Ingredient Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images"
+  },
+  {
+    "Barcode": "8902102163961",
+    "Product Name": "Exo Anti-Bacterial Dishwash Bar - Ginger Twist, 480 g (4 pcs)",
+    "Description": "Exo Anti-Bacterial Dishwash Bar - Ginger Twist, 480 g (4 pcs) is a high-quality item that offers excellent value and performance.",
+    "Category": "Cleaning & Household",
+    "ProductLine": "Exo Product Line",
+    "Quantity": 480,
+    "Unit": "gm",
+    "Features": [
+      "Removes tough stains",
+      "Gentle on hands",
+      "Fresh fragrance",
+      "Antibacterial properties"
+    ],
+    "Specification": {
+      "Weight": "480 gm",
+      "Country of Origin": "India",
+      "Form": "Bar",
+      "Packaging Type": "Box"
+    },
+    "Brand": "Exo",
+    "Product Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images",
+    "Product Ingredient Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images"
+  },
+  {
+    "Barcode": "8902102164173",
+    "Product Name": "Exo Safai Steel Scrubber - Rust Free, 12 g",
+    "Description": "Exo Safai Steel Scrubber - Rust Free, 12 g is a high-quality item that offers excellent value and performance.",
+    "Category": "General Merchandise",
+    "ProductLine": "Exo Product Line",
+    "Quantity": 12,
+    "Unit": "gm",
+    "Features": [
+      "High quality product",
+      "Excellent performance",
+      "Long lasting",
+      "Great value"
+    ],
+    "Specification": {
+      "Weight": "12 gm",
+      "Country of Origin": "India",
+      "Form": "Solid",
+      "Packaging Type": "Pack"
+    },
+    "Brand": "Exo",
+    "Product Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images",
+    "Product Ingredient Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images"
+  },
+  {
+    "Barcode": "8902102163459",
+    "Product Name": "Exo Super Gel - Ginger, 225 g",
+    "Description": "Exo Super Gel - Ginger, 225 g is a high-quality item that offers excellent value and performance.",
+    "Category": "General Merchandise",
+    "ProductLine": "Exo Product Line",
+    "Quantity": 225,
+    "Unit": "gm",
+    "Features": [
+      "High quality product",
+      "Excellent performance",
+      "Long lasting",
+      "Great value"
+    ],
+    "Specification": {
+      "Weight": "225 gm",
+      "Country of Origin": "India",
+      "Form": "Solid",
+      "Packaging Type": "Pack"
+    },
+    "Brand": "Exo",
+    "Product Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images",
+    "Product Ingredient Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images"
+  },
+  {
+    "Barcode": "8902102162117",
+    "Product Name": "Maya Rose Agarbathi, 60 pcs",
+    "Description": "Maya Rose Agarbathi, 60 pcs is a high-quality item that offers excellent value and performance.",
+    "Category": "General Merchandise",
+    "ProductLine": "Maya Product Line",
+    "Quantity": 60,
+    "Unit": "pc",
+    "Features": [
+      "High quality product",
+      "Excellent performance",
+      "Long lasting",
+      "Great value"
+    ],
+    "Specification": {
+      "Weight": "60 pc",
+      "Country of Origin": "India",
+      "Form": "Solid",
+      "Packaging Type": "Pack"
+    },
+    "Brand": "Maya",
+    "Product Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images",
+    "Product Ingredient Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images"
+  },
+  {
+    "Barcode": "8902102164074",
+    "Product Name": "Exo Anti-Bacterial Scouring Powder - Lemon Zing, 1 kg",
+    "Description": "Exo Anti-Bacterial Scouring Powder - Lemon Zing, 1 kg is a high-quality item that offers excellent value and performance.",
+    "Category": "General Merchandise",
+    "ProductLine": "Exo Product Line",
+    "Quantity": 1,
+    "Unit": "kg",
+    "Features": [
+      "High quality product",
+      "Excellent performance",
+      "Long lasting",
+      "Great value"
+    ],
+    "Specification": {
+      "Weight": "1 kg",
+      "Country of Origin": "India",
+      "Form": "Powder",
+      "Packaging Type": "Box"
+    },
+    "Brand": "Exo",
+    "Product Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images",
+    "Product Ingredient Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images"
+  },
+  {
+    "Barcode": "8902102164043",
+    "Product Name": "Exo Anti-Bacterial Bacto Scrub, 1 pc Pouch",
+    "Description": "Exo Anti-Bacterial Bacto Scrub, 1 pc Pouch is a high-quality item that offers excellent value and performance.",
+    "Category": "General Merchandise",
+    "ProductLine": "Exo Product Line",
+    "Quantity": 1,
+    "Unit": "pc",
+    "Features": [
+      "High quality product",
+      "Excellent performance",
+      "Long lasting",
+      "Great value"
+    ],
+    "Specification": {
+      "Weight": "1 pc",
+      "Country of Origin": "India",
+      "Form": "Solid",
+      "Packaging Type": "Pack"
+    },
+    "Brand": "Exo",
+    "Product Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images",
+    "Product Ingredient Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images"
+  },
+  {
+    "Barcode": "8902102125013",
+    "Product Name": "Henko Stain Care Big Detergent Bar, 250 g",
+    "Description": "Henko Stain Care Big Detergent Bar, 250 g is a high-quality item that offers excellent value and performance.",
+    "Category": "Cleaning & Household",
+    "ProductLine": "Henko Product Line",
+    "Quantity": 250,
+    "Unit": "gm",
+    "Features": [
+      "Removes tough stains",
+      "Gentle on hands",
+      "Fresh fragrance",
+      "Antibacterial properties"
+    ],
+    "Specification": {
+      "Weight": "250 gm",
+      "Country of Origin": "India",
+      "Form": "Bar",
+      "Packaging Type": "Box"
+    },
+    "Brand": "Henko",
+    "Product Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images",
+    "Product Ingredient Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images"
+  },
+  {
+    "Barcode": "8902102163916",
+    "Product Name": "Pril Dishwash Bar, 110 g (65 g + 45 g)",
+    "Description": "Pril Dishwash Bar, 110 g (65 g + 45 g) is a high-quality item that offers excellent value and performance.",
+    "Category": "Cleaning & Household",
+    "ProductLine": "Pril Product Line",
+    "Quantity": 110,
+    "Unit": "gm",
+    "Features": [
+      "Removes tough stains",
+      "Gentle on hands",
+      "Fresh fragrance",
+      "Antibacterial properties"
+    ],
+    "Specification": {
+      "Weight": "110 gm",
+      "Country of Origin": "India",
+      "Form": "Bar",
+      "Packaging Type": "Box"
+    },
+    "Brand": "Pril",
+    "Product Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images",
+    "Product Ingredient Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images"
+  },
+  {
+    "Barcode": "8902102126256",
+    "Product Name": "Henko Stain Care Detergent Powder, 500 g Pouch",
+    "Description": "Henko Stain Care Detergent Powder, 500 g Pouch is a high-quality item that offers excellent value and performance.",
+    "Category": "Cleaning & Household",
+    "ProductLine": "Henko Product Line",
+    "Quantity": 500,
+    "Unit": "gm",
+    "Features": [
+      "Removes tough stains",
+      "Gentle on hands",
+      "Fresh fragrance",
+      "Antibacterial properties"
+    ],
+    "Specification": {
+      "Weight": "500 gm",
+      "Country of Origin": "India",
+      "Form": "Powder",
+      "Packaging Type": "Box"
+    },
+    "Brand": "Henko",
+    "Product Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images",
+    "Product Ingredient Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images"
+  },
+  {
+    "Barcode": "8902102163909",
+    "Product Name": "Pril Dishwash Bar Tub - Lime, 500 g",
+    "Description": "Pril Dishwash Bar Tub - Lime, 500 g is a high-quality item that offers excellent value and performance.",
+    "Category": "Cleaning & Household",
+    "ProductLine": "Pril Product Line",
+    "Quantity": 500,
+    "Unit": "gm",
+    "Features": [
+      "Removes tough stains",
+      "Gentle on hands",
+      "Fresh fragrance",
+      "Antibacterial properties"
+    ],
+    "Specification": {
+      "Weight": "500 gm",
+      "Country of Origin": "India",
+      "Form": "Bar",
+      "Packaging Type": "Box"
+    },
+    "Brand": "Pril",
+    "Product Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images",
+    "Product Ingredient Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images"
+  },
+  {
+    "Barcode": "8902102126409",
+    "Product Name": "Henko Stain Care Detergent Powder, 1 kg Pouch",
+    "Description": "Henko Stain Care Detergent Powder, 1 kg Pouch is a high-quality item that offers excellent value and performance.",
+    "Category": "Cleaning & Household",
+    "ProductLine": "Henko Product Line",
+    "Quantity": 1,
+    "Unit": "kg",
+    "Features": [
+      "Removes tough stains",
+      "Gentle on hands",
+      "Fresh fragrance",
+      "Antibacterial properties"
+    ],
+    "Specification": {
+      "Weight": "1 kg",
+      "Country of Origin": "India",
+      "Form": "Powder",
+      "Packaging Type": "Box"
+    },
+    "Brand": "Henko",
+    "Product Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images",
+    "Product Ingredient Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images"
+  },
+  {
+    "Barcode": "8902102127819",
+    "Product Name": "Henko Stain Care Detergent Powder, 4 kg Pouch",
+    "Description": "Henko Stain Care Detergent Powder, 4 kg Pouch is a high-quality item that offers excellent value and performance.",
+    "Category": "Cleaning & Household",
+    "ProductLine": "Henko Product Line",
+    "Quantity": 4,
+    "Unit": "kg",
+    "Features": [
+      "Removes tough stains",
+      "Gentle on hands",
+      "Fresh fragrance",
+      "Antibacterial properties"
+    ],
+    "Specification": {
+      "Weight": "4 kg",
+      "Country of Origin": "India",
+      "Form": "Powder",
+      "Packaging Type": "Box"
+    },
+    "Brand": "Henko",
+    "Product Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images",
+    "Product Ingredient Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images"
+  },
+  {
+    "Barcode": "8902102125501",
+    "Product Name": "Henko Detergent Powder - Stain Care, Oxygen, 5 kg (Get Tub Free)",
+    "Description": "Henko Detergent Powder - Stain Care, Oxygen, 5 kg (Get Tub Free) is a high-quality item that offers excellent value and performance.",
+    "Category": "Cleaning & Household",
+    "ProductLine": "Henko Product Line",
+    "Quantity": 5,
+    "Unit": "kg",
+    "Features": [
+      "Removes tough stains",
+      "Gentle on hands",
+      "Fresh fragrance",
+      "Antibacterial properties"
+    ],
+    "Specification": {
+      "Weight": "5 kg",
+      "Country of Origin": "India",
+      "Form": "Powder",
+      "Packaging Type": "Box"
+    },
+    "Brand": "Henko",
+    "Product Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images",
+    "Product Ingredient Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images"
+  },
+  {
+    "Barcode": "8902102127475",
+    "Product Name": "Henko Matic - Front Load Detergent, 1 kg",
+    "Description": "Henko Matic - Front Load Detergent, 1 kg is a high-quality item that offers excellent value and performance.",
+    "Category": "Cleaning & Household",
+    "ProductLine": "Henko Product Line",
+    "Quantity": 1,
+    "Unit": "kg",
+    "Features": [
+      "Removes tough stains",
+      "Gentle on hands",
+      "Fresh fragrance",
+      "Antibacterial properties"
+    ],
+    "Specification": {
+      "Weight": "1 kg",
+      "Country of Origin": "India",
+      "Form": "Solid",
+      "Packaging Type": "Pack"
+    },
+    "Brand": "Henko",
+    "Product Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images",
+    "Product Ingredient Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images"
+  },
+  {
+    "Barcode": "8902102127499",
+    "Product Name": "Henko Matic - Front Load Detergent, 2 kg",
+    "Description": "Henko Matic - Front Load Detergent, 2 kg is a high-quality item that offers excellent value and performance.",
+    "Category": "Cleaning & Household",
+    "ProductLine": "Henko Product Line",
+    "Quantity": 2,
+    "Unit": "kg",
+    "Features": [
+      "Removes tough stains",
+      "Gentle on hands",
+      "Fresh fragrance",
+      "Antibacterial properties"
+    ],
+    "Specification": {
+      "Weight": "2 kg",
+      "Country of Origin": "India",
+      "Form": "Solid",
+      "Packaging Type": "Pack"
+    },
+    "Brand": "Henko",
+    "Product Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images",
+    "Product Ingredient Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images"
+  },
+  {
+    "Barcode": "8902102127482",
+    "Product Name": "Henko Matic Lintelligent Detergent Powder - Top Load, 1 kg",
+    "Description": "Henko Matic Lintelligent Detergent Powder - Top Load, 1 kg is a high-quality item that offers excellent value and performance.",
+    "Category": "Cleaning & Household",
+    "ProductLine": "Henko Product Line",
+    "Quantity": 1,
+    "Unit": "kg",
+    "Features": [
+      "Removes tough stains",
+      "Gentle on hands",
+      "Fresh fragrance",
+      "Antibacterial properties"
+    ],
+    "Specification": {
+      "Weight": "1 kg",
+      "Country of Origin": "India",
+      "Form": "Powder",
+      "Packaging Type": "Box"
+    },
+    "Brand": "Henko",
+    "Product Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images",
+    "Product Ingredient Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images"
+  },
+  {
+    "Barcode": "8902102126553",
+    "Product Name": "Henko Matic Lintelligent Top Load Detergent Powder, 2 kg",
+    "Description": "Henko Matic Lintelligent Top Load Detergent Powder, 2 kg is a high-quality item that offers excellent value and performance.",
+    "Category": "Cleaning & Household",
+    "ProductLine": "Henko Product Line",
+    "Quantity": 2,
+    "Unit": "kg",
+    "Features": [
+      "Removes tough stains",
+      "Gentle on hands",
+      "Fresh fragrance",
+      "Antibacterial properties"
+    ],
+    "Specification": {
+      "Weight": "2 kg",
+      "Country of Origin": "India",
+      "Form": "Powder",
+      "Packaging Type": "Box"
+    },
+    "Brand": "Henko",
+    "Product Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images",
+    "Product Ingredient Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images"
+  },
+  {
+    "Barcode": "8902102163688",
+    "Product Name": "Pril Dishwash Liquid Gel - Lime, 225 ml",
+    "Description": "Pril Dishwash Liquid Gel - Lime, 225 ml is a high-quality item that offers excellent value and performance.",
+    "Category": "Cleaning & Household",
+    "ProductLine": "Pril Product Line",
+    "Quantity": 225,
+    "Unit": "ml",
+    "Features": [
+      "Removes tough stains",
+      "Gentle on hands",
+      "Fresh fragrance",
+      "Antibacterial properties"
+    ],
+    "Specification": {
+      "Weight": "225 ml",
+      "Country of Origin": "India",
+      "Form": "Liquid",
+      "Packaging Type": "Bottle"
+    },
+    "Brand": "Pril",
+    "Product Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images",
+    "Product Ingredient Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images"
+  },
+  {
+    "Barcode": "8902102163695",
+    "Product Name": "Pril Dishwash Liquid Gel - Lime, 425 ml",
+    "Description": "Pril Dishwash Liquid Gel - Lime, 425 ml is a high-quality item that offers excellent value and performance.",
+    "Category": "Cleaning & Household",
+    "ProductLine": "Pril Product Line",
+    "Quantity": 425,
+    "Unit": "ml",
+    "Features": [
+      "Removes tough stains",
+      "Gentle on hands",
+      "Fresh fragrance",
+      "Antibacterial properties"
+    ],
+    "Specification": {
+      "Weight": "425 ml",
+      "Country of Origin": "India",
+      "Form": "Liquid",
+      "Packaging Type": "Bottle"
+    },
+    "Brand": "Pril",
+    "Product Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images",
+    "Product Ingredient Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images"
+  },
+  {
+    "Barcode": "8902102127406",
+    "Product Name": "Henko Matic Top Load Detergent Powder, 4 kg (Get 2 kg Free)",
+    "Description": "Henko Matic Top Load Detergent Powder, 4 kg (Get 2 kg Free) is a high-quality item that offers excellent value and performance.",
+    "Category": "Cleaning & Household",
+    "ProductLine": "Henko Product Line",
+    "Quantity": 4,
+    "Unit": "kg",
+    "Features": [
+      "Removes tough stains",
+      "Gentle on hands",
+      "Fresh fragrance",
+      "Antibacterial properties"
+    ],
+    "Specification": {
+      "Weight": "4 kg",
+      "Country of Origin": "India",
+      "Form": "Powder",
+      "Packaging Type": "Box"
+    },
+    "Brand": "Henko",
+    "Product Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images",
+    "Product Ingredient Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images"
+  },
+  {
+    "Barcode": "8902102163718",
+    "Product Name": "Pril Dishwash Liquid Gel - Lime, 750 ml Bottle",
+    "Description": "Pril Dishwash Liquid Gel - Lime, 750 ml Bottle is a high-quality item that offers excellent value and performance.",
+    "Category": "Cleaning & Household",
+    "ProductLine": "Pril Product Line",
+    "Quantity": 750,
+    "Unit": "ml",
+    "Features": [
+      "Removes tough stains",
+      "Gentle on hands",
+      "Fresh fragrance",
+      "Antibacterial properties"
+    ],
+    "Specification": {
+      "Weight": "750 ml",
+      "Country of Origin": "India",
+      "Form": "Liquid",
+      "Packaging Type": "Bottle"
+    },
+    "Brand": "Pril",
+    "Product Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images",
+    "Product Ingredient Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images"
+  },
+  {
+    "Barcode": "8902102163701",
+    "Product Name": "Pril Dishwash Liquid Gel - Lime, 2 L Bottle",
+    "Description": "Pril Dishwash Liquid Gel - Lime, 2 L Bottle is a high-quality item that offers excellent value and performance.",
+    "Category": "Cleaning & Household",
+    "ProductLine": "Pril Product Line",
+    "Quantity": 2,
+    "Unit": "ltr",
+    "Features": [
+      "Removes tough stains",
+      "Gentle on hands",
+      "Fresh fragrance",
+      "Antibacterial properties"
+    ],
+    "Specification": {
+      "Weight": "2 ltr",
+      "Country of Origin": "India",
+      "Form": "Liquid",
+      "Packaging Type": "Bottle"
+    },
+    "Brand": "Pril",
+    "Product Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images",
+    "Product Ingredient Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images"
+  },
+  {
+    "Barcode": "8902102127123",
+    "Product Name": "Henko Matic Front Load Liquid Detergent, 500 ml",
+    "Description": "Henko Matic Front Load Liquid Detergent, 500 ml is a high-quality item that offers excellent value and performance.",
+    "Category": "Cleaning & Household",
+    "ProductLine": "Henko Product Line",
+    "Quantity": 500,
+    "Unit": "ml",
+    "Features": [
+      "Removes tough stains",
+      "Gentle on hands",
+      "Fresh fragrance",
+      "Antibacterial properties"
+    ],
+    "Specification": {
+      "Weight": "500 ml",
+      "Country of Origin": "India",
+      "Form": "Liquid",
+      "Packaging Type": "Bottle"
+    },
+    "Brand": "Henko",
+    "Product Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images",
+    "Product Ingredient Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images"
+  },
+  {
+    "Barcode": "8902102163824",
+    "Product Name": "Pril Dishwash Liquid Gel - Kraft Mint, 750 ml",
+    "Description": "Pril Dishwash Liquid Gel - Kraft Mint, 750 ml is a high-quality item that offers excellent value and performance.",
+    "Category": "Cleaning & Household",
+    "ProductLine": "Pril Product Line",
+    "Quantity": 750,
+    "Unit": "ml",
+    "Features": [
+      "Removes tough stains",
+      "Gentle on hands",
+      "Fresh fragrance",
+      "Antibacterial properties"
+    ],
+    "Specification": {
+      "Weight": "750 ml",
+      "Country of Origin": "India",
+      "Form": "Liquid",
+      "Packaging Type": "Bottle"
+    },
+    "Brand": "Pril",
+    "Product Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images",
+    "Product Ingredient Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images"
+  },
+  {
+    "Barcode": "8902102163831",
+    "Product Name": "PRIL tamarind",
+    "Description": "PRIL tamarind is a high-quality item that offers excellent value and performance.",
+    "Category": "General Merchandise",
+    "ProductLine": "PRIL Product Line",
+    "Quantity": 1,
+    "Unit": "pc",
+    "Features": [
+      "High quality product",
+      "Excellent performance",
+      "Long lasting",
+      "Great value"
+    ],
+    "Specification": {
+      "Country of Origin": "India",
+      "Form": "Solid",
+      "Packaging Type": "Pack"
+    },
+    "Brand": "PRIL",
+    "Product Image": "https://images.openfoodfacts.org/images/products/890/210/216/3831/front_en.3.400.jpg",
+    "Product Ingredient Image": "https://images.openfoodfacts.org/images/products/890/210/216/3831/front_en.3.400.jpg"
+  },
+  {
+    "Barcode": "8902102127024",
+    "Product Name": "Ujala  liquid",
+    "Description": "Ujala  liquid is a high-quality item that offers excellent value and performance.",
+    "Category": "General Merchandise",
+    "ProductLine": "Ujala liquid",
+    "Quantity": 800,
+    "Unit": "ml",
+    "Features": [
+      "High quality product",
+      "Excellent performance",
+      "Long lasting",
+      "Great value"
+    ],
+    "Specification": {
+      "Weight": "800 ml",
+      "Country of Origin": "India",
+      "Form": "Liquid",
+      "Packaging Type": "Bottle"
+    },
+    "Brand": "Ujala",
+    "Product Image": "https://images.openfoodfacts.org/images/products/890/210/212/7024/front_en.3.400.jpg",
+    "Product Ingredient Image": "https://images.openfoodfacts.org/images/products/890/210/212/7024/front_en.3.400.jpg"
+  },
+  {
+    "Barcode": "8902102194934",
+    "Product Name": "Ujala",
+    "Description": "Ujala is a high-quality item that offers excellent value and performance.",
+    "Category": "General Merchandise",
+    "ProductLine": "Ujala Product Line",
+    "Quantity": 1,
+    "Unit": "pc",
+    "Features": [
+      "High quality product",
+      "Excellent performance",
+      "Long lasting",
+      "Great value"
+    ],
+    "Specification": {
+      "Country of Origin": "India",
+      "Form": "Solid",
+      "Packaging Type": "Pack"
+    },
+    "Brand": "Ujala",
+    "Product Image": "https://images.openfoodfacts.org/images/products/890/210/219/4934/front_en.3.400.jpg",
+    "Product Ingredient Image": "https://images.openfoodfacts.org/images/products/890/210/219/4934/front_en.3.400.jpg"
+  }
+]
