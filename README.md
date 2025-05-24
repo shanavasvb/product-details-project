@@ -216,4 +216,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Author
 
-Developed by shanavasvb - https://github.com/shanavasvb
+Developed for the company DatCarts
