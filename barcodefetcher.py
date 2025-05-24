@@ -11,6 +11,9 @@ from tqdm import tqdm
 from bs4 import BeautifulSoup
 import re
 from urllib.parse import quote_plus
+import argparse
+import pickle
+
 
 # Setup logging
 logging.basicConfig(
@@ -51,9 +54,20 @@ class BarcodeFetcher:
         
         # Last successful entry
         self.last_successful_entry = None
-        
+    
+        # Progress tracking
+        self.last_processed_index = 0
+        self.attempted_barcodes = set()
+    
         # Load processed barcodes to avoid reprocessing
         self.processed_barcodes = self.load_processed_barcodes()
+    
+        # Load progress state
+        self.load_progress_state()
+    
+        # Starting barcode (will be set by command-line argument if provided)
+        self.start_barcode = None
+
         
         # Define unit conversion mapping
         self.unit_mapping = {
@@ -87,7 +101,38 @@ class BarcodeFetcher:
             except json.JSONDecodeError:
                 logger.warning(f"Couldn't parse existing results file: {self.output_file}")
         return processed
+    def load_progress_state(self):
+     """Load the last processed barcode and attempted barcodes from a pickle file."""
+     progress_file = "barcode_progress.pkl"
+     if os.path.exists(progress_file):
+        try:
+            with open(progress_file, 'rb') as f:
+                progress_data = pickle.load(f)
+                self.last_processed_index = progress_data.get('last_index', 0)
+                self.attempted_barcodes = progress_data.get('attempted_barcodes', set())
+                logger.info(f"Loaded progress state: last index {self.last_processed_index}, {len(self.attempted_barcodes)} attempted barcodes")
+                return True
+        except Exception as e:
+            logger.error(f"Error loading progress state: {e}")
+    
+     # Initialize with default values if no file found or error occurred
+     self.last_processed_index = 0
+     self.attempted_barcodes = set()
+     return False
 
+    def save_progress_state(self, current_index, attempted_barcodes):
+     """Save the current progress state to a pickle file."""
+     progress_file = "barcode_progress.pkl"
+     try:
+        progress_data = {
+            'last_index': current_index,
+            'attempted_barcodes': attempted_barcodes
+        }
+        with open(progress_file, 'wb') as f:
+            pickle.dump(progress_data, f)
+        logger.info(f"Saved progress state: index {current_index}")
+     except Exception as e:
+        logger.error(f"Error saving progress state: {e}")
     def is_valid_barcode(self, barcode):
         """Validate barcode format: must be numeric and minimum 8 digits."""
         if not barcode or not isinstance(barcode, str):
@@ -151,85 +196,152 @@ class BarcodeFetcher:
             return []
             
     def search_google_for_barcode(self, barcode):
-        """Search Google for barcode information using SerpAPI and return search results."""
-        if not self.serpapi_key:
-            logger.warning("SerpAPI key not provided, skipping Google search")
-            return None, None
+     """Search Google for barcode information using SerpAPI and return search results."""
+     if not self.serpapi_key:
+        logger.warning("SerpAPI key not provided, skipping Google search")
+        return None, None
+        
+     try:
+        # SerpAPI endpoint
+        url = "https://serpapi.com/search"
+        
+        # Query parameters - search for multiple sites to increase chances of finding the product
+        sites = ["bigbasket.com", "amazon.in", "flipkart.com", "jiomart.com"]
+        sites_query = " OR ".join([f"site:{site}" for site in sites])
+        
+        params = {
+            "api_key": self.serpapi_key,
+            "q": f"{barcode} product ({sites_query})",
+            "google_domain": "google.co.in",
+            "gl": "in",
+            "hl": "en",
+            "num": 15
+        }
+        
+        # Make the request
+        response = requests.get(url, params=params)
+        
+        if response.status_code == 200:
+            data = response.json()
             
-        try:
-            # SerpAPI endpoint
-            url = "https://serpapi.com/search"
+            # Extract organic search results
+            results = data.get("organic_results", [])
             
-            # Query parameters - search for just the barcode first 
-            # to get more general product information
-            params = {
-                "api_key": self.serpapi_key,
-                "q": f"{barcode} product", # Just search for barcode and product
-                "google_domain": "google.co.in",  # Use Google India 
-                "gl": "in",  # Geographic location: India
-                "hl": "en",  # Language: English
-                "num": 10    # Number of results
-            }
+            # Store search results information
+            search_results_info = {}
             
-            # Make the request
-            response = requests.get(url, params=params)
-            
-            if response.status_code == 200:
-                data = response.json()
+            if results:
+                # Extract search information
+                search_results_info = {
+                    "titles": [result.get("title", "") for result in results if result.get("title")],
+                    "snippets": [result.get("snippet", "") for result in results if result.get("snippet")],
+                    "links": [result.get("link", "") for result in results if result.get("link")]
+                }
                 
-                # Extract organic search results
-                results = data.get("organic_results", [])
+                # Check for e-commerce site links
+                for site in sites:
+                    site_results = [r for r in results if site in r.get("link", "")]
+                    if site_results:
+                        return site_results[0].get("link"), search_results_info
                 
-                # Store search results information
-                search_results_info = {}
-                bigbasket_link = None
-                
+                # If no specific e-commerce site links found, return first result
                 if results:
-                    # Extract search information
-                    search_results_info = {
-                        "titles": [result.get("title", "") for result in results if result.get("title")],
-                        "snippets": [result.get("snippet", "") for result in results if result.get("snippet")],
-                        "links": [result.get("link", "") for result in results if result.get("link")]
-                    }
-                    
-                    # Try a second search specifically for BigBasket if we need it
-                    if not any("bigbasket" in link for link in search_results_info["links"]):
-                        # Second search specifically for BigBasket
-                        params["q"] = f"{barcode} product bigbasket"
-                        second_response = requests.get(url, params=params)
-                        
-                        if second_response.status_code == 200:
-                            second_data = second_response.json()
-                            second_results = second_data.get("organic_results", [])
-                            
-                            # Look specifically for BigBasket links
-                            for result in second_results:
-                                if "bigbasket" in result.get("link", ""):
-                                    bigbasket_link = result.get("link")
-                                    # Add these results to our existing information
-                                    search_results_info["titles"].append(result.get("title", ""))
-                                    search_results_info["snippets"].append(result.get("snippet", ""))
-                                    search_results_info["links"].append(result.get("link", ""))
-                                    break
-                    else:
-                        # Find BigBasket link in original results
-                        for link in search_results_info["links"]:
-                            if "bigbasket" in link:
-                                bigbasket_link = link
-                                break
+                    return results[0].get("link"), search_results_info
                 
-                # If still no BigBasket link, use the first link from the original search
-                if not bigbasket_link and search_results_info.get("links"):
-                    bigbasket_link = search_results_info["links"][0]
-                    
-                return bigbasket_link, search_results_info
-                    
-            return None, None
-            
-        except Exception as e:
-            logger.error(f"Error during Google search for barcode {barcode}: {e}")
-            return None, None
+        return None, None
+        
+     except Exception as e:
+        logger.error(f"Error during Google search for barcode {barcode}: {e}")
+        return None, None
+    def get_product_info(self, barcode):
+     """Get product information using multiple methods."""
+     if self.request_count >= self.max_daily_requests:
+        logger.error("Daily API request limit reached")
+        return None
+        
+     # Check if we've already processed this barcode
+     if barcode in self.processed_barcodes:
+        logger.info(f"Barcode {barcode} already processed, skipping")
+        return None
     
+     # Increment request counter
+     self.request_count += 1
+    
+     # Try multiple methods in sequence, from fastest/cheapest to most complex
+    
+     # 1. First try Open Food Facts (free, fast)
+     logger.info(f"Trying Open Food Facts for barcode {barcode}")
+     product_info = self.get_product_info_from_openfoodfacts(barcode)
+     if product_info:
+        logger.info(f"Found product info from Open Food Facts")
+        # Transform to the desired format before returning
+        transformed_info = self.transform_to_desired_format(product_info, barcode)
+        self.last_successful_entry = transformed_info
+        return transformed_info
+        
+     # Add delay between API calls
+     time.sleep(self.api_request_delay)
+    
+     # 2. Try DigitEyes API
+     logger.info(f"Trying DigitEyes API for barcode {barcode}")
+     product_info = self.get_product_from_digiteyes(barcode)
+     if product_info:
+        logger.info(f"Found product info from DigitEyes API")
+        # Transform to the desired format before returning
+        transformed_info = self.transform_to_desired_format(product_info, barcode)
+        self.last_successful_entry = transformed_info
+        return transformed_info
+        
+     # Add delay between API calls
+     time.sleep(self.api_request_delay)
+    
+     # 3. Try Google search + BigBasket scraping
+     logger.info(f"Searching Google for barcode {barcode}")
+     url = self.search_google_for_barcode(barcode)
+    
+     if url and "bigbasket" in url:
+        logger.info(f"Found BigBasket URL, extracting product info")
+        bigbasket_info = self.extract_bigbasket_info(url)
+        
+        if bigbasket_info:
+            bigbasket_info["barcode"] = barcode
+            bigbasket_info["source"] = "bigbasket"
+            logger.info(f"Successfully extracted product info from BigBasket")
+            # Transform to the desired format before returning
+            transformed_info = self.transform_to_desired_format(bigbasket_info, barcode)
+            self.last_successful_entry = transformed_info
+            return transformed_info
+    
+     # Add delay between API calls
+     time.sleep(self.api_request_delay)
+    
+     # 4. Try DeepSeek (if available)
+     if self.deepseek_api_key:
+        logger.info(f"Trying DeepSeek for barcode {barcode}")
+        product_info = self.get_product_from_deepseek(barcode)
+        if product_info:
+            logger.info(f"Found product info from DeepSeek")
+            # Transform to the desired format before returning
+            transformed_info = self.transform_to_desired_format(product_info, barcode)
+            self.last_successful_entry = transformed_info
+            return transformed_info
+            
+     # Add delay between API calls
+     time.sleep(self.api_request_delay)
+    
+     # 5. Try OpenAI (if available)
+     if self.openai_api_key:
+        logger.info(f"Trying OpenAI for barcode {barcode}")
+        product_info = self.get_product_from_openai(barcode)
+        if product_info:
+            logger.info(f"Found product info from OpenAI")
+            # Transform to the desired format before returning
+            transformed_info = self.transform_to_desired_format(product_info, barcode)
+            self.last_successful_entry = transformed_info
+            return transformed_info
+            
+     logger.warning(f"Could not find product info for barcode {barcode} using any method")
+     return None
     def extract_product_name_from_search_results(self, search_results_info):
         """Extract potential product name and brand from search results."""
         if not search_results_info:
@@ -275,23 +387,25 @@ class BarcodeFetcher:
         return product_name, brand
 
     def standardize_unit(self, unit):
-        """Convert various unit formats to standard ones."""
-        if not unit:
-            return "pc"
-            
-        unit_lower = unit.lower().strip()
-        
-        # Try direct mapping
-        if unit_lower in self.unit_mapping:
-            return self.unit_mapping[unit_lower]
-        
-        # Try to match partial units
-        for key, value in self.unit_mapping.items():
-            if key in unit_lower:
-                return value
-                
-        # Default to piece if no match
-        return "pc"
+     """Standardize unit names."""
+     unit = unit.lower().strip()
+    
+     if unit in ['g', 'gm', 'gram', 'grams']:
+        return 'g'
+     elif unit in ['kg', 'kilo', 'kilos', 'kilogram', 'kilograms']:
+        return 'kg'
+     elif unit in ['ml', 'milliliter', 'millilitre', 'milliliters', 'millilitres']:
+        return 'ml'
+     elif unit in ['l', 'ltr', 'lt', 'litre', 'liter', 'litres', 'liters']:
+        return 'l'
+     elif unit in ['pc', 'pcs', 'piece', 'pieces', 'unit', 'units']:
+        return 'pc'
+     elif unit in ['pack', 'pkt', 'packet']:
+        return 'pack'
+     else:
+        return unit
+
+    
             
     def extract_product_info_from_url(self, url):
         """Extract product information from a website URL."""
@@ -396,161 +510,277 @@ class BarcodeFetcher:
             return None
             
     def extract_bigbasket_info(self, url):
-        """Extract product information from BigBasket website."""
-        try:
-            headers = {
-                'User-Agent': self.user_agent,
-                'Accept': 'text/html,application/xhtml+xml,application/xml',
-                'Accept-Language': 'en-US,en;q=0.9'
-            }
+     """Extract product information from BigBasket website."""
+     try:
+        headers = {
+            'User-Agent': self.user_agent,
+            'Accept': 'text/html,application/xhtml+xml,application/xml',
+            'Accept-Language': 'en-US,en;q=0.9'
+        }
+        
+        response = requests.get(url, headers=headers, timeout=15)
+        
+        if response.status_code == 200:
+            soup = BeautifulSoup(response.text, 'html.parser')
             
-            response = requests.get(url, headers=headers, timeout=15)
+            # Check if it's a BigBasket homepage or search page and not an actual product page
+            homepage_indicators = ['online grocery store', 'grocery delivery', 'online supermarket']
+            page_title = soup.title.text.lower() if soup.title else ""
             
-            if response.status_code == 200:
-                soup = BeautifulSoup(response.text, 'html.parser')
-                
-                # Initialize product info
-                product_info = {}
-                
-                # Look for JSON-LD product data first (most reliable)
-                script_tags = soup.find_all("script", {"type": "application/ld+json"})
-                for script in script_tags:
-                    try:
-                        data = json.loads(script.string)
-                        if isinstance(data, dict) and data.get("@type") == "Product":
-                            if data.get("name"):
-                                product_info["name"] = data.get("name")
-                            if data.get("brand", {}).get("name"):
-                                product_info["brand"] = data.get("brand", {}).get("name")
-                            if data.get("description"):
-                                product_info["description"] = data.get("description")
-                            if data.get("image"):
-                                product_info["image_url"] = data.get("image")[0] if isinstance(data.get("image"), list) else data.get("image")
-                            if data.get("offers", {}).get("price"):
-                                product_info["price"] = data.get("offers", {}).get("price")
-                            break
-                    except:
-                        pass
-                
-                # If JSON-LD didn't provide all we need, try CSS selectors
-                # Extract product name - try multiple selectors for robustness
-                if not product_info.get("name"):
-                    product_name_selectors = ['h1.GrE04', 'h1.prod-name', '.prod-name', 'h1']
-                    for selector in product_name_selectors:
-                        product_name_elem = soup.select_one(selector)
-                        if product_name_elem:
-                            product_info['name'] = product_name_elem.text.strip()
-                            break
-                
-                # Extract brand - try multiple selectors
-                if not product_info.get("brand"):
-                    brand_selectors = ['a.Tq74c', '.brand-name', '.product-brand', 'a[data-qa="product-brand"]']
-                    for selector in brand_selectors:
-                        brand_elem = soup.select_one(selector)
-                        if brand_elem:
-                            product_info['brand'] = brand_elem.text.strip()
-                            break
-                
-                # Extract price if not already found
-                if not product_info.get("price"):
-                    price_selectors = ['td.IyLvo', '.price', '.prod-price', 'span[data-qa="product-price"]']
-                    for selector in price_selectors:
-                        price_elem = soup.select_one(selector)
-                        if price_elem:
-                            product_info['price'] = price_elem.text.strip()
-                            break
-                
-                # Extract description if not already found
-                if not product_info.get("description"):
-                    desc_selectors = ['div[data-qa="product-about"]', '.prod-description', '.product-desc']
-                    for selector in desc_selectors:
-                        desc_elem = soup.select_one(selector)
-                        if desc_elem:
-                            product_info['description'] = desc_elem.text.strip()
-                            break
-                
-                # Extract ingredients or specifications
-                specs_elems = soup.select('div.h9mIE, .product-specs, .specifications, tr.OA_kn')
-                if specs_elems:
-                    specs = {}
-                    for elem in specs_elems:
-                        # Look for key-value pairs
-                        key_elem = elem.select_one('div:nth-child(1), .spec-key, td:nth-child(1)')
-                        val_elem = elem.select_one('div:nth-child(2), .spec-value, td:nth-child(2)')
-                        if key_elem and val_elem:
-                            key = key_elem.text.strip()
-                            val = val_elem.text.strip()
-                            specs[key] = val
+            if any(indicator in page_title for indicator in homepage_indicators) and "product details" not in page_title:
+                logger.warning(f"URL appears to be BigBasket homepage/search page, not a product page: {url}")
+                return None
+            
+            # Initialize product info
+            product_info = {}
+            
+            # Extract product name
+            product_name_selectors = [
+                'h1.GrE04',           # Newer BB design
+                'h1.prod-name',       # Older BB design 
+                '.prod-name h1',      # Alternative older selector
+                'h1[qa="prod-name"]', # Alternative with data attributes
+                'h1'                  # Generic fallback
+            ]
+            for selector in product_name_selectors:
+                product_name_elem = soup.select_one(selector)
+                if product_name_elem and product_name_elem.text.strip():
+                    name = product_name_elem.text.strip()
+                    # Ensure we're not getting the site name instead of a product
+                    if name != "bigbasket – online grocery store":
+                        product_info['name'] = name
+                        break
+            
+            # If we didn't find a valid product name, return None
+            if not product_info.get('name'):
+                logger.warning(f"Could not find product name on page: {url}")
+                return None
+            
+            # Extract brand
+            brand_selectors = [
+                'a.Tq74c',  # Newer BB design
+                '.brand-name', 
+                'a[qa="prod-brand"]',
+                'span.brand'
+            ]
+            for selector in brand_selectors:
+                brand_elem = soup.select_one(selector)
+                if brand_elem and brand_elem.text.strip():
+                    product_info['brand'] = brand_elem.text.strip()
+                    break
+            
+            # Extract price
+            price_selectors = [
+                'td.IyLvo', 
+                '.actual-price',
+                'span.discnt-price',
+                'span[qa="price"]'
+            ]
+            for selector in price_selectors:
+                price_elem = soup.select_one(selector)
+                if price_elem and price_elem.text.strip():
+                    product_info['price'] = price_elem.text.strip()
+                    break
+            
+            # Extract description
+            desc_selectors = [
+                'div[data-qa="product-about"]',
+                '.about-brand p', 
+                '.prod-description',
+                'div[qa="prod-description"]'
+            ]
+            for selector in desc_selectors:
+                desc_elem = soup.select_one(selector)
+                if desc_elem and desc_elem.text.strip():
+                    product_info['description'] = desc_elem.text.strip()
+                    break
+            
+            # Extract all specifications
+            specs_selectors = [
+                'div.h9mIE', 
+                '.product-info-tbl tr', 
+                'table.product-info-table tr',
+                'li.attr-desc'
+            ]
+            
+            specifications = {}
+            for selector in specs_selectors:
+                elems = soup.select(selector)
+                if elems:
+                    for elem in elems:
+                        # Different ways BigBasket structures spec data
+                        if elem.select_one('div:nth-child(1)') and elem.select_one('div:nth-child(2)'):
+                            key = elem.select_one('div:nth-child(1)').text.strip()
+                            val = elem.select_one('div:nth-child(2)').text.strip()
+                            specifications[key] = val
+                        elif elem.select_one('td:nth-child(1)') and elem.select_one('td:nth-child(2)'):
+                            key = elem.select_one('td:nth-child(1)').text.strip()
+                            val = elem.select_one('td:nth-child(2)').text.strip()
+                            specifications[key] = val
+                        elif elem.select_one('.attr-name') and elem.select_one('.attr-value'):
+                            key = elem.select_one('.attr-name').text.strip()
+                            val = elem.select_one('.attr-value').text.strip()
+                            specifications[key] = val
+            
+            if specifications:
+                product_info['specifications'] = specifications
+            
+            # Extract categories
+            breadcrumb_selectors = [
+                'a.FY3Oe', 
+                '.breadcrumb a', 
+                'ol.breadcrumb li a',
+                '.breadcrumb-item'
+            ]
+            
+            categories = []
+            for selector in breadcrumb_selectors:
+                elems = soup.select(selector)
+                if elems:
+                    categories = [elem.text.strip() for elem in elems if elem.text.strip()]
+                    categories = [cat for cat in categories if cat.lower() not in ['home', 'all categories']]
+                    break
                     
-                    if specs:
-                        product_info['specifications'] = specs
-                
-                # Extract categories
-                breadcrumb_elems = soup.select('a.FY3Oe, .breadcrumb a, ol.breadcrumb li')
-                if breadcrumb_elems:
-                    categories = [elem.text.strip() for elem in breadcrumb_elems]
-                    categories = [cat for cat in categories if cat and cat.lower() not in ['home', 'all categories']]
-                    if categories:
-                        product_info['categories'] = categories
-                
-                # Extract product image if not already found
-                if not product_info.get("image_url"):
-                    img_selectors = ['img.JRgbI', '.product-img img', '.prod-img img', 'img[data-qa="product-image"]']
-                    for selector in img_selectors:
-                        img_elem = soup.select_one(selector)
-                        if img_elem and img_elem.has_attr('src'):
-                            product_info['image_url'] = img_elem['src']
+            if categories:
+                product_info['categories'] = categories
+            
+            # IMPROVED: Extract product image with better handling
+            img_selectors = [
+                'img.JRgbI', 
+                '.img-responsive', 
+                '.prod-img img',
+                'img[qa="prod-img"]',
+                '.product-img img',
+                '.product-image img',
+                '#bigimage',
+                '.product-images img',
+                'img[data-qa="product-image"]',
+                '.bb-item img',  # Common BigBasket carousel image
+                '.prod-slider img'  # Another BigBasket product slider
+            ]
+
+            for selector in img_selectors:
+                img_elements = soup.select(selector)
+                for img_elem in img_elements:
+                    if img_elem and img_elem.has_attr('src'):
+                        src = img_elem['src']
+                        # Skip tiny images (likely icons)
+                        if 'icon' in src.lower() or 'logo' in src.lower() or 'placeholder' in src.lower():
+                            continue
+                            
+                        # Clean up the URL
+                        img_url = src
+                        # Ensure URL is absolute
+                        if img_url.startswith('//'):
+                            img_url = 'https:' + img_url
+                        elif img_url.startswith('/'):
+                            # Convert relative URL to absolute
+                            base_url = '/'.join(url.split('/')[:3])  # Get domain
+                            img_url = base_url + img_url
+                            
+                        # Some sites use data-src attribute for lazy loading
+                        if not img_url or img_url.endswith('.gif'):
+                            for attr in ['data-src', 'data-original', 'data-lazy']:
+                                if img_elem.has_attr(attr):
+                                    potential_url = img_elem[attr]
+                                    if potential_url and not potential_url.endswith('.gif'):
+                                        img_url = potential_url
+                                        if img_url.startswith('//'):
+                                            img_url = 'https:' + img_url
+                                        elif img_url.startswith('/'):
+                                            base_url = '/'.join(url.split('/')[:3])
+                                            img_url = base_url + img_url
+                                        break
+                                        
+                        # Check for srcset attribute which might have higher resolution images
+                        if img_elem.has_attr('srcset'):
+                            srcset = img_elem['srcset']
+                            highest_res_url = ''
+                            highest_width = 0
+                            
+                            # Parse srcset format: "url 1x, url 2x, ..." or "url 100w, url 200w, ..."
+                            srcset_parts = srcset.split(',')
+                            for part in srcset_parts:
+                                part = part.strip()
+                                if not part:
+                                    continue
+                                
+                                # Extract URL and descriptor
+                                url_parts = part.split(' ')
+                                if len(url_parts) >= 2:
+                                    src_url = url_parts[0].strip()
+                                    descriptor = url_parts[1].strip()
+                                    
+                                    # Convert descriptor to width
+                                    width = 0
+                                    if descriptor.endswith('x'):
+                                        try:
+                                            width = int(float(descriptor[:-1]) * 100)  # Rough estimate
+                                        except ValueError:
+                                            pass
+                                    elif descriptor.endswith('w'):
+                                        try:
+                                            width = int(descriptor[:-1])
+                                        except ValueError:
+                                            pass
+                                            
+                                    if width > highest_width:
+                                        highest_width = width
+                                        highest_res_url = src_url
+                            
+                            if highest_res_url:
+                                img_url = highest_res_url
+                                if img_url.startswith('//'):
+                                    img_url = 'https:' + img_url
+                                elif img_url.startswith('/'):
+                                    base_url = '/'.join(url.split('/')[:3])
+                                    img_url = base_url + img_url
+                        
+                        # If we found a valid image URL
+                        if img_url and len(img_url) > 10:
+                            product_info['image_url'] = img_url
+                            logger.debug(f"Found product image: {img_url}")
                             break
                 
-                # Extract quantity and unit from title or dedicated fields
-                qty_match = None
-                
-                # First check in dedicated fields if available
-                qty_elem = soup.select_one('.pack-size, .quantity, [data-qa="product-quantity"]')
-                if qty_elem:
+                # Stop trying selectors if we found an image
+                if 'image_url' in product_info:
+                    break
+            
+            # Extract quantity and unit
+            qty_selectors = [
+                '.qty', 
+                '.product-qty',
+                'span[qa="prod-qty"]',
+                '.prod-vol' 
+            ]
+            
+            for selector in qty_selectors:
+                qty_elem = soup.select_one(selector)
+                if qty_elem and qty_elem.text.strip():
                     qty_text = qty_elem.text.strip()
                     qty_match = re.search(r'(\d+\.?\d*)\s*(kg|g|gm|ml|l|ltr|litre|pieces|pcs|pc|pack)', 
                                         qty_text, re.IGNORECASE)
+                    if qty_match:
+                        product_info['quantity'] = qty_match.group(1)
+                        product_info['unit'] = qty_match.group(2).lower()
+                        break
+            
+            # If quantity not found in dedicated fields, try product name
+            if not product_info.get('quantity') and product_info.get('name'):
+                qty_match = re.search(r'(\d+\.?\d*)\s*(kg|g|gm|ml|l|ltr|litre|pieces|pcs|pc|pack)', 
+                                     product_info['name'], re.IGNORECASE)
                 
-                # If not found, try the product name
-                if not qty_match and product_info.get('name'):
-                    qty_match = re.search(r'(\d+\.?\d*)\s*(kg|g|gm|ml|l|ltr|litre|pieces|pcs|pc|pack)', 
-                                         product_info['name'], re.IGNORECASE)
-                
-                # If found in either place, extract
                 if qty_match:
                     product_info['quantity'] = qty_match.group(1)
-                    product_info['unit'] = self.standardize_unit(qty_match.group(2))
-                else:
-                    # Try one more pattern - often found in specifications table
-                    for key, value in product_info.get('specifications', {}).items():
-                        if key.lower() in ['weight', 'net weight', 'size', 'net quantity', 'pack size']:
-                            qty_match = re.search(r'(\d+\.?\d*)\s*(kg|g|gm|ml|l|ltr|litre|pieces|pcs|pc|pack)', 
-                                                value, re.IGNORECASE)
-                            if qty_match:
-                                product_info['quantity'] = qty_match.group(1)
-                                product_info['unit'] = self.standardize_unit(qty_match.group(2))
-                                break
-                
-                # Extract features - we specifically look for bullet points or key benefits
-                features = []
-                feature_elements = soup.select('li.product-feature, .key-features li, ul.features li, div[data-qa="product-highlights"] li')
-                for elem in feature_elements:
-                    feature_text = elem.text.strip()
-                    if feature_text:
-                        features.append(feature_text)
-                
-                if features:
-                    product_info['features'] = features
-                
-                return product_info if product_info else None
-                
-            return None
+                    product_info['unit'] = qty_match.group(2).lower()
             
-        except Exception as e:
-            logger.error(f"Error extracting info from BigBasket: {e}")
-            return None
+            return product_info
             
+        return None
+        
+     except Exception as e:
+        logger.error(f"Error extracting info from BigBasket: {e}")
+        return None         
     def get_product_from_digiteyes(self, barcode):
         """Use direct Digit-Eyes API to retrieve product information."""
         try:
@@ -804,700 +1034,763 @@ class BarcodeFetcher:
             logger.error(f"Error retrieving product from DeepSeek: {e}")
             return None
 
-    def get_product_info_from_openfoodfacts(self, barcode):
-        """Query the Open Food Facts API for product information."""
-        try:
-            url = f"https://world.openfoodfacts.org/api/v0/product/{barcode}.json"
-            response = requests.get(url, timeout=5)
+    def get_product_info(self, barcode):
+     """Get product information using multiple methods."""
+     if self.request_count >= self.max_daily_requests:
+        logger.error("Daily API request limit reached")
+        return None
+        
+     # Check if we've already processed this barcode
+     if barcode in self.processed_barcodes:
+        logger.info(f"Barcode {barcode} already processed, skipping")
+        return None
+    
+     # Increment request counter
+     self.request_count += 1
+    
+     # Variable to store search results information
+     search_results_info = None
+    
+     # Try multiple methods in sequence, from fastest/cheapest to most complex
+    
+     # 1. First try Open Food Facts (free, fast)
+     logger.info(f"Trying Open Food Facts for barcode {barcode}")
+     product_info = self.get_product_info_from_openfoodfacts(barcode)
+     if product_info:
+        logger.info(f"Found product info from Open Food Facts")
+        self.processed_barcodes.add(barcode)
+        self.last_successful_entry = product_info
+        return product_info
+    
+     # 2. Try Google search to get context
+     # Add delay between API calls
+     time.sleep(self.api_request_delay)
+    
+     logger.info(f"Searching Google for barcode {barcode}")
+     url, search_results = self.search_google_for_barcode(barcode)
+    
+     if search_results:
+        search_results_info = search_results
+        
+        # Try to extract info directly from search results
+        search_product_info = self.get_product_info_from_search_results(barcode, search_results_info)
+        if search_product_info:
+            logger.info(f"Found product info from search results")
+            self.processed_barcodes.add(barcode)
+            self.last_successful_entry = search_product_info
+            return search_product_info
+    
+     # 3. If we have a URL, try to extract from it
+     if url:
+        if "bigbasket" in url:
+            logger.info(f"Found BigBasket URL, extracting product info")
+            bigbasket_info = self.extract_bigbasket_info(url)
             
-            if response.status_code == 200:
-                data = response.json()
-                
-                if data.get("status") == 1:
-                    product = data.get("product", {})
-                    
-                    # Only include non-null values in the result
-                    result = {"barcode": barcode}
-                    
-                    # Map fields from API response, only including non-empty values
-                    fields_mapping = {
-                        "name": ["product_name", "product_name_en"],
-                        "brand": ["brands"],
-                        "description": ["generic_name", "generic_name_en"],
-                        "ingredients": ["ingredients_text", "ingredients_text_en"]
-                    }
-                    
-                    # Add basic product info
-                    for field, api_fields in fields_mapping.items():
-                        for api_field in api_fields:
-                            value = product.get(api_field)
-                            if value and str(value).strip():
-                                result[field] = value
-                                break
-                    
-                    # Add nutrition facts if available
-                    nutrition = product.get("nutriments", {})
-                    if nutrition:
-                        nutrients = {}
-                        # Map nutrition data
-                        nutrient_mapping = {
-                            "serving_size": product.get("serving_size"),
-                            "calories": nutrition.get("energy-kcal_100g"),
-                            "protein": nutrition.get("proteins_100g"),
-                            "carbohydrates": nutrition.get("carbohydrates_100g"),
-                            "fat": nutrition.get("fat_100g"),
-                            "sugars": nutrition.get("sugars_100g"),
-                            "fiber": nutrition.get("fiber_100g"),
-                            "salt": nutrition.get("salt_100g")
-                        }
-                        
-                        # Only add non-null nutrition values
-                        for nutrient, value in nutrient_mapping.items():
-                            if value is not None:
-                                nutrients[nutrient] = value
-                        
-                        if nutrients:
-                            result["nutrition_facts"] = nutrients
-                    
-                    # Add allergens if available
-                    allergens = product.get("allergens_tags", [])
-                    if allergens:
-                        # Clean up allergen format (remove 'en:' prefix)
-                        clean_allergens = [a.replace('en:', '') for a in allergens]
-                        if clean_allergens:
-                            result["allergens"] = clean_allergens
-                    
-                    # Add image URL if available
-                    image_url = product.get("image_url", "")
-                    if image_url:
-                        result["image_url"] = image_url
-                    
-                    # Extract category
-                    categories = product.get("categories", "")
-                    if categories:
-                        result["category"] = categories
-                    
-                    # Extract quantity and unit
-                    quantity = product.get("quantity", "")
-                    if quantity:
-                        qty_match = re.search(r'(\d+\.?\d*)\s*(kg|g|gm|ml|l|ltr|litre|pieces|pcs|pc|pack)', 
-                                             quantity, re.IGNORECASE)
-                        if qty_match:
-                            result["quantity"] = qty_match.group(1)
-                            result["unit"] = self.standardize_unit(qty_match.group(2))
-                    
-                    # Only return the result if it has data beyond just the barcode
-                    if len(result) > 1:  # More than just the barcode
-                        result["source"] = "openfoodfacts"
-                        return result
-                        
-            return None
-                
-        except requests.RequestException as e:
-            logger.error(f"Request error for barcode {barcode}: {e}")
-            return None
+            if bigbasket_info:
+                bigbasket_info["barcode"] = barcode
+                bigbasket_info["source"] = "bigbasket"
+                logger.info(f"Successfully extracted product info from BigBasket")
+                self.processed_barcodes.add(barcode)
+                self.last_successful_entry = bigbasket_info
+                return bigbasket_info
+        else:
+            # Try generic extraction for other sites
+            logger.info(f"Extracting product info from URL: {url}")
+            # If you have extraction methods for other sites, call them here
+    
+     # 4. Try DigitEyes API
+     # Add delay between API calls
+     time.sleep(self.api_request_delay)
+    
+     logger.info(f"Trying DigitEyes API for barcode {barcode}")
+     product_info = self.get_product_from_digiteyes(barcode)
+     if product_info:
+        logger.info(f"Found product info from DigitEyes API")
+        self.processed_barcodes.add(barcode)
+        self.last_successful_entry = product_info
+        return product_info
+    
+     # 5. Try DeepSeek (if available)
+     if self.deepseek_api_key:
+        # Add delay between API calls
+        time.sleep(self.api_request_delay)
+        
+        logger.info(f"Trying DeepSeek for barcode {barcode}")
+        product_info = self.get_product_from_deepseek(barcode)
+        if product_info:
+            logger.info(f"Found product info from DeepSeek")
+            self.processed_barcodes.add(barcode)
+            self.last_successful_entry = product_info
+            return product_info
+    
+     # 6. Try OpenAI (if available)
+     if self.openai_api_key:
+        # Add delay between API calls
+        time.sleep(self.api_request_delay)
+        
+        logger.info(f"Trying OpenAI for barcode {barcode}")
+        product_info = self.get_product_from_openai(barcode)
+        if product_info:
+            logger.info(f"Found product info from OpenAI")
+            self.processed_barcodes.add(barcode)
+            self.last_successful_entry = product_info
+            return product_info
             
-        except Exception as e:
-            logger.error(f"Unexpected error processing barcode {barcode}: {e}")
-            return None
+     logger.warning(f"Could not find product info for barcode {barcode} using any method")
+     return None
 
     def enhance_product_info_with_ai(self, barcode, product_info=None, search_results_info=None):
-        """Use AI to create or enhance product information to match the desired schema."""
-        # First check if we have access to OpenAI or DeepSeek for enhancement
-        if not (self.openai_api_key or self.deepseek_api_key):
-            logger.warning("No AI API keys available for product info enhancement")
-            return product_info
-        
-        # Extract a basic product name and brand from search results if available
+     """Use AI to create or enhance product information to match the desired schema."""
+     # First check if we have access to OpenAI or DeepSeek for enhancement
+     if not (self.openai_api_key or self.deepseek_api_key):
+        logger.warning("No AI API keys available for product info enhancement")
+        return product_info
+    
+     # Extract a basic product name and brand from search results if available
+     product_name_from_search = ""
+     brand_from_search = ""
+    
+     if search_results_info:  # Add this check to ensure search_results_info is not None
         product_name_from_search, brand_from_search = self.extract_product_name_from_search_results(search_results_info)
-        
-        # Default image URL if none is available
-        default_image_url = f"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images"
-        
-        # Create a template of the desired output format with existing information
-        template = {
-            "Barcode": barcode,
-            "Product Name": product_info.get("name", product_name_from_search) if product_info or product_name_from_search else "",
-            "Description": product_info.get("description", "") if product_info else "",
-            "Category": product_info.get("category", "") if product_info else "",
-            "ProductLine": "",
-            "Quantity": product_info.get("quantity", "") if product_info else "",
-            "Unit": product_info.get("unit", "") if product_info else "",
-            "Features": product_info.get("features", []) if product_info and "features" in product_info else [],
-            "Specification": {},
-            "Brand": product_info.get("brand", brand_from_search) if product_info or brand_from_search else "",
-            "Product Image": product_info.get("image_url", default_image_url) if product_info and product_info.get("image_url") else default_image_url,
-            "Product Ingredient Image": product_info.get("image_url", default_image_url) if product_info and product_info.get("image_url") else default_image_url
-        }
-        
-        # Add specifications from existing product info
-        if product_info and "specifications" in product_info:
-            template["Specification"] = product_info["specifications"]
-        elif product_info:
-            # Try to construct specifications from other fields
-            specs = {}
-            
-            # Add manufacturer if available
-            if product_info.get("manufacturer"):
-                specs["Manufacturer"] = product_info["manufacturer"]
-            
-            # Add nutrition facts if available
-            if product_info.get("nutrition_facts"):
-                specs["Nutrition Facts"] = product_info["nutrition_facts"]
-            
-            # Add ingredients if available
-            if product_info.get("ingredients"):
-                specs["Ingredients"] = product_info["ingredients"]
-                
-            # Add other potential specifications
-            if product_info.get("price"):
-                specs["Price"] = product_info["price"]
-                
-            # Add source info
-            if product_info.get("source"):
-                specs["Data Source"] = product_info["source"]
-                
-            template["Specification"] = specs
-        
-        # Try using OpenAI first if available
-        if self.openai_api_key:
-            try:
-                url = "https://api.openai.com/v1/chat/completions"
-                
-                headers = {
-                    "Authorization": f"Bearer {self.openai_api_key}",
-                    "Content-Type": "application/json"
-                }
-                
-                # Create a prompt that includes the product info and the desired output format
-                system_prompt = """You are a product information enhancer for an Indian e-commerce platform. 
-                Given a barcode and any available product details, create or enhance the information to match the desired output schema.
-                You MUST provide information for ALL fields in the output schema using EXACTLY the field names provided.
-                EVERY field must be populated with meaningful data - do not leave any fields empty or with placeholder text.
-                
-                Follow these specific requirements:
-                - Use "Product Name" with a space, not "ProductName" - follow the exact field name format from the template.
-                - For the Description field, write a comprehensive and engaging product description.
-                - For Features, include at least 3-5 key features or benefits of the product as an array of strings.
-                - For the Specification object, include at least Weight, Form, and Packaging Type.
-                - For ProductLine, derive it from the product name and brand.
-                - For Quantity, provide a numeric value (without units) - convert to number.
-                - For Unit, use common units like "L", "ml", "kg", "gm", etc.
-                - Do NOT change the Product Image and Product Ingredient Image URLs provided in the template.
-                
-                Important: Base your information on the facts provided in the input data and search results. When data is missing,
-                make educated guesses based on similar products. NEVER leave any field empty or with minimal information.
-                """
-                
-                # Build prompt content based on available information
-                user_prompt = f"Barcode: {barcode}\n\n"
-                
-                if product_info:
-                    user_prompt += f"Available product information:\n"
-                    for key, value in product_info.items():
-                        if key != 'barcode' and value:
-                            user_prompt += f"{key}: {value}\n"
-                    user_prompt += "\n"
-                
-                if search_results_info:
-                    user_prompt += "Search results information:\n"
-                    if search_results_info.get('titles'):
-                        user_prompt += "Titles:\n"
-                        for title in search_results_info['titles'][:5]:  # Limit to first 5
-                            user_prompt += f"- {title}\n"
-                    
-                    if search_results_info.get('snippets'):
-                        user_prompt += "\nSnippets:\n"
-                        for snippet in search_results_info['snippets'][:5]:  # Limit to first 5
-                            user_prompt += f"- {snippet}\n"
-                
-                user_prompt += f"\nCreate a complete product information record following EXACTLY this format and field names:\n"
-                user_prompt += json.dumps(template, indent=2)
-                user_prompt += "\n\nYour response MUST follow this exact format with spaces in field names. Make sure ALL fields have meaningful content - don't leave any empty."
-                
-                data = {
-                    "model": "gpt-3.5-turbo",
-                    "messages": [
-                        {"role": "system", "content": system_prompt},
-                        {"role": "user", "content": user_prompt}
-                    ],
-                    "temperature": 0.7
-                }
-                
-                response = requests.post(url, headers=headers, json=data, timeout=30)
-                
-                if response.status_code == 200:
-                    result = response.json()
-                    content = result.get("choices", [{}])[0].get("message", {}).get("content", "{}")
-                    
-                    # Attempt to parse JSON from the response
-                    try:
-                        # Clean up the response to isolate JSON
-                        content = content.strip()
-                        if content.startswith("```json"):
-                            content = content.replace("```json", "", 1).strip()
-                        if content.startswith("```"):
-                            content = content.replace("```", "", 1).strip()
-                        if content.endswith("```"):
-                            content = content.rsplit("```", 1)[0].strip()
-                        
-                        enhanced_data = json.loads(content)
-                        logger.info("Successfully enhanced product info using OpenAI")
-                        
-                        # Ensure quantity is a number
-                        if "Quantity" in enhanced_data and enhanced_data["Quantity"]:
-                            try:
-                                enhanced_data["Quantity"] = float(enhanced_data["Quantity"])
-                                if enhanced_data["Quantity"].is_integer():
-                                    enhanced_data["Quantity"] = int(enhanced_data["Quantity"])
-                            except:
-                                pass
-                        
-                        # Make sure we keep the image URL from the template
-                        if not enhanced_data.get("Product Image") or enhanced_data.get("Product Image") == "":
-                            enhanced_data["Product Image"] = default_image_url
-                            
-                        if not enhanced_data.get("Product Ingredient Image") or enhanced_data.get("Product Ingredient Image") == "":
-                            enhanced_data["Product Ingredient Image"] = default_image_url
-                        
-                        # Check for any empty fields and fill them with reasonable values
-                        if not enhanced_data.get("Description") or enhanced_data.get("Description") == "":
-                            if enhanced_data.get("Product Name"):
-                                enhanced_data["Description"] = f"{enhanced_data.get('Product Name')} is a high-quality product manufactured by {enhanced_data.get('Brand', 'a reputable brand')}. It offers excellent performance and reliability."
-                            
-                        if not enhanced_data.get("Features") or len(enhanced_data.get("Features", [])) == 0:
-                            if "dish" in enhanced_data.get("Product Name", "").lower() or "wash" in enhanced_data.get("Product Name", "").lower():
-                                enhanced_data["Features"] = ["Removes tough stains", "Gentle on hands", "Fresh fragrance", "Antibacterial properties"]
-                            else:
-                                enhanced_data["Features"] = ["High quality product", "Excellent performance", "Long lasting", "Great value"]
-                                
-                        if not enhanced_data.get("Category") or enhanced_data.get("Category") == "":
-                            if "dish" in enhanced_data.get("Product Name", "").lower() or "wash" in enhanced_data.get("Product Name", "").lower():
-                                enhanced_data["Category"] = "Cleaning & Household"
-                            else:
-                                enhanced_data["Category"] = "General Merchandise"
-                                
-                        if not enhanced_data.get("ProductLine") or enhanced_data.get("ProductLine") == "":
-                            brand = enhanced_data.get("Brand", "")
-                            if brand:
-                                name_parts = enhanced_data.get("Product Name", "").split()
-                                if name_parts:
-                                    enhanced_data["ProductLine"] = f"{brand} {name_parts[0]}"
-                                else:
-                                    enhanced_data["ProductLine"] = f"{brand} Product Line"
-                            else:
-                                enhanced_data["ProductLine"] = "Premium Product Line"
-                                
-                        if not enhanced_data.get("Brand") or enhanced_data.get("Brand") == "":
-                            name = enhanced_data.get("Product Name", "")
-                            if name:
-                                name_parts = name.split()
-                                if name_parts:
-                                    enhanced_data["Brand"] = name_parts[0]
-                                else:
-                                    enhanced_data["Brand"] = "Quality Brand"
-                            else:
-                                enhanced_data["Brand"] = "Quality Brand"
-                                
-                        # Add minimum specs if not already present
-                        spec = enhanced_data.get("Specification", {})
-                        if not spec.get("Weight") and enhanced_data.get("Quantity") and enhanced_data.get("Unit"):
-                            spec["Weight"] = f"{enhanced_data.get('Quantity')} {enhanced_data.get('Unit')}"
-                        
-                        if not spec.get("Form"):
-                            if "liquid" in enhanced_data.get("Product Name", "").lower():
-                                spec["Form"] = "Liquid"
-                            elif "powder" in enhanced_data.get("Product Name", "").lower():
-                                spec["Form"] = "Powder"
-                            elif "bar" in enhanced_data.get("Product Name", "").lower() or "soap" in enhanced_data.get("Product Name", "").lower():
-                                spec["Form"] = "Bar"
-                            else:
-                                spec["Form"] = "Solid"
-                                
-                        if not spec.get("Packaging Type"):
-                            if "liquid" in enhanced_data.get("Product Name", "").lower():
-                                spec["Packaging Type"] = "Bottle"
-                            elif "bar" in enhanced_data.get("Product Name", "").lower() or "soap" in enhanced_data.get("Product Name", "").lower():
-                                spec["Packaging Type"] = "Wrapper"
-                            else:
-                                spec["Packaging Type"] = "Box"
-                                
-                        enhanced_data["Specification"] = spec
-                        
-                        return enhanced_data
-                    except Exception as e:
-                        logger.error(f"Error parsing enhanced product data from OpenAI: {e}")
-                
-            except Exception as e:
-                logger.error(f"Error enhancing product info with OpenAI: {e}")
-        
-        # If OpenAI failed or is not available, try DeepSeek
-        if self.deepseek_api_key:
-            try:
-                url = "https://api.deepseek.com/v1/chat/completions"
-                
-                headers = {
-                    "Authorization": f"Bearer {self.deepseek_api_key}",
-                    "Content-Type": "application/json"
-                }
-                
-                # Same prompts as OpenAI
-                system_prompt = """You are a product information enhancer for an Indian e-commerce platform. 
-                Given a barcode and any available product details, create or enhance the information to match the desired output schema.
-                You MUST provide information for ALL fields in the output schema using EXACTLY the field names provided.
-                EVERY field must be populated with meaningful data - do not leave any fields empty or with placeholder text.
-                
-                Follow these specific requirements:
-                - Use "Product Name" with a space, not "ProductName" - follow the exact field name format from the template.
-                - For the Description field, write a comprehensive and engaging product description.
-                - For Features, include at least 3-5 key features or benefits of the product as an array of strings.
-                - For the Specification object, include at least Weight, Form, and Packaging Type.
-                - For ProductLine, derive it from the product name and brand.
-                - For Quantity, provide a numeric value (without units) - convert to number.
-                - For Unit, use common units like "L", "ml", "kg", "gm", etc.
-                - Do NOT change the Product Image and Product Ingredient Image URLs provided in the template.
-                
-                Important: Base your information on the facts provided in the input data and search results. When data is missing,
-                make educated guesses based on similar products. NEVER leave any field empty or with minimal information.
-                """
-                
-                # Build prompt content based on available information
-                user_prompt = f"Barcode: {barcode}\n\n"
-                
-                if product_info:
-                    user_prompt += f"Available product information:\n"
-                    for key, value in product_info.items():
-                        if key != 'barcode' and value:
-                            user_prompt += f"{key}: {value}\n"
-                    user_prompt += "\n"
-                
-                if search_results_info:
-                    user_prompt += "Search results information:\n"
-                    if search_results_info.get('titles'):
-                        user_prompt += "Titles:\n"
-                        for title in search_results_info['titles'][:5]:  # Limit to first 5
-                            user_prompt += f"- {title}\n"
-                    
-                    if search_results_info.get('snippets'):
-                        user_prompt += "\nSnippets:\n"
-                        for snippet in search_results_info['snippets'][:5]:  # Limit to first 5
-                            user_prompt += f"- {snippet}\n"
-                
-                user_prompt += f"\nCreate a complete product information record following EXACTLY this format and field names:\n"
-                user_prompt += json.dumps(template, indent=2)
-                user_prompt += "\n\nYour response MUST follow this exact format with spaces in field names. Make sure ALL fields have meaningful content - don't leave any empty."
-                
-                data = {
-                    "model": "deepseek-chat",
-                    "messages": [
-                        {"role": "system", "content": system_prompt},
-                        {"role": "user", "content": user_prompt}
-                    ],
-                    "temperature": 0.7
-                }
-                
-                response = requests.post(url, headers=headers, json=data, timeout=30)
-                
-                if response.status_code == 200:
-                    result = response.json()
-                    content = result.get("choices", [{}])[0].get("message", {}).get("content", "{}")
-                    
-                    # Attempt to parse JSON from the response
-                    try:
-                        # Clean up the response to isolate JSON
-                        content = content.strip()
-                        if content.startswith("```json"):
-                            content = content.replace("```json", "", 1).strip()
-                        if content.startswith("```"):
-                            content = content.replace("```", "", 1).strip()
-                        if content.endswith("```"):
-                            content = content.rsplit("```", 1)[0].strip()
-                        
-                        enhanced_data = json.loads(content)
-                        logger.info("Successfully enhanced product info using DeepSeek")
-                        
-                        # Ensure quantity is a number
-                        if "Quantity" in enhanced_data and enhanced_data["Quantity"]:
-                            try:
-                                enhanced_data["Quantity"] = float(enhanced_data["Quantity"])
-                                if enhanced_data["Quantity"].is_integer():
-                                    enhanced_data["Quantity"] = int(enhanced_data["Quantity"])
-                            except:
-                                pass
-                        
-                        # Make sure we keep the image URL from the template
-                        if not enhanced_data.get("Product Image") or enhanced_data.get("Product Image") == "":
-                            enhanced_data["Product Image"] = default_image_url
-                            
-                        if not enhanced_data.get("Product Ingredient Image") or enhanced_data.get("Product Ingredient Image") == "":
-                            enhanced_data["Product Ingredient Image"] = default_image_url
-                            
-                        # Check for any empty fields and fill them with reasonable values
-                        if not enhanced_data.get("Description") or enhanced_data.get("Description") == "":
-                            if enhanced_data.get("Product Name"):
-                                enhanced_data["Description"] = f"{enhanced_data.get('Product Name')} is a high-quality product manufactured by {enhanced_data.get('Brand', 'a reputable brand')}. It offers excellent performance and reliability."
-                            
-                        if not enhanced_data.get("Features") or len(enhanced_data.get("Features", [])) == 0:
-                            if "dish" in enhanced_data.get("Product Name", "").lower() or "wash" in enhanced_data.get("Product Name", "").lower():
-                                enhanced_data["Features"] = ["Removes tough stains", "Gentle on hands", "Fresh fragrance", "Antibacterial properties"]
-                            else:
-                                enhanced_data["Features"] = ["High quality product", "Excellent performance", "Long lasting", "Great value"]
-                                
-                        if not enhanced_data.get("Category") or enhanced_data.get("Category") == "":
-                            if "dish" in enhanced_data.get("Product Name", "").lower() or "wash" in enhanced_data.get("Product Name", "").lower():
-                                enhanced_data["Category"] = "Cleaning & Household"
-                            else:
-                                enhanced_data["Category"] = "General Merchandise"
-                                
-                        if not enhanced_data.get("ProductLine") or enhanced_data.get("ProductLine") == "":
-                            brand = enhanced_data.get("Brand", "")
-                            if brand:
-                                name_parts = enhanced_data.get("Product Name", "").split()
-                                if name_parts:
-                                    enhanced_data["ProductLine"] = f"{brand} {name_parts[0]}"
-                                else:
-                                    enhanced_data["ProductLine"] = f"{brand} Product Line"
-                            else:
-                                enhanced_data["ProductLine"] = "Premium Product Line"
-                                
-                        if not enhanced_data.get("Brand") or enhanced_data.get("Brand") == "":
-                            name = enhanced_data.get("Product Name", "")
-                            if name:
-                                name_parts = name.split()
-                                if name_parts:
-                                    enhanced_data["Brand"] = name_parts[0]
-                                else:
-                                    enhanced_data["Brand"] = "Quality Brand"
-                            else:
-                                enhanced_data["Brand"] = "Quality Brand"
-                                
-                        # Add minimum specs if not already present
-                        spec = enhanced_data.get("Specification", {})
-                        if not spec.get("Weight") and enhanced_data.get("Quantity") and enhanced_data.get("Unit"):
-                            spec["Weight"] = f"{enhanced_data.get('Quantity')} {enhanced_data.get('Unit')}"
-                        
-                        if not spec.get("Form"):
-                            if "liquid" in enhanced_data.get("Product Name", "").lower():
-                                spec["Form"] = "Liquid"
-                            elif "powder" in enhanced_data.get("Product Name", "").lower():
-                                spec["Form"] = "Powder"
-                            elif "bar" in enhanced_data.get("Product Name", "").lower() or "soap" in enhanced_data.get("Product Name", "").lower():
-                                spec["Form"] = "Bar"
-                            else:
-                                spec["Form"] = "Solid"
-                                
-                        if not spec.get("Packaging Type"):
-                            if "liquid" in enhanced_data.get("Product Name", "").lower():
-                                spec["Packaging Type"] = "Bottle"
-                            elif "bar" in enhanced_data.get("Product Name", "").lower() or "soap" in enhanced_data.get("Product Name", "").lower():
-                                spec["Packaging Type"] = "Wrapper"
-                            else:
-                                spec["Packaging Type"] = "Box"
-                                
-                        enhanced_data["Specification"] = spec
-                            
-                        return enhanced_data
-                    except Exception as e:
-                        logger.error(f"Error parsing enhanced product data from DeepSeek: {e}")
-            
-            except Exception as e:
-                logger.error(f"Error enhancing product info with DeepSeek: {e}")
-        
-        # If both enhancement methods fail, fall back to the basic transformation
-        if product_info:
-            return self.transform_to_desired_format(product_info, barcode)
-        return None
-    def transform_to_desired_format(self, product_info, barcode):
-        """Transform product info to the desired output format."""
-        if not product_info:
-            return None
-            
-        # Default image URL if none is available
-        default_image_url = f"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images"
-            
-        # Start with the desired format structure
-        transformed = {
-            "Barcode": barcode,
-            "Product Name": "",
-            "Description": "",
-            "Category": "",
-            "ProductLine": "",
-            "Quantity": "",
-            "Unit": "",
-            "Features": [],
-            "Specification": {},
-            "Brand": "",
-            "Product Image": default_image_url,
-            "Product Ingredient Image": default_image_url
-        }
-        
-        # Map existing fields to new format
-        transformed["Product Name"] = product_info.get("name", product_info.get("product_name", ""))
-        transformed["Description"] = product_info.get("description", product_info.get("generic_name", ""))
-        transformed["Brand"] = product_info.get("brand", product_info.get("brands", ""))
-        
-        # Handle categories
-        if product_info.get("categories"):
-            if isinstance(product_info["categories"], list):
-                transformed["Category"] = " > ".join(product_info["categories"])
-            else:
-                transformed["Category"] = str(product_info["categories"])
-        elif product_info.get("category"):
-            transformed["Category"] = product_info["category"]
-        
-        # Handle product line (derive from product name and brand)
-        if transformed["Product Name"] and transformed["Brand"]:
-            # Extract potential product line by removing brand from product name
-            if transformed["Brand"] in transformed["Product Name"]:
-                name_without_brand = transformed["Product Name"].replace(transformed["Brand"], "").strip()
-                words = name_without_brand.split()
-                if words:
-                    transformed["ProductLine"] = f"{transformed['Brand']} {words[0]}"
-            else:
-                # If brand is not in product name, use first word of product name
-                words = transformed["Product Name"].split()
-                if words:
-                    transformed["ProductLine"] = f"{transformed['Brand']} {words[0]}"
-        
-        # Handle quantity and unit
-        if product_info.get("quantity"):
-            try:
-                qty = float(product_info["quantity"])
-                if qty.is_integer():
-                    transformed["Quantity"] = int(qty)
-                else:
-                    transformed["Quantity"] = qty
-            except:
-                transformed["Quantity"] = product_info["quantity"]
-                
-        if product_info.get("unit"):
-            transformed["Unit"] = self.standardize_unit(product_info["unit"])
-        
-        # Handle specifications
+    
+     # Default image URL if none is available
+     default_image_url = f"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images"
+    
+     # Create a template of the desired output format with existing information
+     template = {
+        "Barcode": barcode,
+        "Product Name": (product_info.get("name") if product_info else product_name_from_search) or "",
+        "Description": (product_info.get("description") if product_info else "") or "",
+        "Category": (product_info.get("category") if product_info else "") or "",
+        "ProductLine": "",
+        "Quantity": (product_info.get("quantity") if product_info else "") or "",
+        "Unit": (product_info.get("unit") if product_info else "") or "",
+        "Features": (product_info.get("features", []) if product_info and "features" in product_info else []),
+        "Specification": {},
+        "Brand": (product_info.get("brand") if product_info else brand_from_search) or "",
+        "Product Image": (product_info.get("image_url") if product_info and product_info.get("image_url") else default_image_url),
+        "Product Ingredient Image": (product_info.get("image_url") if product_info and product_info.get("image_url") else default_image_url)
+     }
+    
+     # Add specifications from existing product info
+     if product_info and "specifications" in product_info:
+        template["Specification"] = product_info["specifications"]
+     elif product_info:
+        # Try to construct specifications from other fields
         specs = {}
-        if product_info.get("specifications"):
-            for key, value in product_info["specifications"].items():
-                specs[key] = value
         
+        # Add manufacturer if available
         if product_info.get("manufacturer"):
             specs["Manufacturer"] = product_info["manufacturer"]
         
-        # Add size information
-        if transformed["Quantity"] and transformed["Unit"]:
-            if isinstance(transformed["Quantity"], (int, float)):
-                specs["Weight"] = f"{transformed['Quantity']} {transformed['Unit']}"
-            else:
-                specs["Weight"] = f"{transformed['Quantity']} {transformed['Unit']}"
+        # Add nutrition facts if available
+        if product_info.get("nutrition_facts"):
+            specs["Nutrition Facts"] = product_info["nutrition_facts"]
         
-        # Default country of origin for Indian products
-        if not specs.get("Country of Origin"):
-            specs["Country of Origin"] = "India"
+        # Add ingredients if available
+        if product_info.get("ingredients"):
+            specs["Ingredients"] = product_info["ingredients"]
+            
+        # Add other potential specifications
+        if product_info.get("price"):
+            specs["Price"] = product_info["price"]
+            
+        # Add source info
+        if product_info.get("source"):
+            specs["Data Source"] = product_info["source"]
+            
+        template["Specification"] = specs
+    
+     # Try using OpenAI first if available
+     if self.openai_api_key:
+        try:
+            url = "https://api.openai.com/v1/chat/completions"
+            
+            headers = {
+                "Authorization": f"Bearer {self.openai_api_key}",
+                "Content-Type": "application/json"
+            }
+            
+            # Create a prompt that includes the product info and the desired output format
+            system_prompt = """You are a product information enhancer for an Indian e-commerce platform. 
+            Given a barcode and any available product details, create or enhance the information to match the desired output schema.
+            You MUST provide information for ALL fields in the output schema using EXACTLY the field names provided.
+            EVERY field must be populated with meaningful data - do not leave any fields empty or with placeholder text.
+            
+            Follow these specific requirements:
+            - Use "Product Name" with a space, not "ProductName" - follow the exact field name format from the template.
+            - For the Description field, write a comprehensive and engaging product description.
+            - For Features, include at least 3-5 key features or benefits of the product as an array of strings.
+            - For the Specification object, include at least Weight, Form, and Packaging Type.
+            - For ProductLine, derive it from the product name and brand.
+            - For Quantity, provide a numeric value (without units) - convert to number.
+            - For Unit, use common units like "L", "ml", "kg", "gm", etc.
+            - Do NOT change the Product Image and Product Ingredient Image URLs provided in the template.
+            
+            Important: Base your information on the facts provided in the input data and search results. When data is missing,
+            make educated guesses based on similar products. NEVER leave any field empty or with minimal information.
+            """
+            
+            # Build prompt content based on available information
+            user_prompt = f"Barcode: {barcode}\n\n"
+            
+            if product_info:
+                user_prompt += f"Available product information:\n"
+                for key, value in product_info.items():
+                    if key != 'barcode' and value:
+                        user_prompt += f"{key}: {value}\n"
+                user_prompt += "\n"
+            
+            if search_results_info:
+                user_prompt += "Search results information:\n"
+                if search_results_info.get('titles'):
+                    user_prompt += "Titles:\n"
+                    for title in search_results_info['titles'][:5]:  # Limit to first 5
+                        user_prompt += f"- {title}\n"
+                
+                if search_results_info.get('snippets'):
+                    user_prompt += "\nSnippets:\n"
+                    for snippet in search_results_info['snippets'][:5]:  # Limit to first 5
+                        user_prompt += f"- {snippet}\n"
+            
+            user_prompt += f"\nCreate a complete product information record following EXACTLY this format and field names:\n"
+            user_prompt += json.dumps(template, indent=2)
+            user_prompt += "\n\nYour response MUST follow this exact format with spaces in field names. Make sure ALL fields have meaningful content - don't leave any empty."
+            
+            data = {
+                "model": "gpt-3.5-turbo",
+                "messages": [
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": user_prompt}
+                ],
+                "temperature": 0.7
+            }
+            
+            response = requests.post(url, headers=headers, json=data, timeout=30)
+            
+            if response.status_code == 200:
+                result = response.json()
+                content = result.get("choices", [{}])[0].get("message", {}).get("content", "{}")
+                
+                # Attempt to parse JSON from the response
+                try:
+                    # Clean up the response to isolate JSON
+                    content = content.strip()
+                    if content.startswith("```json"):
+                        content = content.replace("```json", "", 1).strip()
+                    if content.startswith("```"):
+                        content = content.replace("```", "", 1).strip()
+                    if content.endswith("```"):
+                        content = content.rsplit("```", 1)[0].strip()
+                    
+                    enhanced_data = json.loads(content)
+                    logger.info("Successfully enhanced product info using OpenAI")
+                    
+                    # Ensure quantity is a number
+                    if "Quantity" in enhanced_data and enhanced_data["Quantity"]:
+                        try:
+                            enhanced_data["Quantity"] = float(enhanced_data["Quantity"])
+                            if enhanced_data["Quantity"].is_integer():
+                                enhanced_data["Quantity"] = int(enhanced_data["Quantity"])
+                        except:
+                            pass
+                    
+                    # Make sure we keep the image URL from the template
+                    if not enhanced_data.get("Product Image") or enhanced_data.get("Product Image") == "":
+                        enhanced_data["Product Image"] = default_image_url
+                        
+                    if not enhanced_data.get("Product Ingredient Image") or enhanced_data.get("Product Ingredient Image") == "":
+                        enhanced_data["Product Ingredient Image"] = default_image_url
+                    
+                    # Check for any empty fields and fill them with reasonable values
+                    if not enhanced_data.get("Description") or enhanced_data.get("Description") == "":
+                        if enhanced_data.get("Product Name"):
+                            enhanced_data["Description"] = f"{enhanced_data.get('Product Name')} is a high-quality product manufactured by {enhanced_data.get('Brand', 'a reputable brand')}. It offers excellent performance and reliability."
+                        
+                    if not enhanced_data.get("Features") or len(enhanced_data.get("Features", [])) == 0:
+                        if "dish" in enhanced_data.get("Product Name", "").lower() or "wash" in enhanced_data.get("Product Name", "").lower():
+                            enhanced_data["Features"] = ["Removes tough stains", "Gentle on hands", "Fresh fragrance", "Antibacterial properties"]
+                        else:
+                            enhanced_data["Features"] = ["High quality product", "Excellent performance", "Long lasting", "Great value"]
+                            
+                    if not enhanced_data.get("Category") or enhanced_data.get("Category") == "":
+                        if "dish" in enhanced_data.get("Product Name", "").lower() or "wash" in enhanced_data.get("Product Name", "").lower():
+                            enhanced_data["Category"] = "Cleaning & Household"
+                        else:
+                            enhanced_data["Category"] = "General Merchandise"
+                            
+                    if not enhanced_data.get("ProductLine") or enhanced_data.get("ProductLine") == "":
+                        brand = enhanced_data.get("Brand", "")
+                        if brand:
+                            name_parts = enhanced_data.get("Product Name", "").split()
+                            if name_parts:
+                                enhanced_data["ProductLine"] = f"{brand} {name_parts[0]}"
+                            else:
+                                enhanced_data["ProductLine"] = f"{brand} Product Line"
+                        else:
+                            enhanced_data["ProductLine"] = "Premium Product Line"
+                            
+                    if not enhanced_data.get("Brand") or enhanced_data.get("Brand") == "":
+                        name = enhanced_data.get("Product Name", "")
+                        if name:
+                            name_parts = name.split()
+                            if name_parts:
+                                enhanced_data["Brand"] = name_parts[0]
+                            else:
+                                enhanced_data["Brand"] = "Quality Brand"
+                        else:
+                            enhanced_data["Brand"] = "Quality Brand"
+                            
+                    # Add minimum specs if not already present
+                    spec = enhanced_data.get("Specification", {})
+                    if not spec.get("Weight") and enhanced_data.get("Quantity") and enhanced_data.get("Unit"):
+                        spec["Weight"] = f"{enhanced_data.get('Quantity')} {enhanced_data.get('Unit')}"
+                    
+                    if not spec.get("Form"):
+                        if "liquid" in enhanced_data.get("Product Name", "").lower():
+                            spec["Form"] = "Liquid"
+                        elif "powder" in enhanced_data.get("Product Name", "").lower():
+                            spec["Form"] = "Powder"
+                        elif "bar" in enhanced_data.get("Product Name", "").lower() or "soap" in enhanced_data.get("Product Name", "").lower():
+                            spec["Form"] = "Bar"
+                        else:
+                            spec["Form"] = "Solid"
+                            
+                    if not spec.get("Packaging Type"):
+                        if "liquid" in enhanced_data.get("Product Name", "").lower():
+                            spec["Packaging Type"] = "Bottle"
+                        elif "bar" in enhanced_data.get("Product Name", "").lower() or "soap" in enhanced_data.get("Product Name", "").lower():
+                            spec["Packaging Type"] = "Wrapper"
+                        else:
+                            spec["Packaging Type"] = "Box"
+                            
+                    enhanced_data["Specification"] = spec
+                    
+                    return enhanced_data
+                except Exception as e:
+                    logger.error(f"Error parsing enhanced product data from OpenAI: {e}")
+            
+        except Exception as e:
+            logger.error(f"Error enhancing product info with OpenAI: {e}")
+    
+     # If OpenAI failed or is not available, try DeepSeek
+     if self.deepseek_api_key:
+        try:
+            url = "https://api.deepseek.com/v1/chat/completions"
+            
+            headers = {
+                "Authorization": f"Bearer {self.deepseek_api_key}",
+                "Content-Type": "application/json"
+            }
+            
+            # Same prompts as OpenAI
+            system_prompt = """You are a product information enhancer for an Indian e-commerce platform. 
+            Given a barcode and any available product details, create or enhance the information to match the desired output schema.
+            You MUST provide information for ALL fields in the output schema using EXACTLY the field names provided.
+            EVERY field must be populated with meaningful data - do not leave any fields empty or with placeholder text.
+            
+            Follow these specific requirements:
+            - Use "Product Name" with a space, not "ProductName" - follow the exact field name format from the template.
+            - For the Description field, write a comprehensive and engaging product description.
+            - For Features, include at least 3-5 key features or benefits of the product as an array of strings.
+            - For the Specification object, include at least Weight, Form, and Packaging Type.
+            - For ProductLine, derive it from the product name and brand.
+            - For Quantity, provide a numeric value (without units) - convert to number.
+            - For Unit, use common units like "L", "ml", "kg", "gm", etc.
+            - Do NOT change the Product Image and Product Ingredient Image URLs provided in the template.
+            
+            Important: Base your information on the facts provided in the input data and search results. When data is missing,
+            make educated guesses based on similar products. NEVER leave any field empty or with minimal information.
+            """
+            
+            # Build prompt content based on available information
+            user_prompt = f"Barcode: {barcode}\n\n"
+            
+            if product_info:
+                user_prompt += f"Available product information:\n"
+                for key, value in product_info.items():
+                    if key != 'barcode' and value:
+                        user_prompt += f"{key}: {value}\n"
+                user_prompt += "\n"
+            
+            if search_results_info:
+                user_prompt += "Search results information:\n"
+                if search_results_info.get('titles'):
+                    user_prompt += "Titles:\n"
+                    for title in search_results_info['titles'][:5]:  # Limit to first 5
+                        user_prompt += f"- {title}\n"
+                
+                if search_results_info.get('snippets'):
+                    user_prompt += "\nSnippets:\n"
+                    for snippet in search_results_info['snippets'][:5]:  # Limit to first 5
+                        user_prompt += f"- {snippet}\n"
+            
+            user_prompt += f"\nCreate a complete product information record following EXACTLY this format and field names:\n"
+            user_prompt += json.dumps(template, indent=2)
+            user_prompt += "\n\nYour response MUST follow this exact format with spaces in field names. Make sure ALL fields have meaningful content - don't leave any empty."
+            
+            data = {
+                "model": "deepseek-chat",
+                "messages": [
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": user_prompt}
+                ],
+                "temperature": 0.7
+            }
+            
+            response = requests.post(url, headers=headers, json=data, timeout=30)
+            
+            if response.status_code == 200:
+                result = response.json()
+                content = result.get("choices", [{}])[0].get("message", {}).get("content", "{}")
+                
+                # Attempt to parse JSON from the response
+                try:
+                    # Clean up the response to isolate JSON
+                    content = content.strip()
+                    if content.startswith("```json"):
+                        content = content.replace("```json", "", 1).strip()
+                    if content.startswith("```"):
+                        content = content.replace("```", "", 1).strip()
+                    if content.endswith("```"):
+                        content = content.rsplit("```", 1)[0].strip()
+                    
+                    enhanced_data = json.loads(content)
+                    logger.info("Successfully enhanced product info using DeepSeek")
+                    
+                    # Ensure quantity is a number
+                    if "Quantity" in enhanced_data and enhanced_data["Quantity"]:
+                        try:
+                            enhanced_data["Quantity"] = float(enhanced_data["Quantity"])
+                            if enhanced_data["Quantity"].is_integer():
+                                enhanced_data["Quantity"] = int(enhanced_data["Quantity"])
+                        except:
+                            pass
+                    
+                    # Make sure we keep the image URL from the template
+                    if not enhanced_data.get("Product Image") or enhanced_data.get("Product Image") == "":
+                        enhanced_data["Product Image"] = default_image_url
+                        
+                    if not enhanced_data.get("Product Ingredient Image") or enhanced_data.get("Product Ingredient Image") == "":
+                        enhanced_data["Product Ingredient Image"] = default_image_url
+                        
+                    # Check for any empty fields and fill them with reasonable values
+                    if not enhanced_data.get("Description") or enhanced_data.get("Description") == "":
+                        if enhanced_data.get("Product Name"):
+                            enhanced_data["Description"] = f"{enhanced_data.get('Product Name')} is a high-quality product manufactured by {enhanced_data.get('Brand', 'a reputable brand')}. It offers excellent performance and reliability."
+                        
+                    if not enhanced_data.get("Features") or len(enhanced_data.get("Features", [])) == 0:
+                        if "dish" in enhanced_data.get("Product Name", "").lower() or "wash" in enhanced_data.get("Product Name", "").lower():
+                            enhanced_data["Features"] = ["Removes tough stains", "Gentle on hands", "Fresh fragrance", "Antibacterial properties"]
+                        else:
+                            enhanced_data["Features"] = ["High quality product", "Excellent performance", "Long lasting", "Great value"]
+                            
+                    if not enhanced_data.get("Category") or enhanced_data.get("Category") == "":
+                        if "dish" in enhanced_data.get("Product Name", "").lower() or "wash" in enhanced_data.get("Product Name", "").lower():
+                            enhanced_data["Category"] = "Cleaning & Household"
+                        else:
+                            enhanced_data["Category"] = "General Merchandise"
+                            
+                    if not enhanced_data.get("ProductLine") or enhanced_data.get("ProductLine") == "":
+                        brand = enhanced_data.get("Brand", "")
+                        if brand:
+                            name_parts = enhanced_data.get("Product Name", "").split()
+                            if name_parts:
+                                enhanced_data["ProductLine"] = f"{brand} {name_parts[0]}"
+                            else:
+                                enhanced_data["ProductLine"] = f"{brand} Product Line"
+                        else:
+                            enhanced_data["ProductLine"] = "Premium Product Line"
+                            
+                    if not enhanced_data.get("Brand") or enhanced_data.get("Brand") == "":
+                        name = enhanced_data.get("Product Name", "")
+                        if name:
+                            name_parts = name.split()
+                            if name_parts:
+                                enhanced_data["Brand"] = name_parts[0]
+                            else:
+                                enhanced_data["Brand"] = "Quality Brand"
+                        else:
+                            enhanced_data["Brand"] = "Quality Brand"
+                            
+                    # Add minimum specs if not already present
+                    spec = enhanced_data.get("Specification", {})
+                    if not spec.get("Weight") and enhanced_data.get("Quantity") and enhanced_data.get("Unit"):
+                        spec["Weight"] = f"{enhanced_data.get('Quantity')} {enhanced_data.get('Unit')}"
+                    
+                    if not spec.get("Form"):
+                        if "liquid" in enhanced_data.get("Product Name", "").lower():
+                            spec["Form"] = "Liquid"
+                        elif "powder" in enhanced_data.get("Product Name", "").lower():
+                            spec["Form"] = "Powder"
+                        elif "bar" in enhanced_data.get("Product Name", "").lower() or "soap" in enhanced_data.get("Product Name", "").lower():
+                            spec["Form"] = "Bar"
+                        else:
+                            spec["Form"] = "Solid"
+                            
+                    if not spec.get("Packaging Type"):
+                        if "liquid" in enhanced_data.get("Product Name", "").lower():
+                            spec["Packaging Type"] = "Bottle"
+                        elif "bar" in enhanced_data.get("Product Name", "").lower() or "soap" in enhanced_data.get("Product Name", "").lower():
+                            spec["Packaging Type"] = "Wrapper"
+                        else:
+                            spec["Packaging Type"] = "Box"
+                            
+                    enhanced_data["Specification"] = spec
+                        
+                    return enhanced_data
+                except Exception as e:
+                    logger.error(f"Error parsing enhanced product data from DeepSeek: {e}")
         
-        # Add form and packaging type
-        if "liquid" in transformed["Product Name"].lower() or (transformed["Description"] and "liquid" in transformed["Description"].lower()):
-            specs["Form"] = "Liquid"
-            specs["Packaging Type"] = "Bottle"
-        elif "bar" in transformed["Product Name"].lower():
-            specs["Form"] = "Bar"
-            specs["Packaging Type"] = "Box"
-        elif "powder" in transformed["Product Name"].lower():
-            specs["Form"] = "Powder"
-            specs["Packaging Type"] = "Box"
+        except Exception as e:
+            logger.error(f"Error enhancing product info with DeepSeek: {e}")
+    
+     # If both enhancement methods fail, fall back to the basic transformation
+     if product_info:
+        return self.transform_to_desired_format(product_info, barcode)
+     return None
+    def get_image_url_from_google(self, query):
+     """Get an image URL for a product from Google Image Search."""
+     if not self.serpapi_key:
+        return None
+        
+     try:
+        # SerpAPI endpoint
+        url = "https://serpapi.com/search"
+        
+        # Query parameters
+        params = {
+            "api_key": self.serpapi_key,
+            "q": query,
+            "tbm": "isch",  # Image search
+            "ijn": "0",     # First page
+            "num": "1",     # Just need one image
+            "safe": "active"  # Safe search
+        }
+        
+        # Make the request
+        response = requests.get(url, params=params)
+        
+        if response.status_code == 200:
+            data = response.json()
+            
+            # Extract image results
+            images = data.get("images_results", [])
+            
+            if images and len(images) > 0:
+                return images[0].get("original")
+        
+        return None
+        
+     except Exception as e:
+        logger.error(f"Error during Google image search: {e}")
+        return None
+    def transform_to_desired_format(self, product_info, barcode):
+     """Transform raw product info to the desired output format."""
+     result = {
+        "Barcode": barcode,
+        "Product Name": product_info.get("name", "Unknown Product"),
+        "Description": product_info.get("description", f"{product_info.get('name', 'Unknown Product')} is a high-quality item that offers excellent value and performance."),
+        "Category": "General Merchandise",
+        "ProductLine": f"{product_info.get('brand', 'Unknown')} Product Line",
+        "Brand": product_info.get("brand", "Unknown")
+     }
+    
+     # Set category based on product info
+     if product_info.get("categories"):
+        categories = product_info.get("categories")
+        for category in categories:
+            if any(keyword in category.lower() for keyword in ['cleaning', 'household', 'laundry', 'dishwash']):
+                result["Category"] = "Cleaning & Household"
+                break
+     elif product_info.get("category"):
+        category = product_info.get("category")
+        if any(keyword in category.lower() for keyword in ['cleaning', 'household', 'laundry', 'dishwash']):
+            result["Category"] = "Cleaning & Household"
+    
+     # Handle quantity and unit
+     quantity = product_info.get("quantity", 1)
+     unit = product_info.get("unit", "pc")
+    
+     # Convert quantity to float if it's a string that represents a number
+     if isinstance(quantity, str) and quantity.replace(".", "", 1).isdigit():
+        result["Quantity"] = float(quantity)
+     else:
+        result["Quantity"] = quantity
+        
+     result["Unit"] = unit
+    
+     # Handle features - use specific features if available, otherwise use generic ones
+     if product_info.get("features") and isinstance(product_info.get("features"), list):
+        result["Features"] = product_info.get("features")
+     else:
+        if "Cleaning" in result["Category"] or "Household" in result["Category"]:
+            result["Features"] = [
+                "Removes tough stains",
+                "Gentle on hands",
+                "Fresh fragrance",
+                "Antibacterial properties"
+            ]
         else:
-            specs["Form"] = "Solid"
-            specs["Packaging Type"] = "Pack"
-        
-        transformed["Specification"] = specs
-        
-        # Handle features - convert ingredients or other lists to features
-        features = []
-        
-        # Use existing features if available
-        if product_info.get("features") and isinstance(product_info["features"], list):
-            features = product_info["features"]
+            result["Features"] = [
+                "High quality product",
+                "Excellent performance",
+                "Long lasting",
+                "Great value"
+            ]
+    
+     # Handle specifications
+     specs = {"Country of Origin": "India"}
+    
+     if product_info.get("specifications") and isinstance(product_info.get("specifications"), dict):
+        specs.update(product_info.get("specifications"))
+    
+     # Add weight to specifications if available
+     if result["Quantity"] and result["Unit"]:
+        specs["Weight"] = f"{result['Quantity']} {result['Unit']}"
+    
+     # Add form based on category or unit
+     if "Liquid" in product_info.get("name", "") or unit in ["ml", "l", "ltr", "litre"]:
+        specs["Form"] = "Liquid"
+     elif "Powder" in product_info.get("name", ""):
+        specs["Form"] = "Powder"
+     elif "Bar" in product_info.get("name", ""):
+        specs["Form"] = "Bar"
+     else:
+        specs["Form"] = "Solid"
+    
+     # Add packaging type
+     if unit in ["ml", "l", "ltr", "litre"]:
+        specs["Packaging Type"] = "Bottle"
+     elif "Box" in product_info.get("name", ""):
+        specs["Packaging Type"] = "Box"
+     elif "Bar" in product_info.get("name", ""):
+        specs["Packaging Type"] = "Box"
+     elif "Powder" in product_info.get("name", ""):
+        specs["Packaging Type"] = "Box"
+     else:
+        specs["Packaging Type"] = "Pack"
+    
+     result["Specification"] = specs
+    
+     # Handle product images properly
+     image_url = product_info.get("image_url", "")
+    
+     # Use OpenFoodFacts URL format if no image available
+     if not image_url:
+        # Format: https://images.openfoodfacts.org/images/products/890/210/216/3831/front_en.3.400.jpg
+        barcode_formatted = barcode
+        if len(barcode) >= 13:
+            off_url = f"https://images.openfoodfacts.org/images/products/{barcode[:3]}/{barcode[3:6]}/{barcode[6:9]}/{barcode[9:]}/front_en.3.400.jpg"
+            result["Product Image"] = off_url
+            result["Product Ingredient Image"] = off_url
         else:
-            # Extract features from product name and description
-            keywords = ["kills", "germs", "bacteria", "refreshing", "fragrance", "gentle", 
-                      "tough", "stain", "cleaning", "concentrated", "natural", "organic", 
-                      "instant", "anti", "fresh", "quick", "easy"]
-                      
-            if transformed["Description"]:
-                sentences = transformed["Description"].split('.')
-                for sentence in sentences:
-                    sentence = sentence.strip()
-                    if sentence and len(sentence) > 10 and len(sentence) < 60:  # Reasonable feature length
-                        found_keyword = False
-                        for keyword in keywords:
-                            if keyword in sentence.lower():
-                                found_keyword = True
-                                break
-                        if found_keyword:
-                            features.append(sentence)
-            
-            # If no features were found, create some generic ones based on product category
-            if not features:
-                category = transformed["Category"].lower() if transformed["Category"] else ""
-                name = transformed["Product Name"].lower()
-                
-                if "clean" in category or "household" in category or "wash" in name or "soap" in name or "detergent" in name:
-                    features = ["Removes tough stains", "Gentle on hands", "Fresh fragrance", "Antibacterial properties"]
-                elif "food" in category or "grocery" in category:
-                    features = ["Premium quality ingredients", "Rich flavor", "Nutritious", "Conveniently packaged"]
-                elif "personal" in category or "care" in category:
-                    features = ["Gentle on skin", "Long-lasting protection", "Pleasant fragrance", "Dermatologically tested"]
-                else:
-                    features = ["High quality product", "Excellent performance", "Long lasting", "Great value"]
+            # If not a valid barcode, use a placeholder
+            placeholder = "https://images.openfoodfacts.org/images/products/default.jpg"
+            result["Product Image"] = placeholder
+            result["Product Ingredient Image"] = placeholder
+     else:
+        # Use extracted image URL
+        result["Product Image"] = image_url
+        result["Product Ingredient Image"] = image_url
+    
+     return result
+    def get_product_info_from_openfoodfacts(self, barcode):
+     """Query the Open Food Facts API for product information."""
+     try:
+        url = f"https://world.openfoodfacts.org/api/v0/product/{barcode}.json"
+        response = requests.get(url, timeout=5)
         
-        transformed["Features"] = features
-        
-        # Handle product images - use real URLs if available
-        if product_info.get("image_url"):
-            transformed["Product Image"] = product_info["image_url"]
-            transformed["Product Ingredient Image"] = product_info["image_url"]
+        if response.status_code == 200:
+            data = response.json()
             
-        # Convert quantities from string to numeric where appropriate
-        if transformed["Quantity"] and isinstance(transformed["Quantity"], str) and transformed["Quantity"].replace('.', '').isdigit():
-            transformed["Quantity"] = float(transformed["Quantity"])
-            if transformed["Quantity"].is_integer():
-                transformed["Quantity"] = int(transformed["Quantity"])
-        
-        # Final check: ensure no fields are empty
-        if not transformed["Description"]:
-            transformed["Description"] = f"{transformed['Product Name'] or 'This product'} is a high-quality item that offers excellent value and performance."
+            if data.get("status") == 1:
+                product = data.get("product", {})
+                
+                # Only include non-null values in the result
+                result = {"barcode": barcode}
+                
+                # Map fields from API response, only including non-empty values
+                fields_mapping = {
+                    "name": ["product_name", "product_name_en"],
+                    "brand": ["brands"],
+                    "description": ["generic_name", "generic_name_en"],
+                    "ingredients": ["ingredients_text", "ingredients_text_en"]
+                }
+                
+                # Add basic product info
+                for field, api_fields in fields_mapping.items():
+                    for api_field in api_fields:
+                        value = product.get(api_field)
+                        if value and str(value).strip():
+                            result[field] = value
+                            break
+                
+                # Add nutrition facts if available
+                nutrition = product.get("nutriments", {})
+                if nutrition:
+                    nutrients = {}
+                    # Map nutrition data
+                    nutrient_mapping = {
+                        "serving_size": product.get("serving_size"),
+                        "calories": nutrition.get("energy-kcal_100g"),
+                        "protein": nutrition.get("proteins_100g"),
+                        "carbohydrates": nutrition.get("carbohydrates_100g"),
+                        "fat": nutrition.get("fat_100g"),
+                        "sugars": nutrition.get("sugars_100g"),
+                        "fiber": nutrition.get("fiber_100g"),
+                        "salt": nutrition.get("salt_100g")
+                    }
+                    
+                    # Only add non-null nutrition values
+                    for nutrient, value in nutrient_mapping.items():
+                        if value is not None:
+                            nutrients[nutrient] = value
+                    
+                    if nutrients:
+                        result["nutrition_facts"] = nutrients
+                
+                # Add allergens if available
+                allergens = product.get("allergens_tags", [])
+                if allergens:
+                    # Clean up allergen format (remove 'en:' prefix)
+                    clean_allergens = [a.replace('en:', '') for a in allergens]
+                    if clean_allergens:
+                        result["allergens"] = clean_allergens
+                
+                # Add image URL if available
+                image_url = product.get("image_url", "")
+                if image_url:
+                    result["image_url"] = image_url
+                
+                # Extract category
+                categories = product.get("categories", "")
+                if categories:
+                    result["category"] = categories
+                
+                # Extract quantity and unit
+                quantity = product.get("quantity", "")
+                if quantity:
+                    qty_match = re.search(r'(\d+\.?\d*)\s*(kg|g|gm|ml|l|ltr|litre|pieces|pcs|pc|pack)', 
+                                         quantity, re.IGNORECASE)
+                    if qty_match:
+                        result["quantity"] = qty_match.group(1)
+                        result["unit"] = self.standardize_unit(qty_match.group(2))
+                
+                # Only return the result if it has data beyond just the barcode
+                if len(result) > 1:  # More than just the barcode
+                    result["source"] = "openfoodfacts"
+                    return result
+                    
+        return None
             
-        if not transformed["Category"]:
-            name = transformed["Product Name"].lower()
-            if "wash" in name or "soap" in name or "detergent" in name or "clean" in name:
-                transformed["Category"] = "Cleaning & Household"
-            else:
-                transformed["Category"] = "General Merchandise"
-                
-        if not transformed["Brand"]:
-            name = transformed["Product Name"]
-            if name:
-                parts = name.split()
-                transformed["Brand"] = parts[0] if parts else "Quality Brand"
-            else:
-                transformed["Brand"] = "Quality Brand"
-                
-        if not transformed["ProductLine"]:
-            transformed["ProductLine"] = f"{transformed['Brand']} Product Line"
-            
-        if not transformed["Quantity"]:
-            if "bar" in transformed["Product Name"].lower():
-                transformed["Quantity"] = 100
-            else:
-                transformed["Quantity"] = 1
-                
-        if not transformed["Unit"]:
-            if "liquid" in transformed["Product Name"].lower():
-                transformed["Unit"] = "L"
-            elif "bar" in transformed["Product Name"].lower():
-                transformed["Unit"] = "gm"
-            else:
-                transformed["Unit"] = "pc"
+     except requests.RequestException as e:
+        logger.error(f"Request error for barcode {barcode}: {e}")
+        return None
         
-        return transformed
+     except Exception as e:
+        logger.error(f"Unexpected error processing barcode {barcode}: {e}")
+        return None
     def save_noresult_json(self):
         """Save information about barcodes that couldn't be processed."""
         noresults = []
@@ -1646,41 +1939,77 @@ class BarcodeFetcher:
             if self.last_successful_entry:
                 logger.info(f"Last successfully processed entry: {json.dumps(self.last_successful_entry)}")
 
-    def process_barcodes(self):
-        """Process barcodes from Excel file and fetch product information."""
-        if not self.input_file:
-            self.input_file = input("Enter path to Excel file with barcodes: ")
-            
-        # Read barcodes from Excel
-        barcodes = self.read_barcodes_from_excel(self.input_file)
+    def process_barcodes(self, start_barcode=None):
+     """Process barcodes from Excel file and fetch product information.
+    
+     Args:
+        start_barcode: Optional barcode to start processing from.
+     """
+     if not self.input_file:
+        self.input_file = input("Enter path to Excel file with barcodes: ")
         
-        if not barcodes:
-            logger.error("No valid barcodes found to process")
-            return
-            
-        logger.info(f"Starting to process {len(barcodes)} barcodes")
+     # Read barcodes from Excel
+     barcodes = self.read_barcodes_from_excel(self.input_file)
+    
+     if not barcodes:
+        logger.error("No valid barcodes found to process")
+        return
         
-        # Initialize results list with existing results
-        results = []
-        if os.path.exists(self.output_file):
-            try:
-                with open(self.output_file, 'r') as f:
-                    results = json.load(f)
-            except json.JSONDecodeError:
-                pass
-        
-        # Track processed barcodes to avoid duplicates
-        processed_set = {r.get('Barcode') for r in results}
-        
-        # Process each barcode with progress bar
+     # Initialize results list with existing results
+     results = []
+     if os.path.exists(self.output_file):
         try:
-            for barcode in tqdm(barcodes, desc="Processing barcodes"):
+            with open(self.output_file, 'r') as f:
+                results = json.load(f)
+        except json.JSONDecodeError:
+            pass
+    
+     # Track processed barcodes to avoid duplicates
+     processed_set = {r.get('barcode') for r in results}
+     
+     # Determine starting index
+     start_index = 0
+    
+     # If a specific start barcode is provided, find its index
+     if start_barcode:
+        try:
+            start_index = barcodes.index(start_barcode)
+            logger.info(f"Starting from specified barcode {start_barcode} at index {start_index}")
+        except ValueError:
+            logger.warning(f"Specified start barcode {start_barcode} not found in input file. Starting from beginning.")
+     # Otherwise use the last processed index from our saved state
+     elif self.last_processed_index > 0:
+        # Make sure we don't go beyond the list bounds
+        if self.last_processed_index < len(barcodes):
+            start_index = self.last_processed_index
+            logger.info(f"Resuming from index {start_index} (barcode {barcodes[start_index]})")
+        else:
+            logger.warning("Saved index exceeds current barcode count. Starting from beginning.")
+    
+     logger.info(f"Processing {len(barcodes) - start_index} barcodes starting from index {start_index}")
+    
+     # Process each barcode with progress bar
+     try:
+        total_to_process = len(barcodes) - start_index
+        with tqdm(total=total_to_process, desc="Processing barcodes") as pbar:
+            for i in range(start_index, len(barcodes)):
+                barcode = barcodes[i]
+                
                 # Skip if already processed
-                if barcode in processed_set:
+                if barcode in processed_set or barcode in self.attempted_barcodes:
+                    logger.info(f"Barcode {barcode} already processed or attempted, skipping")
+                    pbar.update(1)
                     continue
-                    
+                
+                # Mark as attempted
+                self.attempted_barcodes.add(barcode)
+                
                 # Get product info
                 product_info = self.get_product_info(barcode)
+                
+                # Update progress after each barcode
+                self.last_processed_index = i + 1
+                self.save_progress_state(self.last_processed_index, self.attempted_barcodes)
                 
                 # Only add non-null product info to results
                 if product_info and len(product_info) > 1:  # Has more than just the barcode
@@ -1691,27 +2020,40 @@ class BarcodeFetcher:
                     if len(results) % 10 == 0:
                         self.save_results(results)
                 
-        except KeyboardInterrupt:
-            logger.warning("Process interrupted by user")
-        except Exception as e:
-            logger.error(f"Error during processing: {e}")
-        finally:
-            # Save final results
-            self.save_results(results)
-            
-            # Save barcodes with no results to noresult.json
-            self.save_noresult_json()
-            
-            # Display last successful entry
-            if self.last_successful_entry:
-                logger.info("Last successfully processed entry:")
-                logger.info(json.dumps(self.last_successful_entry, indent=2))
-            else:
-                logger.warning("No entries were successfully processed")
-
+                # Update progress bar
+                pbar.update(1)
+                
+                # Check if we've reached our daily request limit
+                if self.request_count >= self.max_daily_requests:
+                    logger.warning("Daily API request limit reached. Stopping processing.")
+                    break
+                
+     except KeyboardInterrupt:
+        logger.warning("Process interrupted by user")
+     except Exception as e:
+        logger.error(f"Error during processing: {e}")
+     finally:
+        # Save final results
+        self.save_results(results)
+        
+        # Save progress state
+        self.save_progress_state(self.last_processed_index, self.attempted_barcodes)
+        
+        # Display last successful entry
+        if self.last_successful_entry:
+            logger.info("Last successfully processed entry:")
+            logger.info(json.dumps(self.last_successful_entry, indent=2))
+        else:
+            logger.warning("No entries were successfully processed")
 
 def main():
     """Main function to run the barcode fetcher."""
+    # Setup command-line arguments
+    parser = argparse.ArgumentParser(description='Fetch product information for barcodes.')
+    parser.add_argument('--start', type=str, help='Barcode to start processing from')
+    args = parser.parse_args()
+    
+
     fetcher = BarcodeFetcher()
     fetcher.process_barcodes()
 

@@ -1987,3 +1987,599 @@
 2025-05-24 19:19:21,836 - INFO - Trying DigitEyes API for barcode 8902102125808
 2025-05-24 19:19:24,388 - INFO - Trying DeepSeek for barcode 8902102125808
 2025-05-24 19:19:26,334 - INFO - Trying OpenAI for barcode 8902102125808
+2025-05-24 21:00:54,828 - INFO - Loaded 33 previously processed barcodes
+2025-05-24 21:00:54,945 - INFO - Using column 'Barcode' for barcodes
+2025-05-24 21:00:54,956 - INFO - Read 8155 valid barcodes. Found 8156 invalid barcodes.
+2025-05-24 21:00:54,956 - INFO - Starting to process 8155 barcodes
+2025-05-24 21:00:54,961 - INFO - Trying Open Food Facts for barcode 8902102127468
+2025-05-24 21:00:56,615 - INFO - Searching Google for barcode 8902102127468
+2025-05-24 21:00:59,376 - INFO - Trying DigitEyes API for barcode 8902102127468
+2025-05-24 21:01:02,109 - INFO - Trying DeepSeek for barcode 8902102127468
+2025-05-24 21:01:04,243 - INFO - Trying OpenAI for barcode 8902102127468
+2025-05-24 21:01:05,039 - WARNING - Could not find product info for barcode 8902102127468 using any method
+2025-05-24 21:01:05,039 - INFO - Trying Open Food Facts for barcode 8902102125808
+2025-05-24 21:01:06,536 - INFO - Searching Google for barcode 8902102125808
+2025-05-24 21:01:13,720 - INFO - Trying DigitEyes API for barcode 8902102125808
+2025-05-24 21:01:15,222 - INFO - Found URL, extracting product info: https://www.bigbasket.com/
+2025-05-24 21:01:15,222 - INFO - Found BigBasket URL, extracting product info
+2025-05-24 21:01:17,204 - INFO - Successfully extracted product info from website
+2025-05-24 21:01:17,204 - INFO - Enhancing product info for barcode 8902102125808
+2025-05-24 21:01:18,247 - INFO - Trying Open Food Facts for barcode 89021021636
+2025-05-24 21:01:19,814 - INFO - Searching Google for barcode 89021021636
+2025-05-24 21:01:23,386 - INFO - Trying DigitEyes API for barcode 89021021636
+2025-05-24 21:01:26,007 - INFO - Trying DeepSeek for barcode 89021021636
+2025-05-24 21:01:27,644 - INFO - Trying OpenAI for barcode 89021021636
+2025-05-24 21:01:28,065 - WARNING - Could not find product info for barcode 89021021636 using any method
+2025-05-24 21:01:28,066 - INFO - Trying Open Food Facts for barcode 89021021639
+2025-05-24 21:01:29,641 - INFO - Searching Google for barcode 89021021639
+2025-05-24 21:01:32,867 - INFO - Trying DigitEyes API for barcode 89021021639
+2025-05-24 21:01:35,530 - INFO - Trying DeepSeek for barcode 89021021639
+2025-05-24 21:01:37,071 - INFO - Trying OpenAI for barcode 89021021639
+2025-05-24 21:01:37,486 - WARNING - Could not find product info for barcode 89021021639 using any method
+2025-05-24 21:01:37,487 - INFO - Trying Open Food Facts for barcode 89021021640
+2025-05-24 21:01:39,064 - INFO - Searching Google for barcode 89021021640
+2025-05-24 21:01:48,943 - INFO - Trying DigitEyes API for barcode 89021021640
+2025-05-24 21:01:51,509 - INFO - Trying DeepSeek for barcode 89021021640
+2025-05-24 21:01:53,449 - INFO - Trying OpenAI for barcode 89021021640
+2025-05-24 21:01:53,852 - WARNING - Could not find product info for barcode 89021021640 using any method
+2025-05-24 21:01:53,853 - INFO - Trying Open Food Facts for barcode 8902102163992
+2025-05-24 21:01:55,448 - INFO - Searching Google for barcode 8902102163992
+2025-05-24 21:01:55,489 - WARNING - Process interrupted by user
+2025-05-24 21:01:55,492 - INFO - Saved 34 product entries to results.json
+2025-05-24 21:01:55,556 - INFO - Using column 'Barcode' for barcodes
+2025-05-24 21:01:55,567 - INFO - Read 8155 valid barcodes. Found 8156 invalid barcodes.
+2025-05-24 21:01:55,603 - INFO - Saved 8121 barcodes with no results to noresult.json
+2025-05-24 21:01:55,604 - INFO - Last successfully processed entry:
+2025-05-24 21:01:55,604 - INFO - {
+  "Barcode": "8902102125808",
+  "Product Name": "bigbasket \u2013 online grocery store",
+  "Description": "bigbasket \u2013 online grocery store is a high-quality item that offers excellent value and performance.",
+  "Category": "General Merchandise",
+  "ProductLine": "bigbasket Product Line",
+  "Quantity": 1,
+  "Unit": "pc",
+  "Features": [
+    "High quality product",
+    "Excellent performance",
+    "Long lasting",
+    "Great value"
+  ],
+  "Specification": {
+    "Country of Origin": "India",
+    "Form": "Solid",
+    "Packaging Type": "Pack"
+  },
+  "Brand": "bigbasket",
+  "Product Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images",
+  "Product Ingredient Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images"
+}
+2025-05-24 21:17:45,603 - INFO - Loaded 33 previously processed barcodes
+2025-05-24 21:17:45,722 - INFO - Using column 'Barcode' for barcodes
+2025-05-24 21:17:45,734 - INFO - Read 8155 valid barcodes. Found 8156 invalid barcodes.
+2025-05-24 21:17:45,734 - INFO - Starting to process 8155 barcodes
+2025-05-24 21:17:45,739 - INFO - Trying Open Food Facts for barcode 8902102127468
+2025-05-24 21:17:45,739 - ERROR - Error during processing: 'BarcodeFetcher' object has no attribute 'get_product_info_from_openfoodfacts'
+2025-05-24 21:17:45,740 - INFO - Saved 33 product entries to results.json
+2025-05-24 21:17:45,808 - INFO - Using column 'Barcode' for barcodes
+2025-05-24 21:17:45,819 - INFO - Read 8155 valid barcodes. Found 8156 invalid barcodes.
+2025-05-24 21:17:45,857 - INFO - Saved 8122 barcodes with no results to noresult.json
+2025-05-24 21:17:45,857 - WARNING - No entries were successfully processed
+2025-05-24 21:20:45,688 - INFO - Loaded 33 previously processed barcodes
+2025-05-24 21:20:45,807 - INFO - Using column 'Barcode' for barcodes
+2025-05-24 21:20:45,818 - INFO - Read 8155 valid barcodes. Found 8156 invalid barcodes.
+2025-05-24 21:20:45,819 - INFO - Starting to process 8155 barcodes
+2025-05-24 21:20:45,823 - INFO - Trying Open Food Facts for barcode 8902102127468
+2025-05-24 21:20:47,606 - INFO - Searching Google for barcode 8902102127468
+2025-05-24 21:20:57,000 - INFO - Trying DigitEyes API for barcode 8902102127468
+2025-05-24 21:20:59,488 - INFO - Trying DeepSeek for barcode 8902102127468
+2025-05-24 21:21:01,232 - INFO - Trying OpenAI for barcode 8902102127468
+2025-05-24 21:21:02,072 - WARNING - Could not find product info for barcode 8902102127468 using any method
+2025-05-24 21:21:02,073 - INFO - Trying Open Food Facts for barcode 8902102125808
+2025-05-24 21:21:03,645 - INFO - Searching Google for barcode 8902102125808
+2025-05-24 21:21:08,748 - INFO - Trying DigitEyes API for barcode 8902102125808
+2025-05-24 21:21:11,363 - INFO - Trying DeepSeek for barcode 8902102125808
+2025-05-24 21:21:13,024 - INFO - Trying OpenAI for barcode 8902102125808
+2025-05-24 21:21:13,435 - WARNING - Could not find product info for barcode 8902102125808 using any method
+2025-05-24 21:21:13,435 - INFO - Trying Open Food Facts for barcode 89021021636
+2025-05-24 21:21:14,955 - INFO - Searching Google for barcode 89021021636
+2025-05-24 21:21:17,203 - INFO - Trying DigitEyes API for barcode 89021021636
+2025-05-24 21:21:19,801 - INFO - Trying DeepSeek for barcode 89021021636
+2025-05-24 21:21:21,322 - INFO - Trying OpenAI for barcode 89021021636
+2025-05-24 21:21:21,754 - WARNING - Could not find product info for barcode 89021021636 using any method
+2025-05-24 21:21:21,755 - INFO - Trying Open Food Facts for barcode 89021021639
+2025-05-24 21:21:23,305 - INFO - Searching Google for barcode 89021021639
+2025-05-24 21:21:29,026 - INFO - Trying DigitEyes API for barcode 89021021639
+2025-05-24 21:21:31,643 - INFO - Trying DeepSeek for barcode 89021021639
+2025-05-24 21:21:33,589 - INFO - Trying OpenAI for barcode 89021021639
+2025-05-24 21:21:34,098 - WARNING - Could not find product info for barcode 89021021639 using any method
+2025-05-24 21:21:34,098 - INFO - Trying Open Food Facts for barcode 89021021640
+2025-05-24 21:21:35,666 - INFO - Searching Google for barcode 89021021640
+2025-05-24 21:21:37,640 - INFO - Trying DigitEyes API for barcode 89021021640
+2025-05-24 21:21:40,245 - INFO - Trying DeepSeek for barcode 89021021640
+2025-05-24 21:21:41,884 - INFO - Trying OpenAI for barcode 89021021640
+2025-05-24 21:21:42,254 - WARNING - Could not find product info for barcode 89021021640 using any method
+2025-05-24 21:21:42,255 - INFO - Trying Open Food Facts for barcode 8902102163992
+2025-05-24 21:21:43,737 - INFO - Searching Google for barcode 8902102163992
+2025-05-24 21:21:49,867 - INFO - Trying DigitEyes API for barcode 8902102163992
+2025-05-24 21:21:52,533 - INFO - Trying DeepSeek for barcode 8902102163992
+2025-05-24 21:21:54,104 - INFO - Trying OpenAI for barcode 8902102163992
+2025-05-24 21:21:54,498 - WARNING - Could not find product info for barcode 8902102163992 using any method
+2025-05-24 21:21:54,500 - INFO - Trying Open Food Facts for barcode 8902102162582
+2025-05-24 21:21:56,219 - INFO - Searching Google for barcode 8902102162582
+2025-05-24 21:21:58,472 - INFO - Trying DigitEyes API for barcode 8902102162582
+2025-05-24 21:22:00,134 - INFO - Found URL, extracting product info: https://www.flipkart.com/maxo-8902102197522-mosquito-vaporiser-refill/p/itm041a7b8aa77fa
+2025-05-24 21:22:00,829 - INFO - Successfully extracted product info from website
+2025-05-24 21:22:00,830 - INFO - Enhancing product info for barcode 8902102162582
+2025-05-24 21:22:02,388 - INFO - Trying Open Food Facts for barcode 89021021634
+2025-05-24 21:22:03,984 - INFO - Searching Google for barcode 89021021634
+2025-05-24 21:22:09,531 - INFO - Trying DigitEyes API for barcode 89021021634
+2025-05-24 21:22:12,010 - INFO - Trying DeepSeek for barcode 89021021634
+2025-05-24 21:22:13,522 - INFO - Trying OpenAI for barcode 89021021634
+2025-05-24 21:22:13,916 - WARNING - Could not find product info for barcode 89021021634 using any method
+2025-05-24 21:22:13,916 - INFO - Trying Open Food Facts for barcode 8902102160144
+2025-05-24 21:22:15,455 - INFO - Searching Google for barcode 8902102160144
+2025-05-24 21:22:22,638 - INFO - Trying DigitEyes API for barcode 8902102160144
+2025-05-24 21:22:25,407 - INFO - Trying DeepSeek for barcode 8902102160144
+2025-05-24 21:22:27,004 - INFO - Trying OpenAI for barcode 8902102160144
+2025-05-24 21:22:27,470 - WARNING - Could not find product info for barcode 8902102160144 using any method
+2025-05-24 21:22:27,472 - INFO - Trying Open Food Facts for barcode 8902102163503
+2025-05-24 21:22:29,122 - INFO - Searching Google for barcode 8902102163503
+2025-05-24 21:22:35,540 - INFO - Trying DigitEyes API for barcode 8902102163503
+2025-05-24 21:22:38,303 - INFO - Trying DeepSeek for barcode 8902102163503
+2025-05-24 21:22:39,943 - INFO - Trying OpenAI for barcode 8902102163503
+2025-05-24 21:22:40,358 - WARNING - Could not find product info for barcode 8902102163503 using any method
+2025-05-24 21:22:40,359 - INFO - Trying Open Food Facts for barcode 8902102160212
+2025-05-24 21:22:41,906 - INFO - Searching Google for barcode 8902102160212
+2025-05-24 21:22:46,394 - INFO - Trying DigitEyes API for barcode 8902102160212
+2025-05-24 21:22:49,048 - INFO - Trying DeepSeek for barcode 8902102160212
+2025-05-24 21:22:51,002 - INFO - Trying OpenAI for barcode 8902102160212
+2025-05-24 21:22:51,427 - WARNING - Could not find product info for barcode 8902102160212 using any method
+2025-05-24 21:22:51,428 - INFO - Trying Open Food Facts for barcode 89021021635
+2025-05-24 21:22:53,038 - INFO - Searching Google for barcode 89021021635
+2025-05-24 21:22:56,531 - INFO - Trying DigitEyes API for barcode 89021021635
+2025-05-24 21:22:59,031 - INFO - Trying DeepSeek for barcode 89021021635
+2025-05-24 21:23:01,142 - INFO - Trying OpenAI for barcode 89021021635
+2025-05-24 21:23:01,668 - WARNING - Could not find product info for barcode 89021021635 using any method
+2025-05-24 21:23:01,669 - INFO - Trying Open Food Facts for barcode 8902102164081
+2025-05-24 21:23:04,670 - INFO - Searching Google for barcode 8902102164081
+2025-05-24 21:23:09,743 - INFO - Trying DigitEyes API for barcode 8902102164081
+2025-05-24 21:23:12,404 - INFO - Trying DeepSeek for barcode 8902102164081
+2025-05-24 21:23:14,033 - INFO - Trying OpenAI for barcode 8902102164081
+2025-05-24 21:23:14,442 - WARNING - Could not find product info for barcode 8902102164081 using any method
+2025-05-24 21:23:14,443 - INFO - Trying Open Food Facts for barcode 8902102160632
+2025-05-24 21:23:16,005 - INFO - Searching Google for barcode 8902102160632
+2025-05-24 21:23:18,514 - INFO - Trying DigitEyes API for barcode 8902102160632
+2025-05-24 21:23:21,005 - INFO - Trying DeepSeek for barcode 8902102160632
+2025-05-24 21:23:22,644 - INFO - Trying OpenAI for barcode 8902102160632
+2025-05-24 21:23:23,074 - WARNING - Could not find product info for barcode 8902102160632 using any method
+2025-05-24 21:23:23,075 - INFO - Trying Open Food Facts for barcode 8902102162049
+2025-05-24 21:23:24,670 - INFO - Searching Google for barcode 8902102162049
+2025-05-24 21:23:30,118 - INFO - Trying DigitEyes API for barcode 8902102162049
+2025-05-24 21:23:32,879 - INFO - Trying DeepSeek for barcode 8902102162049
+2025-05-24 21:23:34,624 - INFO - Trying OpenAI for barcode 8902102162049
+2025-05-24 21:23:35,050 - WARNING - Could not find product info for barcode 8902102162049 using any method
+2025-05-24 21:23:35,051 - INFO - Trying Open Food Facts for barcode 8902102127369
+2025-05-24 21:23:36,632 - INFO - Searching Google for barcode 8902102127369
+2025-05-24 21:23:40,782 - INFO - Trying DigitEyes API for barcode 8902102127369
+2025-05-24 21:23:43,430 - INFO - Trying DeepSeek for barcode 8902102127369
+2025-05-24 21:23:45,055 - INFO - Trying OpenAI for barcode 8902102127369
+2025-05-24 21:23:45,493 - WARNING - Could not find product info for barcode 8902102127369 using any method
+2025-05-24 21:23:45,493 - INFO - Trying Open Food Facts for barcode 8902102163602
+2025-05-24 21:23:47,017 - INFO - Searching Google for barcode 8902102163602
+2025-05-24 21:23:49,267 - INFO - Trying DigitEyes API for barcode 8902102163602
+2025-05-24 21:23:51,809 - INFO - Trying DeepSeek for barcode 8902102163602
+2025-05-24 21:23:53,465 - INFO - Trying OpenAI for barcode 8902102163602
+2025-05-24 21:23:53,942 - WARNING - Could not find product info for barcode 8902102163602 using any method
+2025-05-24 21:23:53,943 - INFO - Trying Open Food Facts for barcode 89021021250
+2025-05-24 21:23:55,536 - INFO - Searching Google for barcode 89021021250
+2025-05-24 21:24:05,676 - INFO - Trying DigitEyes API for barcode 89021021250
+2025-05-24 21:24:08,305 - INFO - Trying DeepSeek for barcode 89021021250
+2025-05-24 21:24:09,952 - INFO - Trying OpenAI for barcode 89021021250
+2025-05-24 21:24:10,447 - WARNING - Could not find product info for barcode 89021021250 using any method
+2025-05-24 21:24:10,448 - INFO - Trying Open Food Facts for barcode 89021021637
+2025-05-24 21:24:12,190 - INFO - Searching Google for barcode 89021021637
+2025-05-24 21:24:20,700 - INFO - Trying DigitEyes API for barcode 89021021637
+2025-05-24 21:24:23,365 - INFO - Trying DeepSeek for barcode 89021021637
+2025-05-24 21:24:25,004 - INFO - Trying OpenAI for barcode 89021021637
+2025-05-24 21:24:25,438 - WARNING - Could not find product info for barcode 89021021637 using any method
+2025-05-24 21:24:25,438 - INFO - Trying Open Food Facts for barcode 8902102164159
+2025-05-24 21:24:27,021 - INFO - Searching Google for barcode 8902102164159
+2025-05-24 21:24:29,912 - INFO - Trying DigitEyes API for barcode 8902102164159
+2025-05-24 21:24:32,479 - INFO - Trying DeepSeek for barcode 8902102164159
+2025-05-24 21:24:34,018 - INFO - Trying OpenAI for barcode 8902102164159
+2025-05-24 21:24:34,782 - WARNING - Could not find product info for barcode 8902102164159 using any method
+2025-05-24 21:24:34,782 - INFO - Trying Open Food Facts for barcode 8902102125495
+2025-05-24 21:24:36,377 - INFO - Searching Google for barcode 8902102125495
+2025-05-24 21:24:40,568 - INFO - Trying DigitEyes API for barcode 8902102125495
+2025-05-24 21:24:42,226 - INFO - Found URL, extracting product info: https://www.amazon.in/Henko-Stain-Champion-Powder-bucket/dp/B0153BQAHC
+2025-05-24 21:24:42,588 - INFO - Failed to extract product info from URL
+2025-05-24 21:24:43,588 - INFO - Trying DeepSeek for barcode 8902102125495
+2025-05-24 21:24:45,270 - INFO - Trying OpenAI for barcode 8902102125495
+2025-05-24 21:24:45,707 - INFO - Enhancing product info for barcode 8902102125495
+2025-05-24 21:24:45,708 - ERROR - Error during processing: 'NoneType' object has no attribute 'get'
+2025-05-24 21:24:45,710 - INFO - Saved 34 product entries to results.json
+2025-05-24 21:24:45,838 - INFO - Using column 'Barcode' for barcodes
+2025-05-24 21:24:45,850 - INFO - Read 8155 valid barcodes. Found 8156 invalid barcodes.
+2025-05-24 21:24:45,887 - INFO - Saved 8121 barcodes with no results to noresult.json
+2025-05-24 21:24:45,888 - INFO - Last successfully processed entry:
+2025-05-24 21:24:45,888 - INFO - {
+  "Barcode": "8902102162582",
+  "Product Name": "Maxo 8902102197522 Mosquito Vaporiser Refill\u00a0\u00a0(5 x 45 ml)",
+  "Description": "Maxo 8902102197522 Mosquito Vaporiser Refill\u00a0\u00a0(5 x 45 ml) is a high-quality item that offers excellent value and performance.",
+  "Category": "General Merchandise",
+  "ProductLine": "Maxo Product Line",
+  "Quantity": 45,
+  "Unit": "ml",
+  "Features": [
+    "High quality product",
+    "Excellent performance",
+    "Long lasting",
+    "Great value"
+  ],
+  "Specification": {
+    "Weight": "45 ml",
+    "Country of Origin": "India",
+    "Form": "Solid",
+    "Packaging Type": "Pack"
+  },
+  "Brand": "Maxo",
+  "Product Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images",
+  "Product Ingredient Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images"
+}
+2025-05-24 22:06:54,368 - INFO - Loaded 34 previously processed barcodes
+2025-05-24 22:06:54,455 - INFO - Using column 'Barcode' for barcodes
+2025-05-24 22:06:54,467 - INFO - Read 8155 valid barcodes. Found 8156 invalid barcodes.
+2025-05-24 22:06:54,467 - INFO - Processing 8155 barcodes starting from index 0
+2025-05-24 22:06:54,471 - INFO - Trying Open Food Facts for barcode 8902102127468
+2025-05-24 22:06:56,247 - INFO - Searching Google for barcode 8902102127468
+2025-05-24 22:06:57,370 - INFO - Trying DigitEyes API for barcode 8902102127468
+2025-05-24 22:07:00,146 - INFO - Trying DeepSeek for barcode 8902102127468
+2025-05-24 22:07:01,757 - INFO - Trying OpenAI for barcode 8902102127468
+2025-05-24 22:07:02,434 - WARNING - Could not find product info for barcode 8902102127468 using any method
+2025-05-24 22:07:02,435 - INFO - Saved progress state: index 1
+2025-05-24 22:07:02,436 - INFO - Trying Open Food Facts for barcode 8902102125808
+2025-05-24 22:07:03,974 - INFO - Searching Google for barcode 8902102125808
+2025-05-24 22:07:05,091 - INFO - Trying DigitEyes API for barcode 8902102125808
+2025-05-24 22:07:07,759 - INFO - Trying DeepSeek for barcode 8902102125808
+2025-05-24 22:07:09,768 - INFO - Trying OpenAI for barcode 8902102125808
+2025-05-24 22:07:10,164 - WARNING - Could not find product info for barcode 8902102125808 using any method
+2025-05-24 22:07:10,164 - INFO - Saved progress state: index 2
+2025-05-24 22:07:10,165 - INFO - Barcode 8902102163633 already processed, skipping
+2025-05-24 22:07:10,170 - INFO - Saved progress state: index 3
+2025-05-24 22:07:10,170 - INFO - Barcode 8902102163732 already processed, skipping
+2025-05-24 22:07:10,170 - INFO - Saved progress state: index 4
+2025-05-24 22:07:10,170 - INFO - Barcode 8902102163923 already processed, skipping
+2025-05-24 22:07:10,171 - INFO - Saved progress state: index 5
+2025-05-24 22:07:10,171 - INFO - Barcode 8902102163671 already processed, skipping
+2025-05-24 22:07:10,171 - INFO - Saved progress state: index 6
+2025-05-24 22:07:10,171 - INFO - Trying Open Food Facts for barcode 89021021636
+2025-05-24 22:07:11,687 - INFO - Searching Google for barcode 89021021636
+2025-05-24 22:07:12,792 - INFO - Trying DigitEyes API for barcode 89021021636
+2025-05-24 22:07:15,300 - INFO - Trying DeepSeek for barcode 89021021636
+2025-05-24 22:07:16,934 - INFO - Trying OpenAI for barcode 89021021636
+2025-05-24 22:07:17,372 - WARNING - Could not find product info for barcode 89021021636 using any method
+2025-05-24 22:07:17,372 - INFO - Saved progress state: index 7
+2025-05-24 22:07:17,373 - INFO - Trying Open Food Facts for barcode 89021021639
+2025-05-24 22:07:18,911 - INFO - Searching Google for barcode 89021021639
+2025-05-24 22:07:20,332 - INFO - Trying DigitEyes API for barcode 89021021639
+2025-05-24 22:07:22,952 - INFO - Trying DeepSeek for barcode 89021021639
+2025-05-24 22:07:24,619 - INFO - Trying OpenAI for barcode 89021021639
+2025-05-24 22:07:25,035 - WARNING - Could not find product info for barcode 89021021639 using any method
+2025-05-24 22:07:25,035 - INFO - Saved progress state: index 8
+2025-05-24 22:07:25,035 - INFO - Barcode 8902102164166 already processed, skipping
+2025-05-24 22:07:25,040 - INFO - Saved progress state: index 9
+2025-05-24 22:07:25,041 - INFO - Barcode 8902102164067 already processed, skipping
+2025-05-24 22:07:25,041 - INFO - Saved progress state: index 10
+2025-05-24 22:07:25,041 - INFO - Barcode 8902102163961 already processed, skipping
+2025-05-24 22:07:25,041 - INFO - Saved progress state: index 11
+2025-05-24 22:07:25,041 - INFO - Trying Open Food Facts for barcode 89021021640
+2025-05-24 22:07:26,560 - INFO - Searching Google for barcode 89021021640
+2025-05-24 22:07:27,677 - INFO - Trying DigitEyes API for barcode 89021021640
+2025-05-24 22:07:30,452 - INFO - Trying DeepSeek for barcode 89021021640
+2025-05-24 22:07:32,087 - INFO - Trying OpenAI for barcode 89021021640
+2025-05-24 22:07:32,495 - WARNING - Could not find product info for barcode 89021021640 using any method
+2025-05-24 22:07:32,495 - INFO - Saved progress state: index 12
+2025-05-24 22:07:32,496 - INFO - Barcode 8902102164173 already processed, skipping
+2025-05-24 22:07:32,501 - INFO - Saved progress state: index 13
+2025-05-24 22:07:32,501 - INFO - Barcode 8902102163459 already processed, skipping
+2025-05-24 22:07:32,501 - INFO - Saved progress state: index 14
+2025-05-24 22:07:32,501 - INFO - Trying Open Food Facts for barcode 8902102163992
+2025-05-24 22:07:34,055 - INFO - Searching Google for barcode 8902102163992
+2025-05-24 22:07:35,169 - INFO - Trying DigitEyes API for barcode 8902102163992
+2025-05-24 22:07:37,725 - INFO - Trying DeepSeek for barcode 8902102163992
+2025-05-24 22:07:39,363 - INFO - Trying OpenAI for barcode 8902102163992
+2025-05-24 22:07:39,778 - WARNING - Could not find product info for barcode 8902102163992 using any method
+2025-05-24 22:07:39,779 - INFO - Saved progress state: index 15
+2025-05-24 22:07:39,780 - INFO - Barcode 8902102162582 already processed, skipping
+2025-05-24 22:07:39,785 - INFO - Saved progress state: index 16
+2025-05-24 22:07:39,785 - INFO - Trying Open Food Facts for barcode 89021021634
+2025-05-24 22:07:41,341 - INFO - Searching Google for barcode 89021021634
+2025-05-24 22:07:42,455 - INFO - Trying DigitEyes API for barcode 89021021634
+2025-05-24 22:07:45,099 - INFO - Trying DeepSeek for barcode 89021021634
+2025-05-24 22:07:46,693 - INFO - Trying OpenAI for barcode 89021021634
+2025-05-24 22:07:47,075 - WARNING - Could not find product info for barcode 89021021634 using any method
+2025-05-24 22:07:47,075 - INFO - Saved progress state: index 17
+2025-05-24 22:07:47,076 - INFO - Trying Open Food Facts for barcode 8902102160144
+2025-05-24 22:07:48,626 - INFO - Searching Google for barcode 8902102160144
+2025-05-24 22:07:49,730 - INFO - Trying DigitEyes API for barcode 8902102160144
+2025-05-24 22:07:52,292 - INFO - Trying DeepSeek for barcode 8902102160144
+2025-05-24 22:07:53,877 - INFO - Trying OpenAI for barcode 8902102160144
+2025-05-24 22:07:54,280 - WARNING - Could not find product info for barcode 8902102160144 using any method
+2025-05-24 22:07:54,281 - INFO - Saved progress state: index 18
+2025-05-24 22:07:54,282 - INFO - Trying Open Food Facts for barcode 8902102163503
+2025-05-24 22:07:55,839 - INFO - Searching Google for barcode 8902102163503
+2025-05-24 22:07:56,961 - INFO - Trying DigitEyes API for barcode 8902102163503
+2025-05-24 22:07:59,639 - INFO - Trying DeepSeek for barcode 8902102163503
+2025-05-24 22:08:01,277 - INFO - Trying OpenAI for barcode 8902102163503
+2025-05-24 22:08:01,663 - WARNING - Could not find product info for barcode 8902102163503 using any method
+2025-05-24 22:08:01,664 - INFO - Saved progress state: index 19
+2025-05-24 22:08:01,664 - INFO - Trying Open Food Facts for barcode 8902102160212
+2025-05-24 22:08:03,388 - INFO - Searching Google for barcode 8902102160212
+2025-05-24 22:08:04,501 - INFO - Trying DigitEyes API for barcode 8902102160212
+2025-05-24 22:08:07,007 - INFO - Trying DeepSeek for barcode 8902102160212
+2025-05-24 22:08:08,533 - INFO - Trying OpenAI for barcode 8902102160212
+2025-05-24 22:08:08,916 - WARNING - Could not find product info for barcode 8902102160212 using any method
+2025-05-24 22:08:08,916 - INFO - Saved progress state: index 20
+2025-05-24 22:08:08,917 - INFO - Trying Open Food Facts for barcode 89021021635
+2025-05-24 22:08:10,430 - INFO - Searching Google for barcode 89021021635
+2025-05-24 22:08:11,510 - INFO - Trying DigitEyes API for barcode 89021021635
+2025-05-24 22:08:13,919 - INFO - Trying DeepSeek for barcode 89021021635
+2025-05-24 22:08:15,521 - INFO - Trying OpenAI for barcode 89021021635
+2025-05-24 22:08:15,905 - WARNING - Could not find product info for barcode 89021021635 using any method
+2025-05-24 22:08:15,906 - INFO - Saved progress state: index 21
+2025-05-24 22:08:15,906 - INFO - Barcode 8902102162117 already processed, skipping
+2025-05-24 22:08:15,911 - INFO - Saved progress state: index 22
+2025-05-24 22:08:15,911 - INFO - Trying Open Food Facts for barcode 8902102164081
+2025-05-24 22:08:17,486 - INFO - Searching Google for barcode 8902102164081
+2025-05-24 22:08:18,628 - INFO - Trying DigitEyes API for barcode 8902102164081
+2025-05-24 22:08:21,245 - INFO - Trying DeepSeek for barcode 8902102164081
+2025-05-24 22:08:22,884 - INFO - Trying OpenAI for barcode 8902102164081
+2025-05-24 22:08:23,308 - WARNING - Could not find product info for barcode 8902102164081 using any method
+2025-05-24 22:08:23,309 - INFO - Saved progress state: index 23
+2025-05-24 22:08:23,309 - INFO - Barcode 8902102164074 already processed, skipping
+2025-05-24 22:08:23,314 - INFO - Saved progress state: index 24
+2025-05-24 22:08:23,314 - INFO - Trying Open Food Facts for barcode 8902102160632
+2025-05-24 22:08:24,835 - INFO - Searching Google for barcode 8902102160632
+2025-05-24 22:08:25,955 - INFO - Trying DigitEyes API for barcode 8902102160632
+2025-05-24 22:08:28,413 - INFO - Trying DeepSeek for barcode 8902102160632
+2025-05-24 22:08:29,992 - INFO - Trying OpenAI for barcode 8902102160632
+2025-05-24 22:08:30,411 - WARNING - Could not find product info for barcode 8902102160632 using any method
+2025-05-24 22:08:30,412 - INFO - Saved progress state: index 25
+2025-05-24 22:08:30,412 - INFO - Trying Open Food Facts for barcode 8902102162049
+2025-05-24 22:08:31,970 - INFO - Searching Google for barcode 8902102162049
+2025-05-24 22:08:33,084 - INFO - Trying DigitEyes API for barcode 8902102162049
+2025-05-24 22:08:35,786 - INFO - Trying DeepSeek for barcode 8902102162049
+2025-05-24 22:08:37,424 - INFO - Trying OpenAI for barcode 8902102162049
+2025-05-24 22:08:37,833 - WARNING - Could not find product info for barcode 8902102162049 using any method
+2025-05-24 22:08:37,833 - INFO - Saved progress state: index 26
+2025-05-24 22:08:37,834 - INFO - Barcode 8902102164043 already processed, skipping
+2025-05-24 22:08:37,834 - INFO - Saved progress state: index 27
+2025-05-24 22:08:37,834 - INFO - Trying Open Food Facts for barcode 8902102127369
+2025-05-24 22:08:39,331 - INFO - Searching Google for barcode 8902102127369
+2025-05-24 22:08:40,438 - INFO - Trying DigitEyes API for barcode 8902102127369
+2025-05-24 22:08:43,159 - INFO - Trying DeepSeek for barcode 8902102127369
+2025-05-24 22:08:44,797 - INFO - Trying OpenAI for barcode 8902102127369
+2025-05-24 22:08:45,208 - WARNING - Could not find product info for barcode 8902102127369 using any method
+2025-05-24 22:08:45,208 - INFO - Saved progress state: index 28
+2025-05-24 22:08:45,209 - INFO - Trying Open Food Facts for barcode 8902102163602
+2025-05-24 22:08:46,729 - INFO - Searching Google for barcode 8902102163602
+2025-05-24 22:08:47,825 - INFO - Trying DigitEyes API for barcode 8902102163602
+2025-05-24 22:08:50,386 - INFO - Trying DeepSeek for barcode 8902102163602
+2025-05-24 22:08:51,921 - INFO - Trying OpenAI for barcode 8902102163602
+2025-05-24 22:08:52,398 - WARNING - Could not find product info for barcode 8902102163602 using any method
+2025-05-24 22:08:52,399 - INFO - Saved progress state: index 29
+2025-05-24 22:08:52,400 - INFO - Barcode 8902102125013 already processed, skipping
+2025-05-24 22:08:52,405 - INFO - Saved progress state: index 30
+2025-05-24 22:08:52,405 - INFO - Barcode 8902102163916 already processed, skipping
+2025-05-24 22:08:52,405 - INFO - Saved progress state: index 31
+2025-05-24 22:08:52,405 - INFO - Trying Open Food Facts for barcode 89021021250
+2025-05-24 22:08:53,920 - INFO - Searching Google for barcode 89021021250
+2025-05-24 22:08:55,001 - INFO - Trying DigitEyes API for barcode 89021021250
+2025-05-24 22:08:57,699 - INFO - Trying DeepSeek for barcode 89021021250
+2025-05-24 22:08:59,225 - INFO - Trying OpenAI for barcode 89021021250
+2025-05-24 22:08:59,575 - WARNING - Could not find product info for barcode 89021021250 using any method
+2025-05-24 22:08:59,576 - INFO - Saved progress state: index 32
+2025-05-24 22:08:59,577 - INFO - Trying Open Food Facts for barcode 89021021637
+2025-05-24 22:09:01,078 - INFO - Searching Google for barcode 89021021637
+2025-05-24 22:09:02,181 - INFO - Trying DigitEyes API for barcode 89021021637
+2025-05-24 22:09:04,707 - INFO - Trying DeepSeek for barcode 89021021637
+2025-05-24 22:09:06,300 - INFO - Trying OpenAI for barcode 89021021637
+2025-05-24 22:09:06,720 - WARNING - Could not find product info for barcode 89021021637 using any method
+2025-05-24 22:09:06,720 - INFO - Saved progress state: index 33
+2025-05-24 22:09:06,721 - INFO - Barcode 8902102126256 already processed, skipping
+2025-05-24 22:09:06,726 - INFO - Saved progress state: index 34
+2025-05-24 22:09:06,726 - INFO - Barcode 8902102163909 already processed, skipping
+2025-05-24 22:09:06,726 - INFO - Saved progress state: index 35
+2025-05-24 22:09:06,726 - INFO - Barcode 8902102126409 already processed, skipping
+2025-05-24 22:09:06,727 - INFO - Saved progress state: index 36
+2025-05-24 22:09:06,727 - INFO - Trying Open Food Facts for barcode 8902102164159
+2025-05-24 22:09:08,475 - INFO - Searching Google for barcode 8902102164159
+2025-05-24 22:09:09,594 - INFO - Trying DigitEyes API for barcode 8902102164159
+2025-05-24 22:09:12,232 - INFO - Trying DeepSeek for barcode 8902102164159
+2025-05-24 22:09:13,878 - INFO - Trying OpenAI for barcode 8902102164159
+2025-05-24 22:09:16,359 - WARNING - Could not find product info for barcode 8902102164159 using any method
+2025-05-24 22:09:16,360 - INFO - Saved progress state: index 37
+2025-05-24 22:09:16,360 - INFO - Trying Open Food Facts for barcode 8902102125495
+2025-05-24 22:09:17,882 - INFO - Searching Google for barcode 8902102125495
+2025-05-24 22:09:18,960 - INFO - Trying DigitEyes API for barcode 8902102125495
+2025-05-24 22:09:20,557 - INFO - Found URL, extracting product info: https://www.amazon.in/Henko-Stain-Champion-Powder-bucket/dp/B0153BQAHC
+2025-05-24 22:09:23,456 - INFO - Successfully extracted product info from website
+2025-05-24 22:09:23,456 - INFO - Enhancing product info for barcode 8902102125495
+2025-05-24 22:09:24,552 - INFO - Saved progress state: index 38
+2025-05-24 22:09:24,552 - INFO - Barcode 8902102127819 already processed, skipping
+2025-05-24 22:09:24,557 - INFO - Saved progress state: index 39
+2025-05-24 22:09:24,557 - INFO - Barcode 8902102125501 already processed, skipping
+2025-05-24 22:09:24,558 - INFO - Saved progress state: index 40
+2025-05-24 22:09:24,558 - INFO - Barcode 8902102127475 already processed, skipping
+2025-05-24 22:09:24,558 - INFO - Saved progress state: index 41
+2025-05-24 22:09:24,558 - INFO - Trying Open Food Facts for barcode 8902102163886
+2025-05-24 22:09:26,111 - INFO - Searching Google for barcode 8902102163886
+2025-05-24 22:09:41,628 - INFO - Trying DigitEyes API for barcode 8902102163886
+2025-05-24 22:09:44,231 - INFO - Trying DeepSeek for barcode 8902102163886
+2025-05-24 22:09:45,824 - INFO - Trying OpenAI for barcode 8902102163886
+2025-05-24 22:09:46,228 - WARNING - Could not find product info for barcode 8902102163886 using any method
+2025-05-24 22:09:46,228 - INFO - Saved progress state: index 42
+2025-05-24 22:09:46,229 - INFO - Barcode 8902102127499 already processed, skipping
+2025-05-24 22:09:46,234 - INFO - Saved progress state: index 43
+2025-05-24 22:09:46,234 - INFO - Trying Open Food Facts for barcode 8902102163725
+2025-05-24 22:09:48,354 - INFO - Searching Google for barcode 8902102163725
+2025-05-24 22:10:04,779 - INFO - Trying DigitEyes API for barcode 8902102163725
+2025-05-24 22:10:07,534 - INFO - Trying DeepSeek for barcode 8902102163725
+2025-05-24 22:10:09,173 - INFO - Trying OpenAI for barcode 8902102163725
+2025-05-24 22:10:09,560 - WARNING - Could not find product info for barcode 8902102163725 using any method
+2025-05-24 22:10:09,560 - INFO - Saved progress state: index 44
+2025-05-24 22:10:09,561 - INFO - Barcode 8902102127482 already processed, skipping
+2025-05-24 22:10:09,566 - INFO - Saved progress state: index 45
+2025-05-24 22:10:09,566 - INFO - Barcode 8902102126553 already processed, skipping
+2025-05-24 22:10:09,566 - INFO - Saved progress state: index 46
+2025-05-24 22:10:09,566 - INFO - Barcode 8902102163688 already processed, skipping
+2025-05-24 22:10:09,567 - INFO - Saved progress state: index 47
+2025-05-24 22:10:09,567 - INFO - Barcode 8902102163695 already processed, skipping
+2025-05-24 22:10:09,567 - INFO - Saved progress state: index 48
+2025-05-24 22:10:09,567 - INFO - Barcode 8902102127406 already processed, skipping
+2025-05-24 22:10:09,568 - INFO - Saved progress state: index 49
+2025-05-24 22:10:09,568 - INFO - Barcode 8902102163718 already processed, skipping
+2025-05-24 22:10:09,568 - INFO - Saved progress state: index 50
+2025-05-24 22:10:09,568 - INFO - Barcode 8902102163701 already processed, skipping
+2025-05-24 22:10:09,569 - INFO - Saved progress state: index 51
+2025-05-24 22:10:09,569 - INFO - Barcode 8902102127123 already processed, skipping
+2025-05-24 22:10:09,569 - INFO - Saved progress state: index 52
+2025-05-24 22:10:09,569 - INFO - Trying Open Food Facts for barcode 89021021271
+2025-05-24 22:10:11,287 - INFO - Searching Google for barcode 89021021271
+2025-05-24 22:10:13,781 - INFO - Trying DigitEyes API for barcode 89021021271
+2025-05-24 22:10:16,442 - INFO - Trying DeepSeek for barcode 89021021271
+2025-05-24 22:10:18,081 - INFO - Trying OpenAI for barcode 89021021271
+2025-05-24 22:10:18,459 - WARNING - Could not find product info for barcode 89021021271 using any method
+2025-05-24 22:10:18,459 - INFO - Saved progress state: index 53
+2025-05-24 22:10:18,460 - INFO - Trying Open Food Facts for barcode 8902102163787
+2025-05-24 22:10:19,982 - INFO - Searching Google for barcode 8902102163787
+2025-05-24 22:10:22,792 - INFO - Trying DigitEyes API for barcode 8902102163787
+2025-05-24 22:10:25,454 - INFO - Trying DeepSeek for barcode 8902102163787
+2025-05-24 22:10:27,298 - INFO - Trying OpenAI for barcode 8902102163787
+2025-05-24 22:10:27,716 - WARNING - Could not find product info for barcode 8902102163787 using any method
+2025-05-24 22:10:27,716 - INFO - Saved progress state: index 54
+2025-05-24 22:10:27,717 - INFO - Trying Open Food Facts for barcode 89021021638
+2025-05-24 22:10:29,260 - INFO - Searching Google for barcode 89021021638
+2025-05-24 22:10:33,953 - INFO - Trying DigitEyes API for barcode 89021021638
+2025-05-24 22:10:36,718 - INFO - Trying DeepSeek for barcode 89021021638
+2025-05-24 22:10:38,356 - INFO - Trying OpenAI for barcode 89021021638
+2025-05-24 22:10:38,754 - WARNING - Could not find product info for barcode 89021021638 using any method
+2025-05-24 22:10:38,755 - INFO - Saved progress state: index 55
+2025-05-24 22:10:38,755 - INFO - Barcode 8902102163824 already processed, skipping
+2025-05-24 22:10:38,760 - INFO - Saved progress state: index 56
+2025-05-24 22:10:38,760 - INFO - Trying Open Food Facts for barcode 8902102163794
+2025-05-24 22:10:40,314 - INFO - Searching Google for barcode 8902102163794
+2025-05-24 22:10:44,704 - INFO - Trying DigitEyes API for barcode 8902102163794
+2025-05-24 22:10:46,182 - INFO - Found URL, extracting product info: https://www.bigbasket.com/pd/40173028/pril-liquid-dishwasher-tamarind-225-ml/
+2025-05-24 22:10:46,182 - INFO - Found BigBasket URL, extracting product info
+2025-05-24 22:10:47,310 - INFO - Successfully extracted product info from website
+2025-05-24 22:10:47,310 - INFO - Enhancing product info for barcode 8902102163794
+2025-05-24 22:10:48,313 - INFO - Saved progress state: index 57
+2025-05-24 22:10:48,313 - INFO - Trying Open Food Facts for barcode 8902102127185
+2025-05-24 22:10:49,836 - INFO - Searching Google for barcode 8902102127185
+2025-05-24 22:10:52,690 - INFO - Trying DigitEyes API for barcode 8902102127185
+2025-05-24 22:10:54,354 - INFO - Found URL, extracting product info: https://www.bigbasket.com/pd/40262925/henko-matic-liquid-detergent-front-load-nano-fibre-lock-technology-999-germ-protection-super-saver-pack-2-l-refill-pouch/
+2025-05-24 22:10:54,354 - INFO - Found BigBasket URL, extracting product info
+2025-05-24 22:10:55,300 - INFO - Successfully extracted product info from website
+2025-05-24 22:10:55,300 - INFO - Enhancing product info for barcode 8902102127185
+2025-05-24 22:10:56,296 - INFO - Saved progress state: index 58
+2025-05-24 22:10:56,297 - INFO - Trying Open Food Facts for barcode 8902102163817
+2025-05-24 22:10:57,892 - INFO - Searching Google for barcode 8902102163817
+2025-05-24 22:11:03,751 - INFO - Trying DigitEyes API for barcode 8902102163817
+2025-05-24 22:11:05,303 - INFO - Found URL, extracting product info: https://www.bigbasket.com/pd/40173029/pril-liquid-dishwasher-tamarind-425-ml/
+2025-05-24 22:11:05,304 - INFO - Found BigBasket URL, extracting product info
+2025-05-24 22:11:06,229 - INFO - Successfully extracted product info from website
+2025-05-24 22:11:06,229 - INFO - Enhancing product info for barcode 8902102163817
+2025-05-24 22:11:07,256 - INFO - Saved progress state: index 59
+2025-05-24 22:11:07,256 - INFO - Barcode 8902102163831 already processed, skipping
+2025-05-24 22:11:07,262 - INFO - Saved progress state: index 60
+2025-05-24 22:11:07,262 - INFO - Trying Open Food Facts for barcode 8902102164203
+2025-05-24 22:11:08,785 - INFO - Searching Google for barcode 8902102164203
+2025-05-24 22:11:27,917 - INFO - Trying DigitEyes API for barcode 8902102164203
+2025-05-24 22:11:30,477 - INFO - Trying DeepSeek for barcode 8902102164203
+2025-05-24 22:11:32,116 - INFO - Trying OpenAI for barcode 8902102164203
+2025-05-24 22:11:32,544 - WARNING - Could not find product info for barcode 8902102164203 using any method
+2025-05-24 22:11:32,545 - INFO - Saved progress state: index 61
+2025-05-24 22:11:32,546 - INFO - Trying Open Food Facts for barcode 8902102127147
+2025-05-24 22:11:34,265 - INFO - Searching Google for barcode 8902102127147
+2025-05-24 22:11:37,338 - INFO - Trying DigitEyes API for barcode 8902102127147
+2025-05-24 22:11:40,000 - INFO - Trying DeepSeek for barcode 8902102127147
+2025-05-24 22:11:41,635 - INFO - Trying OpenAI for barcode 8902102127147
+2025-05-24 22:11:42,054 - WARNING - Could not find product info for barcode 8902102127147 using any method
+2025-05-24 22:11:42,055 - INFO - Saved progress state: index 62
+2025-05-24 22:11:42,056 - INFO - Trying Open Food Facts for barcode 8902102127154
+2025-05-24 22:11:43,579 - INFO - Searching Google for barcode 8902102127154
+2025-05-24 22:11:47,475 - INFO - Trying DigitEyes API for barcode 8902102127154
+2025-05-24 22:11:49,137 - INFO - Found URL, extracting product info: https://www.bigbasket.com/pd/40237249/henko-matic-liquid-detergent-top-load-nano-fibre-lock-technology-999-germ-protection-1-l/
+2025-05-24 22:11:49,137 - INFO - Found BigBasket URL, extracting product info
+2025-05-24 22:11:50,162 - INFO - Successfully extracted product info from website
+2025-05-24 22:11:50,162 - INFO - Enhancing product info for barcode 8902102127154
+2025-05-24 22:11:51,183 - INFO - Saved progress state: index 63
+2025-05-24 22:11:51,184 - INFO - Trying Open Food Facts for barcode 8902102163862
+2025-05-24 22:11:52,714 - INFO - Searching Google for barcode 8902102163862
+2025-05-24 22:11:56,935 - INFO - Trying DigitEyes API for barcode 8902102163862
+2025-05-24 22:11:58,552 - INFO - Found URL, extracting product info: https://www.bigbasket.com/pd/40224286/pril-dishwashing-liquid-lime-3-l/
+2025-05-24 22:11:58,552 - INFO - Found BigBasket URL, extracting product info
+2025-05-24 22:12:04,816 - INFO - Successfully extracted product info from website
+2025-05-24 22:12:04,816 - INFO - Enhancing product info for barcode 8902102163862
+2025-05-24 22:12:05,850 - INFO - Saved progress state: index 64
+2025-05-24 22:12:05,853 - INFO - Saved 40 product entries to results.json
+2025-05-24 22:12:05,854 - INFO - Trying Open Food Facts for barcode 8902102163855
+2025-05-24 22:12:07,387 - INFO - Searching Google for barcode 8902102163855
+2025-05-24 22:12:17,376 - INFO - Trying DigitEyes API for barcode 8902102163855
+2025-05-24 22:12:18,935 - INFO - Found URL, extracting product info: https://www.bigbasket.com/pd/40224285/pril-dishwashing-liquid-lime-15-l/
+2025-05-24 22:12:18,936 - INFO - Found BigBasket URL, extracting product info
+2025-05-24 22:12:20,006 - INFO - Successfully extracted product info from website
+2025-05-24 22:12:20,007 - INFO - Enhancing product info for barcode 8902102163855
+2025-05-24 22:12:21,086 - INFO - Saved progress state: index 65
+2025-05-24 22:12:21,087 - INFO - Trying Open Food Facts for barcode 8902102127192
+2025-05-24 22:12:22,637 - INFO - Searching Google for barcode 8902102127192
+2025-05-24 22:12:32,940 - INFO - Trying DigitEyes API for barcode 8902102127192
+2025-05-24 22:12:34,602 - INFO - Found URL, extracting product info: https://www.bigbasket.com/pd/40262926/henko-matic-liquid-detergent-top-load-nano-fibre-lock-technology-999-germ-protection-super-saver-pack-2-l-refill-pouch/
+2025-05-24 22:12:34,602 - INFO - Found BigBasket URL, extracting product info
+2025-05-24 22:12:35,632 - INFO - Successfully extracted product info from website
+2025-05-24 22:12:35,633 - INFO - Enhancing product info for barcode 8902102127192
+2025-05-24 22:12:36,754 - INFO - Saved progress state: index 66
+2025-05-24 22:12:36,754 - INFO - Trying Open Food Facts for barcode 8902102300724
+2025-05-24 22:12:38,476 - INFO - Searching Google for barcode 8902102300724
+2025-05-24 22:12:40,927 - INFO - Trying DigitEyes API for barcode 8902102300724
+2025-05-24 22:12:43,536 - INFO - Trying DeepSeek for barcode 8902102300724
+2025-05-24 22:12:45,535 - INFO - Trying OpenAI for barcode 8902102300724
+2025-05-24 22:12:45,925 - WARNING - Could not find product info for barcode 8902102300724 using any method
+2025-05-24 22:12:45,931 - INFO - Saved progress state: index 67
+2025-05-24 22:12:45,931 - INFO - Trying Open Food Facts for barcode 8902102127574
+2025-05-24 22:12:47,501 - INFO - Searching Google for barcode 8902102127574
+2025-05-24 22:12:50,348 - INFO - Trying DigitEyes API for barcode 8902102127574
+2025-05-24 22:12:51,906 - INFO - Found URL, extracting product info: https://www.amazon.in/Henko-Matic-Detergent-Liquid-Humarabazar/dp/B0D382GMJ8
+2025-05-24 22:12:52,187 - INFO - Failed to extract product info from URL
+2025-05-24 22:12:53,188 - INFO - Trying DeepSeek for barcode 8902102127574
+2025-05-24 22:12:54,854 - INFO - Trying OpenAI for barcode 8902102127574
+2025-05-24 22:12:55,265 - INFO - Enhancing product info for barcode 8902102127574
+2025-05-24 22:12:55,266 - ERROR - Error during processing: 'NoneType' object has no attribute 'get'
+2025-05-24 22:12:55,269 - INFO - Saved 42 product entries to results.json
+2025-05-24 22:12:55,269 - INFO - Saved progress state: index 67
+2025-05-24 22:12:55,269 - INFO - Last successfully processed entry:
+2025-05-24 22:12:55,270 - INFO - {
+  "Barcode": "8902102127192",
+  "Product Name": "Henko Matic Top Load Liquid Detergent, 2 L",
+  "Description": "Henko Matic Top Load Liquid Detergent, 2 L is a high-quality item that offers excellent value and performance.",
+  "Category": "General Merchandise",
+  "ProductLine": "Unknown Product Line",
+  "Brand": "Unknown",
+  "Quantity": 2.0,
+  "Unit": "l",
+  "Features": [
+    "High quality product",
+    "Excellent performance",
+    "Long lasting",
+    "Great value"
+  ],
+  "Specification": {
+    "Country of Origin": "India",
+    "Weight": "2.0 l",
+    "Form": "Liquid",
+    "Packaging Type": "Bottle"
+  },
+  "Product Image": "https://images.openfoodfacts.org/images/products/890/210/212/7192/front_en.3.400.jpg",
+  "Product Ingredient Image": "https://images.openfoodfacts.org/images/products/890/210/212/7192/front_en.3.400.jpg"
+}

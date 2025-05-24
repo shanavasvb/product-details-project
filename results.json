@@ -785,5 +785,221 @@
     "Brand": "Ujala",
     "Product Image": "https://images.openfoodfacts.org/images/products/890/210/219/4934/front_en.3.400.jpg",
     "Product Ingredient Image": "https://images.openfoodfacts.org/images/products/890/210/219/4934/front_en.3.400.jpg"
+  },
+  {
+    "Barcode": "8902102162582",
+    "Product Name": "Maxo 8902102197522 Mosquito Vaporiser Refill  (5 x 45 ml)",
+    "Description": "Maxo 8902102197522 Mosquito Vaporiser Refill  (5 x 45 ml) is a high-quality item that offers excellent value and performance.",
+    "Category": "General Merchandise",
+    "ProductLine": "Maxo Product Line",
+    "Quantity": 45,
+    "Unit": "ml",
+    "Features": [
+      "High quality product",
+      "Excellent performance",
+      "Long lasting",
+      "Great value"
+    ],
+    "Specification": {
+      "Weight": "45 ml",
+      "Country of Origin": "India",
+      "Form": "Solid",
+      "Packaging Type": "Pack"
+    },
+    "Brand": "Maxo",
+    "Product Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images",
+    "Product Ingredient Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DvQs_zJG5Bo35yCJ-eiWIQHaHa%26pid%3DApi&f=1&ipt=96dc7d84b243cf6611078549dfce916df145c74eb02c3a5a3ab46a8491f92ff9&ipo=images"
+  },
+  {
+    "Barcode": "8902102125495",
+    "Product Name": "Henko Stain Champion Powder - 3 kg with free bucket",
+    "Description": "Henko Stain Champion Powder - 3 kg with free bucket is a high-quality item that offers excellent value and performance.",
+    "Category": "General Merchandise",
+    "ProductLine": "Unknown Product Line",
+    "Brand": "Unknown",
+    "Quantity": 3.0,
+    "Unit": "kg",
+    "Features": [
+      "High quality product",
+      "Excellent performance",
+      "Long lasting",
+      "Great value"
+    ],
+    "Specification": {
+      "Country of Origin": "India",
+      "Weight": "3.0 kg",
+      "Form": "Powder",
+      "Packaging Type": "Box"
+    },
+    "Product Image": "https://images.openfoodfacts.org/images/products/890/210/212/5495/front_en.3.400.jpg",
+    "Product Ingredient Image": "https://images.openfoodfacts.org/images/products/890/210/212/5495/front_en.3.400.jpg"
+  },
+  {
+    "Barcode": "8902102163794",
+    "Product Name": "Pril Tamarind Shine Specialist Dishwash Liquid Gel, 225 ml",
+    "Description": "Pril Tamarind Shine Specialist Dishwash Liquid Gel, 225 ml is a high-quality item that offers excellent value and performance.",
+    "Category": "General Merchandise",
+    "ProductLine": "Unknown Product Line",
+    "Brand": "Unknown",
+    "Quantity": 225.0,
+    "Unit": "ml",
+    "Features": [
+      "High quality product",
+      "Excellent performance",
+      "Long lasting",
+      "Great value"
+    ],
+    "Specification": {
+      "Country of Origin": "India",
+      "Weight": "225.0 ml",
+      "Form": "Liquid",
+      "Packaging Type": "Bottle"
+    },
+    "Product Image": "https://images.openfoodfacts.org/images/products/890/210/216/3794/front_en.3.400.jpg",
+    "Product Ingredient Image": "https://images.openfoodfacts.org/images/products/890/210/216/3794/front_en.3.400.jpg"
+  },
+  {
+    "Barcode": "8902102127185",
+    "Product Name": "Henko Matic Front Load Liquid Detergent, 2 L",
+    "Description": "Henko Matic Front Load Liquid Detergent, 2 L is a high-quality item that offers excellent value and performance.",
+    "Category": "General Merchandise",
+    "ProductLine": "Unknown Product Line",
+    "Brand": "Unknown",
+    "Quantity": 2.0,
+    "Unit": "l",
+    "Features": [
+      "High quality product",
+      "Excellent performance",
+      "Long lasting",
+      "Great value"
+    ],
+    "Specification": {
+      "Country of Origin": "India",
+      "Weight": "2.0 l",
+      "Form": "Liquid",
+      "Packaging Type": "Bottle"
+    },
+    "Product Image": "https://images.openfoodfacts.org/images/products/890/210/212/7185/front_en.3.400.jpg",
+    "Product Ingredient Image": "https://images.openfoodfacts.org/images/products/890/210/212/7185/front_en.3.400.jpg"
+  },
+  {
+    "Barcode": "8902102163817",
+    "Product Name": "Pril Tamarind Shine Specialist Dishwash Liquid Gel, 425 ml",
+    "Description": "Pril Tamarind Shine Specialist Dishwash Liquid Gel, 425 ml is a high-quality item that offers excellent value and performance.",
+    "Category": "General Merchandise",
+    "ProductLine": "Unknown Product Line",
+    "Brand": "Unknown",
+    "Quantity": 425.0,
+    "Unit": "ml",
+    "Features": [
+      "High quality product",
+      "Excellent performance",
+      "Long lasting",
+      "Great value"
+    ],
+    "Specification": {
+      "Country of Origin": "India",
+      "Weight": "425.0 ml",
+      "Form": "Liquid",
+      "Packaging Type": "Bottle"
+    },
+    "Product Image": "https://images.openfoodfacts.org/images/products/890/210/216/3817/front_en.3.400.jpg",
+    "Product Ingredient Image": "https://images.openfoodfacts.org/images/products/890/210/216/3817/front_en.3.400.jpg"
+  },
+  {
+    "Barcode": "8902102127154",
+    "Product Name": "Henko Matic Top Load Liquid Detergent, 1 L",
+    "Description": "Henko Matic Top Load Liquid Detergent, 1 L is a high-quality item that offers excellent value and performance.",
+    "Category": "General Merchandise",
+    "ProductLine": "Unknown Product Line",
+    "Brand": "Unknown",
+    "Quantity": 1.0,
+    "Unit": "l",
+    "Features": [
+      "High quality product",
+      "Excellent performance",
+      "Long lasting",
+      "Great value"
+    ],
+    "Specification": {
+      "Country of Origin": "India",
+      "Weight": "1.0 l",
+      "Form": "Liquid",
+      "Packaging Type": "Bottle"
+    },
+    "Product Image": "https://images.openfoodfacts.org/images/products/890/210/212/7154/front_en.3.400.jpg",
+    "Product Ingredient Image": "https://images.openfoodfacts.org/images/products/890/210/212/7154/front_en.3.400.jpg"
+  },
+  {
+    "Barcode": "8902102163862",
+    "Product Name": "Pril Dishwash Liquid Gel - Lime, 3 L",
+    "Description": "Pril Dishwash Liquid Gel - Lime, 3 L is a high-quality item that offers excellent value and performance.",
+    "Category": "General Merchandise",
+    "ProductLine": "Unknown Product Line",
+    "Brand": "Unknown",
+    "Quantity": 3.0,
+    "Unit": "l",
+    "Features": [
+      "High quality product",
+      "Excellent performance",
+      "Long lasting",
+      "Great value"
+    ],
+    "Specification": {
+      "Country of Origin": "India",
+      "Weight": "3.0 l",
+      "Form": "Liquid",
+      "Packaging Type": "Bottle"
+    },
+    "Product Image": "https://images.openfoodfacts.org/images/products/890/210/216/3862/front_en.3.400.jpg",
+    "Product Ingredient Image": "https://images.openfoodfacts.org/images/products/890/210/216/3862/front_en.3.400.jpg"
+  },
+  {
+    "Barcode": "8902102163855",
+    "Product Name": "Pril Dishwash Liquid Gel - Lime, 1.5 L",
+    "Description": "Pril Dishwash Liquid Gel - Lime, 1.5 L is a high-quality item that offers excellent value and performance.",
+    "Category": "General Merchandise",
+    "ProductLine": "Unknown Product Line",
+    "Brand": "Unknown",
+    "Quantity": 1.5,
+    "Unit": "l",
+    "Features": [
+      "High quality product",
+      "Excellent performance",
+      "Long lasting",
+      "Great value"
+    ],
+    "Specification": {
+      "Country of Origin": "India",
+      "Weight": "1.5 l",
+      "Form": "Liquid",
+      "Packaging Type": "Bottle"
+    },
+    "Product Image": "https://images.openfoodfacts.org/images/products/890/210/216/3855/front_en.3.400.jpg",
+    "Product Ingredient Image": "https://images.openfoodfacts.org/images/products/890/210/216/3855/front_en.3.400.jpg"
+  },
+  {
+    "Barcode": "8902102127192",
+    "Product Name": "Henko Matic Top Load Liquid Detergent, 2 L",
+    "Description": "Henko Matic Top Load Liquid Detergent, 2 L is a high-quality item that offers excellent value and performance.",
+    "Category": "General Merchandise",
+    "ProductLine": "Unknown Product Line",
+    "Brand": "Unknown",
+    "Quantity": 2.0,
+    "Unit": "l",
+    "Features": [
+      "High quality product",
+      "Excellent performance",
+      "Long lasting",
+      "Great value"
+    ],
+    "Specification": {
+      "Country of Origin": "India",
+      "Weight": "2.0 l",
+      "Form": "Liquid",
+      "Packaging Type": "Bottle"
+    },
+    "Product Image": "https://images.openfoodfacts.org/images/products/890/210/212/7192/front_en.3.400.jpg",
+    "Product Ingredient Image": "https://images.openfoodfacts.org/images/products/890/210/212/7192/front_en.3.400.jpg"
   }
 ]
